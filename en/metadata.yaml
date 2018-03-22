@@ -1,0 +1,19 @@
+navigation:
+    - title: Introduction
+      location: index.md
+    - title: Installation
+      location: install.md
+    - title: Proxy registration
+      location: register.md
+    - title: Overriding snap revisions
+      location: overrides.md
+    - title: Configuring snap devices
+      location: devices.md
+    - title: Troubleshooting
+      location: trouble.md
+    - title: API documentation
+      children:
+        - title: API authentication
+          location: api-authentication.md
+        - title: Overrides API
+          location: api-overrides.md
