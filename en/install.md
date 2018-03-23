@@ -42,6 +42,16 @@ Then installing the snap is as simple as:
 This will install the snap, which provides a collection of systemd
 services, and the `snapstore` CLI tool to control the proxy.
 
+## Domain configuration
+
+The enterprise proxy will require a domain or IP address to be set
+for the configuration and access by other devices.
+
+    sudo snapstore config store.domain="<domain>"
+
+This can be done after the database is created, but is required
+before registration can succeed.
+
 ## Database
 
 To initially configure the Snap Enterprise Proxy, you will need a domain name
@@ -51,7 +61,7 @@ with CREATEDB permissions.
 This will set up the proxy to run and listen on all interfaces on port
 443 (with a redirect from 80).
 
-Once the database is configured, your proxy should now be 
+Once the database is configured, your proxy should now be
 ready to be [registered](register.html).
 
 ### Prepared database
@@ -59,15 +69,14 @@ ready to be [registered](register.html).
 If the database is already prepared, set the connection string.
 
     sudo snapstore config \
-        store.domain="<domain>" \
         store.db.connection="postgresql://user:password@host:port/db"
 
 This will require a user with CREATEROLE permission but does not require CREATEDB
-permissions. 
+permissions.
 
 ### Creating a database
 
-There is a convenience option that will create and configure the database 
+There is a convenience option that will create and configure the database
 automatically.
 
 The `create-database` command can create a database with a connection string
@@ -76,10 +85,7 @@ including a user that has the appropriate permissions (CREATEDB).
     sudo snapstore create-database \
         "postgresql://user:password@host:port/db"
 
-This will create and migrate the database and will then require the domain
-for the Snap Enterprise Proxy to be set.
-
-    sudo snapstore config store.domain="<domain>"
+This will create and migrate the database.
 
 ## Network connectivity
 

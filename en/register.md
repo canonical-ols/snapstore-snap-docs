@@ -42,5 +42,9 @@ You can examine your proxy's registration status with:
 This will show the registration status of your proxy, as well as local
 status information of this server.
 
+At this point, your proxy will be assigned a Store ID, which can be retrieved
+with the status command. This will be used in later commands and to
+identify your proxy for support purposes.
+
 One your proxy is approved, you will be able to [configure devices](devices.html).
 For evaluation purposes, we automatically grant the use of up to 5 devices.
