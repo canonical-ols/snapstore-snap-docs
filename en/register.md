@@ -46,5 +46,5 @@ At this point, your proxy will be assigned a Store ID, which can be retrieved
 with the status command. This will be used in later commands and to
 identify your proxy for support purposes.
 
-One your proxy is approved, you will be able to [configure devices](devices.html).
+Once your proxy is approved, you will be able to [configure devices](devices.html).
 For evaluation purposes, we automatically grant the use of up to 5 devices.
