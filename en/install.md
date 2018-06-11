@@ -40,8 +40,7 @@ snapd:
 
         sudo snap install snapstore --beta
 
-Installing the stable release of the Snap Enterprise Proxy
-is as simple as:
+Installing the stable release of the Snap Enterprise Proxy is as simple as:
 
     sudo snap install snapstore
 
