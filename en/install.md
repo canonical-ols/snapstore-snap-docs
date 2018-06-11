@@ -35,7 +35,12 @@ snapd:
 
     sudo systemctl restart snapd
 
-Then installing the snap is as simple as:
+!!! NOTE:
+    While the Snap Enterprise Proxy is in beta the snap can be installed using:
+
+        sudo snap install snapstore --beta
+
+Installing the stable release of the Snap Enterprise Proxy is as simple as:
 
     sudo snap install snapstore
 
