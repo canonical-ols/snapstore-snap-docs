@@ -4,17 +4,14 @@ title: Introduction
 
 # Snap Enterprise Proxy documentation
 
-The Snap Enterprise Proxy provides an on-premise proxy to the Snap Store
-for your devices.
+The Snap Enterprise Proxy provides an on-premise edge proxy to the
+Snap Store for your devices. Devices are registered with the proxy,
+and all communication with the Store will flow through the proxy.
 
 ## Features
 
-* Provide a means to access the Snap Store for devices with restricted
-  network access.
-* Allow you to control the flow of revision updates for snaps
-  installed on local devices.
-* Provides local caching of snap downloads.
-* Provides a CLI management tool and a [RESTful API](api-overrides.html).
-
-
-
+* provides a means to access the Snap Store for devices with restricted
+  network access;
+* allows control of snap updates on attached devices;
+* caches snap downloads;
+* provides a management interface via CLI and [RESTful API](api-overrides.html).

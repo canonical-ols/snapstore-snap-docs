@@ -13,7 +13,7 @@ You will need at least snapd 2.30 on your device and access to a
 To configure snapd on a device to talk to the proxy, you need to first
 download the signed assertion that allows snapd to trust the proxy:
 
-    curl -s http://<domain>/v2/auth/store/assertions | snap ack /dev/stdin
+    curl -s http://<domain>/v2/auth/store/assertions | sudo snap ack /dev/stdin
 
 Retrieve the Store ID using the status command:
 

@@ -16,17 +16,17 @@ To run the Snap Enterprise Proxy, you will need:
 * A domain name for the server.
 * A PostgreSQL instance, and credentials for a user with `CREATEROLE`
   privileges, and either `CREATEDB` or a pre-created database with `CREATE`
-  privileges on it for that user.  The snapstore snap will create
+  privileges on it for that user.  The snap-store-proxy snap will create
   "snapauth" and "snaprevs" users, so you will need to ensure that any
   relevant ACLs permit those.
-* An RSA key pair to register the snapstore identity (these can be
-  generated for you with: `snapstore generate-keys`).
+* An RSA key pair to register the snap-store-proxy identity (these can be
+  generated for you with: `snap-store-proxy generate-keys`).
 
 ## Getting started
 
 First, if your network requires an HTTPS proxy to get to the above
 domains, you must first configure snapd on the installation server to
-use that HTTPS proxy in order to be able to install the snapstore snap
+use that HTTPS proxy in order to be able to install the snap-store-proxy snap
 package.
 
 Do this by adding the appropriate environment variables (`http_proxy`,
@@ -38,21 +38,21 @@ snapd:
 !!! NOTE:
     While the Snap Enterprise Proxy is in beta the snap can be installed using:
 
-        sudo snap install snapstore --beta
+        sudo snap install snap-store-proxy --beta
 
 Installing the stable release of the Snap Enterprise Proxy is as simple as:
 
-    sudo snap install snapstore
+    sudo snap install snap-store-proxy
 
 This will install the snap, which provides a collection of systemd
-services, and the `snapstore` CLI tool to control the proxy.
+services, and the `snap-proxy` CLI tool to control the proxy.
 
 ## Domain configuration
 
 The enterprise proxy will require a domain or IP address to be set
 for the configuration and access by other devices.
 
-    sudo snapstore config store.domain="<domain>"
+    sudo snap-proxy config proxy.domain="<domain>"
 
 This can be done after the database is created, but is required
 before registration can succeed.
@@ -73,8 +73,8 @@ ready to be [registered](register.html).
 
 If the database is already prepared, set the connection string.
 
-    sudo snapstore config \
-        store.db.connection="postgresql://user:password@host:port/db"
+    sudo snap-proxy config \
+        proxy.db.connection="postgresql://user:password@host:port/db"
 
 This will require a user with CREATEROLE permission but does not require CREATEDB
 permissions.
@@ -87,7 +87,7 @@ automatically.
 The `create-database` command can create a database with a connection string
 including a user that has the appropriate permissions (CREATEDB).
 
-    sudo snapstore create-database \
+    sudo snap-proxy create-database \
         "postgresql://user:password@host:port/db"
 
 This will create and migrate the database.
@@ -97,12 +97,12 @@ This will create and migrate the database.
 You can check that the Proxy can access all the network locations it
 needs to with:
 
-    snapstore check-connections
+    snap-proxy check-connections
 
 If you require an HTTPS proxy, you can configure the proxy to use that
 with:
 
-    sudo snapstore config store.https.proxy=myproxy.internal:3128
+    sudo snap-proxy config proxy.https.proxy=myproxy.internal:3128
 
 
 ## Running multiple proxies
