@@ -7,7 +7,7 @@ table_of_contents: true
 
 ## Prerequisites
 
-To run the Snap Enterprise Proxy, you will need:
+To run the Snap Store Proxy, you will need:
 
 * A server running Ubuntu 16.04 LTS on AMD64.
 * The ability (e.g. firewall rules) for the server to initiate network
@@ -36,11 +36,11 @@ snapd:
     sudo systemctl restart snapd
 
 !!! NOTE:
-    While the Snap Enterprise Proxy is in beta the snap can be installed using:
+    While the Snap Store Proxy is in beta the snap can be installed using:
 
         sudo snap install snap-store-proxy --beta
 
-Installing the stable release of the Snap Enterprise Proxy is as simple as:
+Installing the stable release of the Snap Store Proxy is as simple as:
 
     sudo snap install snap-store-proxy
 
@@ -49,7 +49,7 @@ services, and the `snap-proxy` CLI tool to control the proxy.
 
 ## Domain configuration
 
-The enterprise proxy will require a domain or IP address to be set
+The Snap Store Proxy will require a domain or IP address to be set
 for the configuration and access by other devices.
 
     sudo snap-proxy config proxy.domain="<domain>"
@@ -59,7 +59,7 @@ before registration can succeed.
 
 ## Database
 
-To initially configure the Snap Enterprise Proxy, you will need a domain name
+To initially configure the Snap Store Proxy, you will need a domain name
 for it and either a created database or a connection string including a user
 with CREATEDB permissions.
 
@@ -116,4 +116,4 @@ been registered, it will not need registering on other instances.
     The download caching will currently be less efficient when
     running multiple instances, as the instances are not aware of each
     other. Support for shared caching is planned for later releases of the
-    Snap Enterprise Proxy.
+    Snap Store Proxy.

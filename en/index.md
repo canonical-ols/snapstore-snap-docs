@@ -2,9 +2,9 @@
 title: Introduction
 ---
 
-# Snap Enterprise Proxy documentation
+# Snap Store Proxy documentation
 
-The Snap Enterprise Proxy provides an on-premise edge proxy to the
+The Snap Store Proxy provides an on-premise edge proxy to the
 Snap Store for your devices. Devices are registered with the proxy,
 and all communication with the Store will flow through the proxy.
 

@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting the Snap Enterprise Proxy
+title: Troubleshooting the Snap Store Proxy
 table_of_contents: true
 ---
 
@@ -52,7 +52,7 @@ Please file bugs against this project on Launchpad:
 ### Known issues
 
 1. The `snap download` command doesn't do the download of the snap through
-   snapd service, and therefore doesn't know about the Snap Enterprise Proxy
+   snapd service, and therefore doesn't know about the Snap Store Proxy
    and will try to fetch the snap directly. [Forum
    thread](https://forum.snapcraft.io/t/improvements-in-snap-download/1422)
 2. Need to be root when configuring the snap proxy.
