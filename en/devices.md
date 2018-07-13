@@ -17,7 +17,7 @@ download the signed assertion that allows snapd to trust the proxy:
 
 Retrieve the Store ID using the status command:
 
-    snapstore status
+    snap-proxy status
 
 And then tell snapd to use that store:
 
