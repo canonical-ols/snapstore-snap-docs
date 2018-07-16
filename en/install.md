@@ -20,7 +20,7 @@ To run the Snap Store Proxy, you will need:
   "snapauth" and "snaprevs" users, so you will need to ensure that any
   relevant ACLs permit those.
 * An RSA key pair to register the snap-store-proxy identity (these can be
-  generated for you with: `snap-store-proxy generate-keys`).
+  generated for you with: `snap-proxy generate-keys`).
 
 ## Getting started
 

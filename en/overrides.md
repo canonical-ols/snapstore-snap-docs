@@ -19,15 +19,15 @@ You can configure them from the proxy server.
 
 To add an override:
 
-    sudo snapstore override <snap> <channel>=<revision>
+    sudo snap-proxy override <snap> <channel>=<revision>
 
 To list overrides currently in place:
 
-    sudo snapstore list-overrides <snap>
+    sudo snap-proxy list-overrides <snap>
 
 To remove all current overrides on a channel:
 
-    sudo snapstore delete-override <snap> <channel>
+    sudo snap-proxy delete-override <snap> <channel>
 
 ## Overrides API
 
@@ -45,13 +45,13 @@ be used remotely to administer overrides:
 Authentication is performed using Ubuntu SSO, and users need to be
 authorized from the CLI on the server using:
 
-    sudo snapstore add-admin becky@example.com
+    sudo snap-proxy add-admin becky@example.com
 
 On the client side, you authenticate by:
 
     snapstore-client login
 
-Overrides are managed in the same way as with the `snapstore` command
+Overrides are managed in the same way as with the `snap-proxy` command
 above, e.g.:
 
     snapstore-client list-overrides

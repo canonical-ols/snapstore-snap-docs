@@ -6,18 +6,18 @@ table_of_contents: true
 # API authentication
 
 Authentication with the API requires a valid Ubuntu SSO user. This user
-must be configured as an admin using the `snapstore` tool:
+must be configured as an admin using the `snap-proxy` tool:
 
 ```bash
-snapstore add-admin user@example.com
+snap-proxy add-admin user@example.com
 ```
 
-The snap store uses macaroons for authentication, which are a kind of bearer
-token that can be constrained and that can be authorized by third-party
-services.  We strongly recommend using
+The Snap Store and Snap Store Proxy use macaroons for authentication,
+which are a kind of bearer token that can be constrained and that can
+be authorized by third-party services.  We strongly recommend using
 [pymacaroons](https://github.com/ecordell/pymacaroons) or
-[libmacaroons](https://github.com/rescrv/libmacaroons) to work with these
-tokens.
+[libmacaroons](https://github.com/rescrv/libmacaroons) to work with
+these tokens.
 
 If you want to understand more about how macaroons work, refer to the [original
 paper](https://research.google.com/pubs/pub41892.html).
