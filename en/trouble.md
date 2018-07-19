@@ -31,8 +31,8 @@ To restart the snap-proxy services, run:
 
     sudo snap restart snap-proxy
 
-The download cache is at `/var/snap/snap-store-proxy/nginx/cache`. The default
-limit is 2GB, this can be changed with:
+The download cache is at `/var/snap/snap-store-proxy/current/nginx/cache`.
+The default limit is 2GB, this can be changed with:
 
     sudo snap-proxy config proxy.cache.size=4096  # in mb
 
