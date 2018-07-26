@@ -35,11 +35,6 @@ snapd:
 
     sudo systemctl restart snapd
 
-!!! NOTE:
-    While the Snap Store Proxy is in beta the snap can be installed using:
-
-        sudo snap install snap-store-proxy --beta
-
 Installing the stable release of the Snap Store Proxy is as simple as:
 
     sudo snap install snap-store-proxy
