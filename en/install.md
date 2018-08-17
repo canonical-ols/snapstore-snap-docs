@@ -69,10 +69,14 @@ ready to be [registered](register.html).
 If the database is already prepared, set the connection string.
 
     sudo snap-proxy config \
-        proxy.db.connection="postgresql://user:password@host:port/db"
+        proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
 
 This will require a user with CREATEROLE permission but does not require CREATEDB
 permissions.
+
+The connection string behaves as per [normal PostgreSQL
+clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
+`USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`.
 
 ### Creating a database
 
@@ -83,7 +87,10 @@ The `create-database` command can create a database with a connection string
 including a user that has the appropriate permissions (CREATEDB).
 
     sudo snap-proxy create-database \
-        "postgresql://user:password@host:port/db"
+        "postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
+
+The connection string behaves as per [normal PostgreSQL clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
+`USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`. The `PASSWORD` here is optional, and if needed will be prompted for by the command (to avoid leaving credentials in your shell's history).
 
 This will create and migrate the database.
 
