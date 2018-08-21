@@ -52,17 +52,14 @@ for the configuration and access by other devices.
 This can be done after the database is created, but is required
 before registration can succeed.
 
+The proxy will listen on all interfaces on port 443 (with a redirect from 80).
+
 ## Database
 
-To initially configure the Snap Store Proxy, you will need a domain name
-for it and either a created database or a connection string including a user
-with CREATEDB permissions.
-
-This will set up the proxy to run and listen on all interfaces on port
-443 (with a redirect from 80).
-
-Once the database is configured, your proxy should now be
-ready to be [registered](register.html).
+To initially configure the Snap Store Proxy, you will need either a
+database already prepared, or a [connection
+string](https://www.postgresql.org/docs/current/static/libpq-connect.html#id-1.7.3.8.3.6)
+with a user with CREATEDB permissions.
 
 ### Prepared database
 
@@ -105,6 +102,11 @@ If you require an HTTPS proxy, you can configure the proxy to use that
 with:
 
     sudo snap-proxy config proxy.https.proxy=myproxy.internal:3128
+
+## Next step
+
+With the domain set, and database configured your proxy should now be
+ready to be [registered](register.md).
 
 
 ## Running multiple proxies

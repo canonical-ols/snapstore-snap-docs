@@ -6,16 +6,17 @@ table_of_contents: true
 # Snap revision overrides
 
 You can override the revisions for specific snaps, on a specific
-channel. This means you can control the specific revision of a snap in
-a channel, rather than what the upstream publisher has released. You can
-use this to effectively pin revisions, and control when you are ready to
-upgrade to newer revisions.
+[channel](https://docs.snapcraft.io/reference/channels). This means
+you can control the specific revision of a snap in a channel, rather
+than what the upstream publisher has released. You can use this to
+effectively pin revisions, and control when you are ready to upgrade
+to newer revisions.
 
 There are a few different ways to configure overrides.
 
 ## Proxy server
 
-You can configure them from the proxy server.
+To configure overrides from the proxy server, use the `snap-proxy` command.
 
 To add an override:
 
@@ -31,14 +32,14 @@ To remove all current overrides on a channel:
 
 ## Overrides API
 
-In addition to managing overrides directly on the server CLI, you
-can also manage them via a [REST API](api-overrides.html)
+Alternatively, you can also manage overrides via a [REST API](api-overrides.md)
 
 
 ## Command line tool
 
-There is a CLI tool to help manage overrides, which uses the API and can
-be used remotely to administer overrides:
+There is a [CLI tool](https://snapcraft.io/snap-store-proxy-client) to
+help manage overrides, which uses the API and can be used remotely to
+administer overrides:
 
     sudo snap install snapstore-client
 

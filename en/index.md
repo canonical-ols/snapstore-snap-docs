@@ -14,4 +14,4 @@ and all communication with the Store will flow through the proxy.
   network access;
 * allows control of snap updates on attached devices;
 * caches snap downloads;
-* provides a management interface via CLI and [RESTful API](api-overrides.html).
+* provides a management interface via CLI and [RESTful API](api-overrides.md).
