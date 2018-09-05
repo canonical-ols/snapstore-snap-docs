@@ -1,4 +1,6 @@
 site_title: Snap Store Proxy documentation
+site_logo_url: ../media/snap-store-proxy-logo-32.png
+site_favicon: ../media/snap-store-proxy-logo.ico
 site_footer_links:
   - location: trouble.html
     title: Troubleshoot issues
