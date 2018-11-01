@@ -63,6 +63,9 @@ with a user with CREATEDB permissions.
 
 ### Prepared database
 
+A prepared database must have the [btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) extension installed.
+This extension requires superuser privileges to create.
+
 If the database is already prepared, set the connection string.
 
     sudo snap-proxy config \
