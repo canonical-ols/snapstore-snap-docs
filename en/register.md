@@ -8,7 +8,7 @@ table_of_contents: true
 ## Generate an SSH key pair
 
 You will need to configure an RSA key pair in order to register
-the proxy. This acts as the proxy's identity with the Snap proxy.
+the proxy. This acts as the proxy's identity with the upstream Snap Store.
 
 This can be done automatically:
 
