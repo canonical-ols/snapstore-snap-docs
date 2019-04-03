@@ -95,12 +95,13 @@ choose a good password:
     sudo su - postgres -c 'createuser --login --createrole --encrypted \
         --pwprompt snapstore'
 
-Now run create-database. It's necessary to run it multiple times. 
-Follow the instructions it gives:
+Now run create-database and follow the instructions it gives:
     sudo snap-store-proxy create-database \
         "postgresql://snapstore@localhost:5432/snapstore"
 
 This will setup and configure the database.
+
+It may be necessary to run the creatre-database command multiple times.
 
 The connection string behaves as per [normal PostgreSQL clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
 `USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`. The `PASSWORD` here is optional, and if needed will be prompted for by the command (to avoid leaving credentials in your shell's history).
