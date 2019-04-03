@@ -90,15 +90,15 @@ configuring the database.
 It assumes you will install PostgreSQL locally on Ubuntu:
     sudo apt install postgresql
 
-Once PostgreSQL is install create the snapstore admin user.
-You need to choose a good password for PASSWORD.
-    echo 'CREATE ROLE snapstore LOGIN PASSWORD '\''PASSWORD'\'';' | \
-        sudo su - postgres -c psql
+Once PostgreSQL is install create the snapstore admin user. You need to 
+choose a good password:
+    sudo su - postgres -c 'createuser --login --createrole --encrypted \
+        --pwprompt snapstore'
 
 Now run create-database. It's necessary to run it multiple times. 
 Follow the instructions it gives:
     sudo snap-store-proxy create-database \
-        "postgresql://snapstore:PASSWORD@localhost:5432/snapstore"
+        "postgresql://snapstore@localhost:5432/snapstore"
 
 This will setup and configure the database.
 
