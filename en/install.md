@@ -64,10 +64,10 @@ You will need to create a database:
     CREATE DATABASE dbname;
 
 And a new user:
-    CREATE ROLE user LOGIN CREATEROLE PASSWORD password;
+    CREATE ROLE user LOGIN CREATEROLE PASSWORD 'password';
 
 The user needs to be able to create objects in the database:
-    GRANT CREATE ON dbname TO user;
+    GRANT CREATE ON DATABASE dbname TO user;
 
 A prepared database must have the 
 [btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) 
