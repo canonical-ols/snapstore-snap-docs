@@ -120,9 +120,9 @@ with:
 
 ## Next step
 
-With the domain set, and database configured your proxy should now be
-ready to be [registered](register.md).
-
+If you want traffic between your devices and your Snap Store Proxy to be
+encrypted, continue to [HTTPS](https.md). Otherwise, proceed with
+[registration](register.md).
 
 ## Running multiple proxies
 
