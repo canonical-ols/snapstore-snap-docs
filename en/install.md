@@ -113,8 +113,8 @@ needs to with:
 
     snap-proxy check-connections
 
-If you require an HTTPS proxy, you can configure the proxy to use that
-with:
+If you require traffic between your Snap Store Proxy and the internet to go via
+another HTTP proxy, you can configure your Snap Store Proxy to do so with:
 
     sudo snap-proxy config proxy.https.proxy=myproxy.internal:3128
 
