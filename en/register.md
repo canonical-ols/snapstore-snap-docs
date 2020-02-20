@@ -5,17 +5,17 @@ table_of_contents: true
 
 # Registration
 
-## Generate an SSH key pair
+## Configure private and public keys
 
 You will need to configure an RSA key pair in order to register
 the proxy. This acts as the proxy's identity with the upstream Snap Store.
 
-This can be done automatically:
+They can be generated and configured automatically:
 
     sudo snap-proxy generate-keys
 
 Or you can manually generate a key pair, in OpenSSH format (e.g., via
-ssh-keygen) and set explicitly:
+ssh-keygen) and configure it explicitly:
 
     sudo snap-proxy config \
         proxy.key.public="<public key data>" \
