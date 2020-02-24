@@ -40,8 +40,8 @@ The default limit is 2GB, this can be changed with:
 
 If you need to move the snap-proxy to a new hostname, you can do:
 
-    sudo snap-store-proxy config proxy.domain=NEWDOMAIN
-    sudo snap-store-proxy reregister
+    sudo snap-proxy config proxy.domain=NEWDOMAIN
+    sudo snap-proxy reregister
 
 This perform another registration cycle and update the assertion file
 with the new domain name.
