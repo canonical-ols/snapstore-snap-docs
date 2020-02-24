@@ -57,27 +57,31 @@ database already prepared, or the ability to install PostgreSQL locally.
 
 ### Prepared database
 
-Choose this approach if you are experience with PostgreSQL and want to setup a
+Choose this approach if you are experienced with PostgreSQL and want to setup a
 production ready installation.
 
 You will need to create a database:
+
     CREATE DATABASE dbname;
 
 And a new user:
+
     CREATE ROLE user LOGIN CREATEROLE PASSWORD 'password';
 
 The user needs to be able to create objects in the database:
+
     GRANT CREATE ON DATABASE dbname TO user;
 
 A prepared database must have the 
 [btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) 
 extension installed. This extension requires superuser privileges to create.
 You should connect to DBNAME as a superuser and create the extension:
+
     CREATE EXTENSION btree_gist;
 
 Once the database is prepared, set the connection string.
-    sudo snap-store-proxy config \
-        proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
+
+    sudo snap-proxy config proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
 
 The connection string behaves as per [normal PostgreSQL
 clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING)
@@ -88,16 +92,17 @@ There is a convenience option that will guide you through creating and
 configuring the database.
 
 It assumes you will install PostgreSQL locally on Ubuntu:
+
     sudo apt install postgresql
 
-Once PostgreSQL is install create the snapstore admin user. You need to 
+Once PostgreSQL is installed, create the snapstore admin user. You need to
 choose a good password:
-    sudo su - postgres -c 'createuser --login --createrole --encrypted \
-        --pwprompt snapstore'
+
+    sudo -u postgres createuser --login --createrole --createdb --encrypted --pwprompt snapstore
 
 Now run create-database and follow the instructions it gives:
-    sudo snap-store-proxy create-database \
-        "postgresql://snapstore@localhost:5432/snapstore"
+
+    sudo snap-proxy create-database "postgresql://snapstore@localhost:5432/snapstore"
 
 This will setup and configure the database.
 
