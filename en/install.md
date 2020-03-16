@@ -14,11 +14,7 @@ To run the Snap Store Proxy, you will need:
   connections to https://api.snapcraft.io,
   https://public.apps.ubuntu.com, and https://login.ubuntu.com.
 * A domain name for the server.
-* A PostgreSQL instance, and credentials for a user with `CREATEROLE`
-  privileges, and either `CREATEDB` or a pre-created database with `CREATE`
-  privileges on it for that user.  The snap-store-proxy snap will create
-  "snapauth" and "snaprevs" users, so you will need to ensure that any
-  relevant ACLs permit those.
+* A PostgreSQL instance (see the Database section). 
 * An RSA key pair to register the snap-store-proxy identity (these can be
   generated for you with: `snap-proxy generate-keys`).
 
@@ -57,42 +53,63 @@ The proxy will listen on all interfaces on port 443 (with a redirect from 80).
 ## Database
 
 To initially configure the Snap Store Proxy, you will need either a
-database already prepared, or a [connection
-string](https://www.postgresql.org/docs/current/static/libpq-connect.html#id-1.7.3.8.3.6)
-with a user with CREATEDB permissions.
+database already prepared, or the ability to install PostgreSQL locally. 
 
 ### Prepared database
 
-A prepared database must have the [btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) extension installed.
-This extension requires superuser privileges to create.
+Choose this approach if you are experienced with PostgreSQL and want to setup a
+production ready installation.
 
-If the database is already prepared, set the connection string.
+You will need to create a database:
 
-    sudo snap-proxy config \
-        proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
+    CREATE DATABASE dbname;
 
-This will require a user with CREATEROLE permission but does not require CREATEDB
-permissions.
+And a new user:
+
+    CREATE ROLE user LOGIN CREATEROLE PASSWORD 'password';
+
+The user needs to be able to create objects in the database:
+
+    GRANT CREATE ON DATABASE dbname TO user;
+
+A prepared database must have the 
+[btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) 
+extension installed. This extension requires superuser privileges to create.
+You should connect to DBNAME as a superuser and create the extension:
+
+    CREATE EXTENSION btree_gist;
+
+Once the database is prepared, set the connection string.
+
+    sudo snap-proxy config proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
 
 The connection string behaves as per [normal PostgreSQL
-clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
-`USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`.
+clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING)
 
 ### Creating a database
 
-There is a convenience option that will create and configure the database
-automatically.
+There is a convenience option that will guide you through creating and 
+configuring the database.
 
-The `create-database` command can create a database with a connection string
-including a user that has the appropriate permissions (CREATEDB).
+It assumes you will install PostgreSQL locally on Ubuntu:
 
-    sudo snap-proxy create-database \
-        "postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
+    sudo apt install postgresql
+
+Once PostgreSQL is installed, create the snapstore admin user. You need to
+choose a good password:
+
+    sudo -u postgres createuser --login --createrole --createdb --encrypted --pwprompt snapstore
+
+Now run create-database and follow the instructions it gives:
+
+    sudo snap-proxy create-database "postgresql://snapstore@localhost:5432/snapstore"
+
+This will setup and configure the database.
+
+It may be necessary to run the creatre-database command multiple times.
 
 The connection string behaves as per [normal PostgreSQL clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
 `USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`. The `PASSWORD` here is optional, and if needed will be prompted for by the command (to avoid leaving credentials in your shell's history).
-
-This will create and migrate the database.
 
 ## Network connectivity
 
@@ -101,22 +118,22 @@ needs to with:
 
     snap-proxy check-connections
 
-If you require an HTTPS proxy, you can configure the proxy to use that
-with:
+If you require traffic between your Snap Store Proxy and the internet to go via
+another HTTP proxy, you can configure your Snap Store Proxy to do so with:
 
     sudo snap-proxy config proxy.https.proxy=myproxy.internal:3128
 
 ## Next step
 
-With the domain set, and database configured your proxy should now be
-ready to be [registered](register.md).
-
+If you want traffic between your devices and your Snap Store Proxy to be
+encrypted, continue to [HTTPS](https.md). Otherwise, proceed with
+[registration](register.md).
 
 ## Running multiple proxies
 
 You can run multiple instances of the proxy for HA, provided by simple
 round-robin DNS. All instances need to have the same configuration,
-using your normal configuration managment system. Once a key pair has
+using your normal configuration management system. Once a key pair has
 been registered, it will not need registering on other instances.
 
 !!! NOTE:

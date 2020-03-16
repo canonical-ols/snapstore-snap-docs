@@ -43,7 +43,7 @@ Response:
 
 ```http
 HTTP/1.1 200 OK
-Content-Type: applicaton/json
+Content-Type: application/json
 ...
 
 {
