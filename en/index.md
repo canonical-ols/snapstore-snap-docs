@@ -8,10 +8,32 @@ The Snap Store Proxy provides an on-premise edge proxy to the
 Snap Store for your devices. Devices are registered with the proxy,
 and all communication with the Store will flow through the proxy.
 
-## Features
+## Feature list
 
-* provides a means to access the Snap Store for devices with restricted
-  network access;
-* allows control of snap updates on attached devices;
-* caches snap downloads;
-* provides a management interface via CLI and [RESTful API](api-overrides.md).
+* Network control
+
+    * Provides a means to access the Snap Store for devices with restricted
+      network access
+
+    * Snap Store Proxy can communicate with the Snap Store directly or through
+      an HTTPS forward proxy
+
+* Caching of the downloaded snaps
+
+* [Overriding revisions](overrides.md) of specific snaps for all connected
+  devices
+
+* Management options
+
+    * `snap-proxy` CLI interface included with the
+      [Snap Store Proxy](https://snapcraft.io/snap-store-proxy) snap
+
+    * Remote management using the
+      [Snap Store Proxy Client](https://snapcraft.io/snap-store-proxy-client)
+      or a [RESTful API](api-overrides.md).
+
+## Whitepaper
+
+Learn more about how the Snap Store Proxy overcomes challenges presented by
+restricted networks and management policies from this
+[whitepaper on Enterprise Snap Management](https://ubuntu.com/engage/enterprise-snap-management).
