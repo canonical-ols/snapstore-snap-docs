@@ -4,5 +4,5 @@ site_favicon: ../media/snap-store-proxy-logo.ico
 site_footer_links:
   - location: trouble.html
     title: Troubleshoot issues
-  - location: https://bugs.launchpad.net/snapstore-snap
+  - location: https://bugs.launchpad.net/snapstore
     title: File a bug
