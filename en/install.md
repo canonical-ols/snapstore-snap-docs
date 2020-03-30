@@ -88,7 +88,10 @@ Simple local Ubuntu setup can look like this:
 
 Once the database is prepared, set the connection string:
 
-    sudo snap-proxy config proxy.db.connection="postgresql://snapproxy-db:snapproxy-password@localhost:5432/snapproxy-db"
+    sudo snap-proxy config proxy.db.connection="postgresql://snapproxy-db@localhost:5432/snapproxy-db"
+
+After doing this, you will be prompted to enter the password for that PostgreSQL
+user.
 
 The connection string format is the same as described
 [here](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING)
