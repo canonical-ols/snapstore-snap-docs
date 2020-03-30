@@ -32,15 +32,16 @@ To remove all current overrides on a channel:
 
 ### Revisions and Architectures
 
-Every *.snap file has a unique
-[revision](https://snapcraft.io/docs/getting-started) within a channel.
+A Snap Store channel can publish only one
+[revision](https://snapcraft.io/docs/getting-started) of a specific snap at any
+time.
 
-One revision can support one or multiple architectures. Specifying a revision
-for an override will therefore determine for which architectures the override is
-created.
+A snap revision can support one or multiple architectures. Specifying a revision
+for an override therefore also determines which architectures the override is
+set for.
 
 Revisions for specific snaps can be looked up using the `snap info` command,
-which will list currently available revisions for the architecture of the device
+which lists currently available revisions for the architecture of the device
 running this command. Snap Stores Devices API
 [snaps_info](https://api.snapcraft.io/docs/info.html) endpoint can also be used
 to obtain available revisions for selected architectures.
@@ -63,7 +64,7 @@ $ sudo snap-store-proxy list-overrides core18
 core18 stable amd64 1722 (upstream 1705)
 core18 stable armhf 1725 (upstream 1706)
 
-# Deleting a channel specific override will delete overrides for all revisions
+# Deleting a channel-specific override deletes overrides for all revisions
 # and architectures.
 $ sudo snap-store-proxy delete-override core18 stable
 core18 stable amd64 is tracking upstream (revision 1705)
