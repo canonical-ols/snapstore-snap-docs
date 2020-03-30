@@ -58,7 +58,7 @@ This documentation is shipped with the snap, and available at:
 
 Please file bugs against this project on Launchpad:
 
-[https://bugs.launchpad.net/snapstore-snap](https://bugs.launchpad.net/snapstore-snap)
+[https://bugs.launchpad.net/snapstore](https://bugs.launchpad.net/snapstore)
 
 
 ### Known issues
