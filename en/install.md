@@ -52,6 +52,16 @@ The proxy will listen on all interfaces on port 443 (with a redirect from 80).
 
 ## Database
 
+When setting up a Snap Store Proxy for production usage, we recommend you have a
+properly configured PostgreSQL service set up, with backups and possibly HA.
+However, if you are evaluating the Snap Store Proxy or using it in a local
+deployment, you can use a local PostgreSQL.
+
+The example below illustrates the expected PostgreSQL set up in terms of a role,
+database, and a database extension that are required by the Snap Store Proxy.
+
+### Example database setup
+
 Ensure that proper PostgreSQL database, user and database extensions are set up.
 This can be done by adjusting the following script to your needs and running it
 using `psql` as your PostgreSQL server **superuser**:
@@ -63,8 +73,6 @@ using `psql` as your PostgreSQL server **superuser**:
     \connect "snapproxy-db"
 
     CREATE EXTENSION "btree_gist";
-
-### Example database setup
 
 Simple local Ubuntu setup can look like this:
 
