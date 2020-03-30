@@ -52,64 +52,48 @@ The proxy will listen on all interfaces on port 443 (with a redirect from 80).
 
 ## Database
 
-To initially configure the Snap Store Proxy, you will need either a
-database already prepared, or the ability to install PostgreSQL locally. 
+When setting up a Snap Store Proxy for production usage, we recommend you have a
+properly configured PostgreSQL service set up, with backups and possibly HA.
+However, if you are evaluating the Snap Store Proxy or using it in a local
+deployment, you can use a local PostgreSQL.
 
-### Prepared database
+The example below illustrates the expected PostgreSQL set up in terms of a role,
+database, and a database extension that are required by the Snap Store Proxy.
 
-Choose this approach if you are experienced with PostgreSQL and want to setup a
-production ready installation.
+### Example database setup
 
-You will need to create a database:
+Ensure that proper PostgreSQL database, user and database extensions are set up.
+This can be done by adjusting the following script to your needs and running it
+using `psql` as your PostgreSQL server **superuser**:
 
-    CREATE DATABASE dbname;
+    CREATE ROLE "snapproxy-user" LOGIN CREATEROLE PASSWORD 'snapproxy-password';
 
-And a new user:
+    CREATE DATABASE "snapproxy-db" OWNER "snapproxy-user";
 
-    CREATE ROLE user LOGIN CREATEROLE PASSWORD 'password';
+    \connect "snapproxy-db"
 
-The user needs to be able to create objects in the database:
+    CREATE EXTENSION "btree_gist";
 
-    GRANT CREATE ON DATABASE dbname TO user;
+Simple local Ubuntu setup can look like this:
 
-A prepared database must have the 
-[btree_gist](https://www.postgresql.org/docs/current/static/btree-gist.html) 
-extension installed. This extension requires superuser privileges to create.
-You should connect to DBNAME as a superuser and create the extension:
+1. Install postgresql
 
-    CREATE EXTENSION btree_gist;
+        sudo apt install postgresql
 
-Once the database is prepared, set the connection string.
+2. Save the above PostgreSQL script as proxydb.sql and run it:
 
-    sudo snap-proxy config proxy.db.connection="postgresql://USER:PASSWORD@HOST:PGPORT/DBNAME"
+        sudo -u postgres psql < proxydb.sql
 
-The connection string behaves as per [normal PostgreSQL
-clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING)
+### Configure the Snap Store Proxy database
 
-### Creating a database
+Once the database is prepared, set the connection string:
 
-There is a convenience option that will guide you through creating and 
-configuring the database.
+    sudo snap-proxy config proxy.db.connection="postgresql://snapproxy-db@localhost:5432/snapproxy-db"
 
-It assumes you will install PostgreSQL locally on Ubuntu:
+After doing this, you will be prompted to enter the password for that PostgreSQL
+user.
 
-    sudo apt install postgresql
-
-Once PostgreSQL is installed, create the snapstore admin user. You need to
-choose a good password:
-
-    sudo -u postgres createuser --login --createrole --createdb --encrypted --pwprompt snapstore
-
-Now run create-database and follow the instructions it gives:
-
-    sudo snap-proxy create-database "postgresql://snapstore@localhost:5432/snapstore"
-
-This will setup and configure the database.
-
-It may be necessary to run the creatre-database command multiple times.
-
-The connection string behaves as per [normal PostgreSQL clients](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING). i.e.
-`USER` will default to 'root', `HOST` defaults to 'localhost', `PGPORT` defaults to '5432', `DBNAME` defaults to `USER`. The `PASSWORD` here is optional, and if needed will be prompted for by the command (to avoid leaving credentials in your shell's history).
+[The connection string format is detailed in the libpq documentation](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING).
 
 ## Network connectivity
 
