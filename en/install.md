@@ -93,8 +93,7 @@ Once the database is prepared, set the connection string:
 After doing this, you will be prompted to enter the password for that PostgreSQL
 user.
 
-The connection string format is the same as described
-[here](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING)
+[The connection string format is detailed in the libpq documentation](https://www.postgresql.org/docs/current/static/libpq-connect.html#LIBPQ-CONNSTRING).
 
 ## Network connectivity
 
