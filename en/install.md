@@ -105,7 +105,25 @@ needs to with:
 If you require traffic between your Snap Store Proxy and the internet to go via
 another HTTP proxy, you can configure your Snap Store Proxy to do so with:
 
-    sudo snap-proxy config proxy.https.proxy=myproxy.internal:3128
+    sudo snap-proxy config proxy.https.proxy="https://myproxy.internal:3128"
+
+## CA certificates
+
+For verifying outgoing HTTPS communication, Snap Store Proxy bundles a set of
+root [CAs](https://en.wikipedia.org/wiki/Certificate_authority) from
+[The Certifi Trust Database](https://certifi.io/).
+
+You can override this default behavior and configure your Snap Store Proxy to
+only trust a specific list of CAs:
+
+    cat your-ca.crt another-ca.crt | sudo snap-proxy use-ca-certs
+
+This can be useful in cases when you want your Snap Store Proxy to trust your
+internal CA for example.
+
+To reset CA certificates back to defaults, run:
+
+    sudo snap-proxy remove-ca-certs
 
 ## Next step
 
