@@ -4,9 +4,10 @@ title: Introduction
 
 # Snap Store Proxy documentation
 
-The Snap Store Proxy provides an on-premise edge proxy to the
-Snap Store for your devices. Devices are registered with the proxy,
-and all communication with the Store will flow through the proxy.
+The Snap Store Proxy provides an on-premise edge proxy to the general
+[Snap Store](https://snapcraft.io/store) for your devices. Devices are
+registered with the proxy, and all communication with the Store will flow
+through the proxy.
 
 !!! NOTE:
     In order to serve its client devices, a Snap Store Proxy needs to be online
