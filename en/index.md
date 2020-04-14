@@ -4,9 +4,19 @@ title: Introduction
 
 # Snap Store Proxy documentation
 
-The Snap Store Proxy provides an on-premise edge proxy to the
-Snap Store for your devices. Devices are registered with the proxy,
-and all communication with the Store will flow through the proxy.
+The Snap Store Proxy provides an on-premise edge proxy to the general
+[Snap Store](https://snapcraft.io/store) for your devices. Devices are
+registered with the proxy, and all communication with the Store will flow
+through the proxy.
+
+!!! NOTE:
+    In order to serve its client devices, a Snap Store Proxy needs to be online
+    and connected to the general [Snap Store](https://snapcraft.io/store). This
+    is a requirement, even though Snap Store Proxy caches downloaded snap files,
+    which substantially reduces internet traffic. There's currently no generally
+    available offline mode for the Snap Store Proxy itself. See the up-to-date
+    [Network requirements for Snappy](https://forum.snapcraft.io/t/network-requirements-for-snappy/5147)
+    post for a list of domains Snap Store Proxy needs access to.
 
 ## Feature list
 
