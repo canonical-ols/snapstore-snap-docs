@@ -42,6 +42,8 @@ through the proxy.
       [Snap Store Proxy Client](https://snapcraft.io/snap-store-proxy-client)
       or a [RESTful API](api-overrides.md).
 
+* [Offline (airgap) mode](airgap.md) (beta)
+
 ## Whitepaper
 
 Learn more about how the Snap Store Proxy overcomes challenges presented by
