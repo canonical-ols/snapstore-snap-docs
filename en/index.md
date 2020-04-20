@@ -14,7 +14,9 @@ through the proxy.
     and connected to the general [Snap Store](https://snapcraft.io/store). This
     is a requirement, even though Snap Store Proxy caches downloaded snap files,
     which substantially reduces internet traffic. There's currently no generally
-    available offline mode for the Snap Store Proxy itself. See the up-to-date
+    available offline mode for the Snap Store Proxy itself. See
+    [Network Connectivity](install.md#network-connectivity) for the
+    `snap-proxy check-connections` command and the up-to-date
     [Network requirements for Snappy](https://forum.snapcraft.io/t/network-requirements-for-snappy/5147)
     post for a list of domains Snap Store Proxy needs access to.
 
