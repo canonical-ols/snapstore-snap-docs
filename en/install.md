@@ -133,10 +133,10 @@ encrypted, continue to [HTTPS](https.md). Otherwise, proceed with
 
 ## Running multiple proxies
 
-You can run multiple instances of the proxy for HA, provided by simple
-round-robin DNS. All instances need to have the same configuration,
-using your normal configuration management system. Once a key pair has
-been registered, it will not need registering on other instances.
+You can run multiple instances of the Snap Store Proxy, load balanced using
+round-robin DNS. All instances need to have the same configuration and connect
+to the same shared database. Once a key pair has been registered, it will not
+need registering on other instances.
 
 !!! NOTE:
     The download caching will currently be less efficient when
