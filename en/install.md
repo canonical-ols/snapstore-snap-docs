@@ -107,6 +107,9 @@ another HTTP proxy, you can configure your Snap Store Proxy to do so with:
 
     sudo snap-proxy config proxy.https.proxy="https://myproxy.internal:3128"
 
+Snap Store Proxy also uses the `https_proxy` environment variable if it's set.
+`http_proxy` is ignored as all outgoing traffic is encrypted.
+
 ## CA certificates
 
 For verifying outgoing HTTPS communication, Snap Store Proxy bundles a set of
