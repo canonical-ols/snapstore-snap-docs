@@ -8,7 +8,7 @@ table_of_contents: true
 ## Configuring devices
 
 You will need at least snapd 2.30 on your device and access to a
- [registered Snap Store Proxy](register).
+ [registered Snap Store Proxy](register.md).
 
 To configure snapd on a device to talk to the proxy, you need to `snap
 ack` the signed assertion that allows snapd to trust the proxy, e.g.:
