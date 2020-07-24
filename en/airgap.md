@@ -115,10 +115,14 @@ imported there.
 
 ### Importing (pushing) snaps
 
+Once the snap bundles are on the airgap host, they should be moved to the
+`/var/snap/snap-store-proxy/common/snaps-to-push/` directory, from where they
+can be imported.
+
 Example of importing a `jq.tar.gz` snap bundle on the air-gapped proxy host:
 
 ```bash
-sudo snap-store-proxy push-snap jq.tar.gz
+sudo snap-store-proxy push-snap /var/snap/snap-store-proxy/common/snaps-to-push/jq-20200406T103511.tar.gz
 ```
 
 The `jq` snap is now available for installation from this air-gapped Snap Store
