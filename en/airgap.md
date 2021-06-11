@@ -1,12 +1,15 @@
 ---
-title: Air-gapped mode
+title: Air-gapped mode (beta)
 table_of_contents: true
 ---
 
-# Air-gapped mode
+# Air-gapped mode (beta)
 
 Snap Store Proxy can operate in an air-gapped (offline) mode, meaning it can be
 deployed in networks that are disconnected from the internet.
+
+The intended use case for this mode are network restricted environments where no
+outside traffic is allowed or possible.
 
 ## Overview
 
@@ -25,6 +28,13 @@ followed by airgap mode activation:
 ```bash
 sudo snap-proxy enable-airgap-mode
 ```
+
+!!! NOTE:
+    Even though it's possible to enable airgap mode for an online proxy, it's
+    only advised to do so during the installation phase when no devices are yet
+    connected to the proxy. Deactivating and activating airgap mode while it's
+    already serving clients will have undesirable and not clearly defined
+    consequences.
 
 ### Offline installation
 
