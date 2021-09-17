@@ -157,16 +157,6 @@ limited to:
 [Configuring client devices](devices.md) follows the same process as with an
 online Snap Store Proxy.
 
-!!! NOTE:
-    Airgapped Snap Store Proxy ignores authentication information sent by client
-    devices currently. However if a client device has already obtained a
-    [serial assertion](https://docs.ubuntu.com/core/en/reference/assertions/serial),
-    but hasn't yet obtained a device session credential from the upstream store,
-    it will not be able to use the air-gapped proxy, as the air-gapped proxy
-    currently is unable to authenticate its client devices offline and the
-    device tries to obtain a session from the store it connects to before
-    talking to that store.
-
 ## Limitations
 
 Air-gapped mode provides only a subset of the core functionality of the regular
@@ -174,4 +164,4 @@ Snap Store Proxy or the official Snap Store. Some of the missing features are:
 
 * Searching for snaps
 
-* Device registration and authorization
+* Device registration
