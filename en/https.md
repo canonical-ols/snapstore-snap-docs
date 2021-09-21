@@ -5,16 +5,14 @@ table_of_contents: true
 
 # HTTPS
 
-TLS termination is not enabled by default. This means that the traffic between
-your snap devices and the Snap Store Proxy will not be encrypted.
+TLS termination is not enabled by default. This means that the proxy listens
+only on port 80 after installation. If the proxy was [registered](register.md)
+with an `--https` option, the resulting [assertion](devices.md) instructing
+client devices to connect to the proxy instead of the upstream store is pointing
+those devices to use HTTPS to connect to the proxy.
 
-This document explains how to enable TLS termination in the Snap Store Proxy.
-
-!!! NOTE:
-    Follow the instructions below **after** your Snap Store Proxy is
-    [installed](install.md), but **before** it is [registered](register.md) and
-    before any snap devices are [configured](devices.md) to use this Snap Store
-    Proxy.
+This document explains how to enable and configure TLS termination in the Snap
+Store Proxy.
 
 ## Certificate and Key
 
@@ -23,7 +21,8 @@ determine the domain by running:
 
     snap-proxy config proxy.domain
 
-This name will be the subject or one of the alternative names on the certificate.
+This name will be the subject and/or one of the alternative names on the
+certificate.
 
 How to obtain the certificate/key pair is out of scope of this document.
 
@@ -61,7 +60,8 @@ After that, snapd will be able to successfully verify the certificate.
 ## Next step
 
 Once you've confirmed that your Snap Store Proxy is running and accepting HTTPS
-connections, you can [register](register.md) your Snap Store Proxy.
+connections, you can [configure client devices](devices.md) to use your Snap
+Store Proxy.
 
 At any time, you can use:
 

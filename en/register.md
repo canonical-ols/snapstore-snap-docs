@@ -33,7 +33,15 @@ To register the proxy, you will need to provide Ubuntu SSO credentials
 for the desired account you wish to link the proxy with, and answer
 some simple questions about your deployment:
 
+    sudo snap-proxy register --https
+
+or:
+
     sudo snap-proxy register
+
+If the `--https` option is omitted, the resulting [assertion](devices.md)
+instructing client devices to use the proxy instead of the upstream store, will
+instruct them to use HTTP to connect to the proxy instead of HTTPS.
 
 You can examine your proxy's registration status with:
 
@@ -50,4 +58,6 @@ with the status command. This will be used in later commands and to
 identify your proxy for support purposes.
 
 ## Next step
-Once your proxy is approved, you will be able to [configure devices](devices.md).
+
+Configure the proxy to [serve HTTPS](https.md) traffic if `--https` registration
+option was used, or proceed to [configure client devices](devices.md).

@@ -46,16 +46,10 @@ Air-gapped Snap Store Proxy operators first have to register their offline proxy
 on a **machine with internet access**:
 
 ```bash
-sudo snap install snap-store-proxy --edge
-
-sudo snap-proxy generate-keys
+sudo snap install snap-store-proxy
 
 sudo snap-proxy config proxy.domain="$<domain-or-ip-of-the-air-gapped-proxy>"
 ```
-
-Follow the [HTTPS setup guide](https.md) to ensure that your offline Snap Store
-Proxy will be registered behind HTTPS scheme, meaning that any client device
-that attempts to use it, will contact it via HTTPS.
 
 On the same machine, register the air-gapped Snap Store Proxy:
 
@@ -64,6 +58,10 @@ On the same machine, register the air-gapped Snap Store Proxy:
 # be asked some survey questions about the intended proxy usage.
 sudo snap-proxy register --offline --channel=edge --arch=amd64
 ```
+
+Add the `--https` option to the above `register` command if client devices are
+expected to use HTTPS to connect to the proxy and follow the [HTTPS
+setup](https.md) before continuing.
 
 The result of the above is a tarball `offline-snap-store.tar.gz` that is then
 moved to the target host machine for the air-gapped Snap Store Proxy.
