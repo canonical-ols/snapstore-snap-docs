@@ -3,10 +3,10 @@ navigation:
       location: index.md
     - title: Installation
       location: install.md
-    - title: HTTPS
-      location: https.md
     - title: Proxy registration
       location: register.md
+    - title: HTTPS
+      location: https.md
     - title: Configuring snap devices
       location: devices.md
     - title: Overriding snap revisions

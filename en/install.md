@@ -41,14 +41,12 @@ services, and the `snap-proxy` CLI tool to control the proxy.
 ## Domain configuration
 
 The Snap Store Proxy will require a domain or IP address to be set
-for the configuration and access by other devices.
+for the configuration and access by other devices, e.g.:
 
-    sudo snap-proxy config proxy.domain="<domain>"
+    sudo snap-proxy config proxy.domain="snaps.myorg.internal"
 
 This can be done after the database is created, but is required
 before registration can succeed.
-
-The proxy will listen on all interfaces on port 443 (with a redirect from 80).
 
 ## Database
 
@@ -130,9 +128,7 @@ To reset CA certificates back to defaults, run:
 
 ## Next step
 
-If you want traffic between your devices and your Snap Store Proxy to be
-encrypted, continue to [HTTPS](https.md). Otherwise, proceed with
-[registration](register.md).
+[Register](register.md) your Snap Store Proxy.
 
 ## Running multiple proxies
 
