@@ -2,12 +2,12 @@
 
 ## Build from source
 
-**Prerequisites:**
-
-* [documentation-builder](https://snapcraft.io/documentation-builder)
-
 ```sh
-make
+make bootstrap
+# installs prerequisites
+# (may trigger sudo prompt)
+
+make docs
 # creates html folder
 # generates html files
 ```
