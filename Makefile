@@ -1,6 +1,5 @@
 bootstrap:
-	snap install documentation-builder
+	sudo snap install documentation-builder
 
 docs:
 	./build.sh
-
