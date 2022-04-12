@@ -93,7 +93,7 @@ PROXY_ACCESS_PASSWORD="${PROXY_ACCESS_PASSWORD}"
 
 tar xvzf offline-snap-store.tar.gz
 cd offline-snap-store
-./install.sh
+sudo ./install.sh
 
 sudo snap-store-proxy config proxy.db.connection="$POSTGRESQL_CONN_STRING"
 
