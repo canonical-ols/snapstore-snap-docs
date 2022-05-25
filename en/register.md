@@ -51,7 +51,7 @@ This will show the registration status of your proxy, as well as local
 status information of this server.
 
 !!! Positive "":
-    For evaluation purposes, we automatically grant the use of up to 5 devices.
+    For evaluation purposes, we automatically grant the use of up to 25 devices.
 
 At this point, your proxy will be assigned a Store ID, which can be retrieved
 with the status command. This will be used in later commands and to
