@@ -21,7 +21,7 @@ navigation:
           location: api-authentication.md
         - title: Overrides API
           location: api-overrides.md
-    - title: Air-gapped Snap Store Proxy (beta)
+    - title: Air-gapped Snap Store Proxy
       location: airgap.md
       children:
         - title: Device Authenticated Airgap
