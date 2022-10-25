@@ -13,8 +13,6 @@ navigation:
       location: overrides.md
     - title: Troubleshooting
       location: trouble.md
-    - title: Migrating from the beta release
-      location: migrate-beta.md
     - title: API documentation
       children:
         - title: API authentication
