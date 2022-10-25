@@ -46,10 +46,17 @@ assertions for your devices running behind a Snap Store Proxy. Make sure that
 your Snap Store Proxy is able to connect to this specific serial-vault service.
 
 !!! NOTE:
-    Currently Snap Store Proxy allows only the
-    `https://serial-vault-partners.canonical.com`
-    serial-vault requests to pass through it.
-    This means custom serial-vaults are not supported at the moment.
+    By default Snap Store Proxy allows only the
+    `https://serial-vault-partners.canonical.com` serial-vault requests to pass
+    through it.
+
+Since version 2.19 of the snap-store-proxy, the
+`proxy.device-auth.allowed-device-service-urls` setting can be used to control
+the list of allowed device services (Serial Vaults), eg.:
+
+    sudo snap-proxy config \
+        proxy.device-auth.allowed-device-service-urls='["https://sv1.internal", "https://sv2.internal"]'
+
 
 ## Next step
 
