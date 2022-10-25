@@ -10,7 +10,7 @@ registered with the proxy, and all communication with the Store will flow
 through the proxy.
 
 !!! NOTE:
-    In order to serve its client devices, a Snap Store Proxy needs to be online
+    Unless it is deliberately set up as [offline](airgap.md), a Snap Store Proxy needs to be online
     and connected to the general [Snap Store](https://snapcraft.io/store). This
     is a requirement, even though Snap Store Proxy caches downloaded snap files,
     which substantially reduces internet traffic. There's currently no generally
@@ -44,7 +44,7 @@ through the proxy.
       [Snap Store Proxy Client](https://snapcraft.io/snap-store-proxy-client)
       or a [RESTful API](api-overrides.md).
 
-* [Offline (airgap) mode](airgap.md) (beta)
+* [Offline mode](airgap.md).
 
 ## Whitepaper
 

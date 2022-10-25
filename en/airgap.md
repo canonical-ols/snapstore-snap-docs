@@ -1,9 +1,9 @@
 ---
-title: Air-gapped mode (beta)
+title: Air-gapped mode
 table_of_contents: true
 ---
 
-# Air-gapped mode (beta)
+# Air-gapped mode
 
 Snap Store Proxy can operate in an air-gapped (offline) mode, meaning it can be
 deployed in networks that are disconnected from the internet.

@@ -15,8 +15,6 @@ To run the Snap Store Proxy, you will need:
   https://public.apps.ubuntu.com, and https://login.ubuntu.com.
 * A domain name for the server.
 * A PostgreSQL instance (see the Database section). 
-* An RSA key pair to register the snap-store-proxy identity (these can be
-  generated for you with: `snap-proxy generate-keys`).
 
 ## Getting started
 
