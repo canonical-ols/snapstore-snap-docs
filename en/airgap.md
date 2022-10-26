@@ -8,8 +8,9 @@ table_of_contents: true
 By default, the Snap Store Proxy operates in online mode. It acts as a smart
 proxy to the general SaaS Snap Store.
 
-Snap Store Proxy can operate in offline mode and act as a local Snap Store,
-meaning it can be deployed in networks that are disconnected from the internet.
+Snap Store Proxy can operate in offline mode and act as a local Snap Store
+(on-prem store), meaning it can be deployed in networks that are disconnected
+from the internet.
 
 The intended use case for this mode are network restricted environments where no
 outside traffic is allowed or possible.
@@ -112,24 +113,46 @@ If the registered store's location was an HTTPS one, follow the
 
 ### Side-loading snaps
 
-Air-gapped Snap Store Proxy operators can fetch snaps from the upstream Snap
-Store and import them into their air-gapped proxy. These will be the only snaps
-(and their revisions) available for installation from the air-gapped proxy.
+It's possible to export snaps from the upstream Snap Store and import them into
+their on-prem store. These will be the only snaps (and their revisions)
+available for installation from the on-prem store.
 
-#### Fetching snaps
+#### Exporting snaps
 
-Example of fetching the `jq` snap on a **machine with internet access**:
+Example of exporting `jq` and `htop` snaps on a **machine with internet access**
+using the `store-admin` snap:
 
-```bash
-sudo snap-store-proxy fetch-snaps jq --channel=stable --architecture=amd64
+```
+$ store-admin export snaps jq htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
+Downloading jq revision 6 (latest/stable amd64)
+  [####################################]  100%
+Downloading jq revision 8 (latest/stable arm64)
+  [####################################]  100%
+Downloading htop revision 3417 (latest/stable amd64)
+  [####################################]  100%          
+Downloading htop revision 3425 (latest/stable arm64)
+  [####################################]  100%          
+Successfully exported snaps:
+jq: jq-20221026T104628.tar.gz
+htop: htop-20221026T104628.tar.gz
 ```
 
-This produces a `tar.gz` file that has to be moved to the air-gapped proxy and
-imported there.
+This produces a set of `tar.gz` files (one per snap name) that have to be moved
+to the on-prem store host and imported there.
+
+!!! Positive "":
+    By default snaps are exported from the Global store, and then imported as
+    such, meaning that any device connected to the on-prem store will be able to
+    install them (if it's configured to use the default Global store).
+    `store-admin export snaps` has a `--store` option allowing for authenticated
+    export of snaps from private device-view IoT App Stores - after importing
+    these, snaps will be accessible only to properly authenticated devices from
+    the relevant brand.
+
 
 #### Importing (pushing) snaps
 
-Once the snap bundles are on the airgap host, they should be moved to the
+Once the snap bundles are on the on-prem store host, they should be moved to the
 `/var/snap/snap-store-proxy/common/snaps-to-push/` directory, from where they
 can be imported.
 
@@ -153,6 +176,8 @@ limited to:
 
 - `core`
 - `core18`
+- `core20`
+- `core22`
 - `snapd`
 
 ## Client Device Configuration
@@ -162,9 +187,10 @@ online Snap Store Proxy.
 
 ## Limitations
 
-Air-gapped mode provides only a subset of the core functionality of the regular
-Snap Store Proxy or the official Snap Store. Some of the missing features are:
+Offline mode provides only a subset of the core functionality of the online
+Snap Store Proxy or the SaaS Snap Store. Some of the missing features are:
 
 * Searching for snaps
 
-* Device registration
+* Generic Device registration. Serial Vault can be used to register custom model
+  devices.
