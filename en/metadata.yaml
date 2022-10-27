@@ -11,11 +11,8 @@ navigation:
       location: devices.md
     - title: Overriding snap revisions
       location: overrides.md
-    - title: Offline mode
+    - title: Offline store
       location: airgap.md
-      children:
-        - title: Device Authenticated Airgap
-          location: airgap-device-auth.md
     - title: Troubleshooting
       location: trouble.md
     - title: API documentation
