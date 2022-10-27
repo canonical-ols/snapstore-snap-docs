@@ -27,7 +27,7 @@ their offline store.
 ### Brand Store support
 
 [Brand Store](https://ubuntu.com/core/docs/store-overview)
-(aka [IoT App Store](https://ubuntu.com/internet-of-things/appstore))
+(also known as [IoT App Store](https://ubuntu.com/internet-of-things/appstore))
 customers can use the Snap Store Proxy in offline mode to securely serve updates
 to their fleet of devices.
 
@@ -41,7 +41,7 @@ snaps which are not accessible to any other devices connecting to that on-prem
 store.
 
 !!! Neutral "Note":
-    The client devices have to be equipped with their
+    Client devices have to be equipped with their
     [serial assertions](devices.md#obtaining-serial-assertions).
 
 ## Installation
@@ -297,7 +297,7 @@ snap-store-proxy list-pushed-snaps
 lists all imported snaps.
 
 Running `snap info <snap-name>` from a device connected to the on-prem store can
-be used to view more details about the snap, like it's current channel map.
+be used to view more details about the snap, like its current channel map.
 
 
 ## Client Device Configuration
@@ -305,7 +305,7 @@ be used to view more details about the snap, like it's current channel map.
 [Configuring client devices](devices.md) follows the same process as with an
 online Snap Store Proxy.
 
-## Config backup
+## Configuration backup
 
 Make sure to securely backup the snap-store-proxy configuration (including the
 proxy.device-auth.secret used for signing/verifying the device sessions). The
