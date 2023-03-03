@@ -107,18 +107,22 @@ Snap Store Proxy also uses the `https_proxy` environment variable if it's set.
 ## CA certificates
 
 For verifying outgoing HTTPS communication, Snap Store Proxy bundles a set of
-root [CAs](https://en.wikipedia.org/wiki/Certificate_authority) from
-[The Certifi Trust Database](https://certifi.io/).
+root [CAs](https://en.wikipedia.org/wiki/Certificate_authority) from its base
+Ubuntu based snap.
 
-You can override this default behavior and configure your Snap Store Proxy to
-only trust a specific list of CAs:
+On Ubuntu, the system trust store can be modified using `update-ca-certificates`
+as needed and snap-store-proxy will honour these changes by default (it might
+require a restart `sudo snap restart snap-store-proxy`).
+
+You can also override this default behavior and configure your Snap Store Proxy
+to _only_ trust a specific list of CAs:
 
     cat your-ca.crt another-ca.crt | sudo snap-proxy use-ca-certs
 
-This can be useful in cases when you want your Snap Store Proxy to trust your
-internal CA for example.
+This can be useful in cases when you want your Snap Store Proxy to only trust
+your internal CA for example.
 
-To reset CA certificates back to defaults, run:
+To reset the CA certificates back to the system defaults, run:
 
     sudo snap-proxy remove-ca-certs
 
