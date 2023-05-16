@@ -305,6 +305,29 @@ be used to view more details about the snap, like its current channel map.
 [Configuring client devices](devices.md) follows the same process as with an
 online Snap Store Proxy.
 
+
+## Offline Upgrades
+
+To upgrade snap-store-proxy on an offline machine, first download the snap and
+its assertions on a machine with internet access, eg:
+
+
+```bash
+snap download snap-store-proxy --channel=latest/stable
+```
+
+Same can be done for its base snap `core22` and for the `snapd` snap itself.
+
+Then move the files over to the offline snap-store-proxy machine and:
+
+```bash
+sudo snap ack snap-store-proxy_<revision>.assert
+sudo snap install snap-store-proxy_<revision>.snap
+```
+
+And use analogous process to upgrade the base and snapd snaps.
+
+
 ## Configuration backup
 
 Make sure to securely backup the snap-store-proxy configuration (including the
