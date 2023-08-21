@@ -9,7 +9,7 @@ table_of_contents: true
 
 To run the Snap Store Proxy, you will need:
 
-* A server running Ubuntu 20.04 LTS or newer on AMD64.
+* A server running one of the [currently supported LTS versions of Ubuntu](https://ubuntu.com/about/release-cycle) on AMD64.
 * Firewall rules configured to allow traffic to servers mentioned at https://forum.snapcraft.io/t/network-requirements/5147.
 * A domain name for the server.
 * A PostgreSQL instance (see the Database section). 
