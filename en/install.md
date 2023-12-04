@@ -129,16 +129,3 @@ To reset the CA certificates back to the system defaults, run:
 ## Next step
 
 [Register](register.md) your Snap Store Proxy.
-
-## Running multiple proxies
-
-You can run multiple instances of the Snap Store Proxy, load balanced using
-round-robin DNS. All instances need to have the same configuration and connect
-to the same shared database. Once a key pair has been registered, it will not
-need registering on other instances.
-
-!!! NOTE:
-    The download caching will currently be less efficient when
-    running multiple instances, as the instances are not aware of each
-    other. Support for shared caching is planned for later releases of the
-    Snap Store Proxy.
