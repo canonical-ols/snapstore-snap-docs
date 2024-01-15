@@ -33,7 +33,7 @@ This section assumes that the Snap Store Proxy has been installed and configured
 To login using `store-admin` to the Model Service, set the `STORE_ADMIN_TOKEN` environment variable, obtained after running `store-admin export store`:
 
 ```bash
-$ store-admin export store myDeviceViewStoreID
+$ store-admin export store myDeviceViewStoreID --key <model-assertion-account-key-sha3-384>
 
 ...
 
@@ -44,7 +44,9 @@ Admin token usage:
     export STORE_ADMIN_TOKEN=$(cat /home/ubuntu/snap/store-admin/common/export/store-export-myDeviceViewStoreID-20240109T123041.macaroon)
 ```
 
-Then, after pushing the store bundle on the Proxy:
+As outlined in the [air-gapped store setup instructions](airgap#brand-store-export), the account-key assertion for the key(s) used to [sign the model assertion(s)](https://ubuntu.com/core/docs/sign-model-assertion) must also be exported and pushed to the Proxy. Include them in the store export bundle by specifying the `--key` flag for each account-key SHA3-384.
+
+[Import the store bundle on the Proxy](airgap#brand-store-import), then login to the air-gapped store from the admin machine:
 
 ```bash
 $ store-admin login --offline <http-location-of-the-store> <same-email-as-in-export-store>
@@ -140,18 +142,18 @@ Copy the assertion to the Snap Store Proxy's `$SNAP_COMMON` directory on the Pro
 sudo snap-proxy push-account-keys /var/snap/snap-store-proxy/common/test-key.assert
 ```
 
+!!! Neutral "Note":
+    Repeat these steps to add new account-keys to the proxy, if any are created after the initial store import and are used to sign new model assertions.
+
 ### Add a model in the Model Service
 
-To sign the serial requests for devices of a model, the model name as configure in the Model Service must match that in the model assertion:
+To sign the serial requests for devices of a model, the model name as configured in the Model Service must match that in the model assertion:
 
 ```bash
 $ store-admin create model model-a
 API key (alphanumeric, `pwgen 40` for options): model-a-apikey
 Model 'model-a' created.
 ```
-
-!!! Neutral "Note":
-    The account-key assertion for the key used to sign the model assertion must also be pushed to the Proxy.
 
 ### Configure a serial signing policy
 
@@ -199,7 +201,7 @@ The `prepare-device` hook in the device [gadget](https://ubuntu.com/core/docs/ga
 On first startup, a `model-a` device should request and obtain a serial assertion from the Snap Store Proxy:
 
 ```bash
-$ snap known serial
+$ snap model --serial --assertion
 
 type: serial
 ...
