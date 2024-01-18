@@ -13,6 +13,9 @@ navigation:
       location: overrides.md
     - title: Offline store
       location: airgap.md
+      children:
+        - title: On-prem model service
+          location: on-prem-model-service.md
     - title: Troubleshooting
       location: trouble.md
     - title: API documentation
