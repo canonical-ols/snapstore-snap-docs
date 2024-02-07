@@ -4,50 +4,42 @@ title: Introduction
 
 # Snap Store Proxy documentation
 
-The Snap Store Proxy provides an on-premise edge proxy to the general
-[Snap Store](https://snapcraft.io/store) for your devices. Devices are
-registered with the proxy, and all communication with the Store will flow
-through the proxy.
+The **Snap Store Proxy** provides an on-premise edge proxy to the general
+[Snap Store](https://snapcraft.io/store) for your devices.
 
-!!! NOTE:
-    Unless it is deliberately set up as [offline](airgap.md), a Snap Store Proxy needs to be online
-    and connected to the general [Snap Store](https://snapcraft.io/store). This
-    is a requirement, even though Snap Store Proxy caches downloaded snap files,
-    which substantially reduces internet traffic. There's currently no generally
-    available offline mode for the Snap Store Proxy itself. See
-    [Network Connectivity](install.md#network-connectivity) for the
-    `snap-proxy check-connections` command and the up-to-date
-    [Network requirements for Snappy](https://forum.snapcraft.io/t/network-requirements-for-snappy/5147)
-    post for a list of domains Snap Store Proxy needs access to.
+Devices are registered with the Proxy, and all communication with the Snap Store will
+**flow through the Proxy**, thereby enabling network-restricted devices to access snaps.
+Upstream snap **revisions can be overriden** on the Proxy, allowing fine-grained revision
+control for your devices. The Proxy furthermore supports air-gapped deployments when
+configured in **offline mode**.
 
-## Feature list
+The Proxy is an excellent fit for organisations looking for **more control
+over updates** to their snaps, or for enterprises that have held back from adopting
+snaps until now because of the challenges of operating within a **restricted
+network**.
 
-* Network control
+With the Snap Store Proxy, snaps are as easy-to-use as ever, and administrators
+have much greater control over exactly what revisions are installed on each
+connected system.
 
-    * Provides a means to access the Snap Store for devices with restricted
-      network access
+---
 
-    * Snap Store Proxy can communicate with the Snap Store directly or through
-      an HTTPS forward proxy
+## In this documentation
 
-* Caching of the downloaded snaps
+|                                                                                                                 |                                                                                               |
+|-----------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
+| [Tutorials](tutorial.md)</br> Get started - a hands-on introduction to the Snap Store Proxy for new users </br> | [How-to guides](how-to.md) </br> Step-by-step guides covering key operations and common tasks |
+| [Reference](reference.md) </br> Technical information - specifications, APIs, architecture                      | [Explanation](explanation.md) </br> Concepts - discussion and clarification of key topics     |
 
-* [Overriding revisions](overrides.md) of specific snaps for all connected
-  devices
+---
 
-* Management options
+## Project and community
 
-    * `snap-proxy` CLI interface included with the
-      [Snap Store Proxy](https://snapcraft.io/snap-store-proxy) snap
+The Snap Store Proxy is a member of the Snap Store family. It's a project that welcomes suggestions, fixes and constructive feedback.
 
-    * Remote management using the
-      [Snap Store Proxy Client](https://snapcraft.io/snap-store-proxy-client)
-      or a [RESTful API](api-overrides.md).
+* [Get the Snap Store Proxy as a snap](https://snapcraft.io/snap-store-proxy)
+* [Join the Discourse forum](https://forum.snapcraft.io/c/store/16)
+* [File a bug](https://bugs.launchpad.net/snapstore-server)
+* [Get support](https://ubuntu.com/support/community-support)
 
-* [Offline mode](airgap.md).
-
-## Whitepaper
-
-Learn more about how the Snap Store Proxy overcomes challenges presented by
-restricted networks and management policies from this
-[whitepaper on Enterprise Snap Management](https://ubuntu.com/engage/enterprise-snap-management).
+Thinking about deploying the Snap Store Proxy in your enterprise? [Get in touch!](https://ubuntu.com/core/services#get-in-touch)
