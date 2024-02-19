@@ -3,6 +3,8 @@ navigation:
       location: index.md
     - title: Tutorial
       location: tutorial.md
+    - title: How-to guides
+      location: how-to.md
       children:
         - title: Installation
           location: install.md
@@ -18,9 +20,6 @@ navigation:
           location: airgap.md
         - title: On-prem model service
           location: on-prem-model-service.md
-    - title: How-to guides
-      location: how-to.md
-      children:
         - title: Troubleshooting
           location: trouble.md
     - title: Reference

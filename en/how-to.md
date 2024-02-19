@@ -9,13 +9,19 @@ our *How-to* guides have more in-depth detail than our tutorials and can be appl
 a broader set of applications. They’ll help you achieve an end result but may require
 you to understand and adapt the steps to fit your specific requirements.
 
-| **How-to guides**             | Get stuff done                                              |
-|-------------------------------|-------------------------------------------------------------|
-| [Troubleshooting](trouble.md) | Check Proxy configuration status and diagnose common issues |
+| **How-to guides**                         | Get stuff done                                                        |
+|-------------------------------------------|-----------------------------------------------------------------------|
+| [Installation](install.md)                | Install and set up the Snap Store Proxy                               |
+| [Proxy registration](register.md)         | Register the Proxy with the online Snap Store                         |
+| [TLS configuration](https.md)             | Configure TLS termination in the Proxy                                |
+| [Configuring snap devices](devices.md)    | Point your devices to the Proxy instead of the online Snap Store      |
+| [Overriding snap revisions](overrides.md) | Control the specific revision of a snap in a channel for your devices |
+| [Offline store](airgap.md)                | Deploy the Proxy in an air-gapped environment                         |
+| [Model service](on-prem-model-service.md) | Configure an air-gapped Proxy for signing device serial requests      |
+| [Troubleshooting](trouble.md)             | Check Proxy configuration status and diagnose common issues           |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
-what the Proxy is capable of while helping you achieve specific aims,
-such as configuring revision overrides.
+what the Proxy is capable of while helping you achieve specific aims.
 
 Take a look at our *Reference* section for technical details (such as the Overrides API
 specs and authentication mechanism), and other supplementary reference materials.

@@ -15,8 +15,7 @@ authentication mechanism), and other supplementary reference materials.
 | [Product whitepaper](whitepaper.md)         | Whitepaper on managing snaps in an enterprise environment with the Proxy |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
-what the Proxy is capable of while helping you achieve specific aims,
-such as configuring revision overrides.
+what the Proxy is capable of while helping you achieve specific aims.
 
 If you have a specific goal, but are already familiar with the Snap Store Proxy,
 our *How-to* guides have more in-depth detail than our tutorials and can be applied to

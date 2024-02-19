@@ -14,7 +14,7 @@ to expand your knowledge and become better at using the Proxy.
 
 For a simpler place to start with the Proxy, our *Tutorials* section contains
 step-by-step tutorials to outline what the Proxy is capable of while helping
-you achieve specific aims, such as configuring revision overrides
+you achieve specific aims.
 
 If you have a specific goal, but are already familiar with the Proxy, our *How-to*
 guides have more in-depth detail than our tutorials and can be applied to a broader set
