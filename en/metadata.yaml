@@ -1,26 +1,37 @@
 navigation:
-    - title: Introduction
+    - title: Home
       location: index.md
-    - title: Installation
-      location: install.md
-    - title: Proxy registration
-      location: register.md
-    - title: HTTPS
-      location: https.md
-    - title: Configuring snap devices
-      location: devices.md
-    - title: Overriding snap revisions
-      location: overrides.md
-    - title: Offline store
-      location: airgap.md
+    - title: Tutorial
+      location: tutorial.md
+    - title: How-to guides
+      location: how-to.md
       children:
+        - title: Installation
+          location: install.md
+        - title: Proxy registration
+          location: register.md
+        - title: HTTPS
+          location: https.md
+        - title: Configuring snap devices
+          location: devices.md
+        - title: Overriding snap revisions
+          location: overrides.md
+        - title: Offline store
+          location: airgap.md
         - title: On-prem model service
           location: on-prem-model-service.md
-    - title: Troubleshooting
-      location: trouble.md
-    - title: API documentation
+        - title: Troubleshooting
+          location: trouble.md
+    - title: Reference
+      location: reference.md
       children:
-        - title: API authentication
-          location: api-authentication.md
         - title: Overrides API
           location: api-overrides.md
+        - title: API authentication
+          location: api-authentication.md
+        - title: Feature list
+          location: feature-list.md
+        - title: Product whitepaper
+          location: whitepaper.md
+    - title: Explanation
+      location: explanation.md
