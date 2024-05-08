@@ -18,6 +18,8 @@ navigation:
           location: overrides.md
         - title: Offline store
           location: airgap.md
+        - title: Offline Charmhub
+          location: airgap-charmhub.md
         - title: On-prem model service
           location: on-prem-model-service.md
         - title: Troubleshooting
