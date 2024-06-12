@@ -1,5 +1,5 @@
 ---
-title: Offline store (air-gapped mode)
+title: Operate offline
 table_of_contents: true
 ---
 

@@ -24,3 +24,15 @@ you to understand and adapt the steps to fit your specific requirements.
 
 Finally, for a better understanding of how the Snap Store Proxy works, our *Explanation*
 section enables you to expand your knowledge.
+
+```{eval-rst}
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+    :caption: Table of contents 
+
+    api-overrides
+    api-authentication
+    feature-list
+    whitepaper
+```

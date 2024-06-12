@@ -1,5 +1,5 @@
 ---
-title: Snap overrides
+title: Override snap revisions
 table_of_contents: true
 ---
 

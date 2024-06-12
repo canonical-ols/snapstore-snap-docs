@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Install
 table_of_contents: true
 ---
 

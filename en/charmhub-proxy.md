@@ -143,3 +143,10 @@ $ skopeo copy dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/cha
 By default, if no override is supplied via the `resources` key in the .yaml supplied for charm export, Charmhub Proxy will assume an identical local registry image path (excluding the domain but including `charm/` and including the sha256 tag). When a deployment is requested, CHP will supply a regenerated blob using the local domain URL and credentials configured.
 
 The `skopeo` commands above pushes the image to the same path in the local registry and saves the effort of manually remapping resources. If required, the image can be pushed to a custom path, but a mapping must be defined for the resource as in the example charms.yaml in [Export charms](#export-charms).
+
+```{eval-rst}
+.. toctree::
+    :maxdepth: 1
+
+    Operate charms offline <airgap-charmhub>
+```

@@ -1,5 +1,5 @@
 ---
-title: Registration
+title: Register
 table_of_contents: true
 ---
 
