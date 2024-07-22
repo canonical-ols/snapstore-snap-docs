@@ -135,7 +135,8 @@ redirects = {}
 
 # Links to ignore when checking links
 linkcheck_ignore = [
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'https://ubuntu.com/core/docs/gadget-snaps#heading--example-prepare'
     ]
 
 # Pages on which to ignore anchors
