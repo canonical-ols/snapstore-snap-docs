@@ -19,7 +19,7 @@ import datetime
 ############################################################
 
 # Product name
-project = 'Enterprise Store'
+project = 'Snap Store Proxy'
 author = 'Canonical Group Ltd'
 
 # The title you want to display for the documentation in the sidebar.
@@ -220,21 +220,33 @@ rst_prolog = '''
    :class: align-center
 '''
 
-## PDF specific config
+# -- Options for PDF output --------------------------------------------------
 
-pdf_subtitle = ''
+latex_additional_files = [
+    "./.sphinx/fonts/Ubuntu-B.ttf",
+    "./.sphinx/fonts/Ubuntu-R.ttf",
+    "./.sphinx/fonts/Ubuntu-RI.ttf",
+    "./.sphinx/fonts/UbuntuMono-R.ttf",
+    "./.sphinx/fonts/UbuntuMono-RI.ttf",
+    "./.sphinx/fonts/UbuntuMono-B.ttf",
+    "./.sphinx/images/Canonical-logo-4x.png",
+    "./.sphinx/images/front-page-light.pdf",
+    "./.sphinx/images/normal-page-footer.pdf",
+]
 
 latex_engine = 'xelatex'
-# This whole thing is a hack and a half, but it works.
+latex_show_pagerefs = True
+latex_show_urls = 'footnote'
 latex_elements = {
+    'papersize': 'a4paper',
     'pointsize': '11pt',
     'fncychap': '',
     'preamble': r'''
 %\usepackage{charter}
 %\usepackage[defaultsans]{lato}
 %\usepackage{inconsolata}
-\setmainfont[Path = ../../.sphinx/fonts/, UprightFont = *-R, BoldFont = *-B, ItalicFont=*-RI]{Ubuntu}
-\setmonofont[Path = ../../.sphinx/fonts/, UprightFont = *-R]{UbuntuMono}
+\setmainfont[UprightFont = *-R, BoldFont = *-B, ItalicFont=*-RI, Extension = .ttf]{Ubuntu}
+\setmonofont[UprightFont = *-R, BoldFont = *-B, ItalicFont=*-RI, Extension = .ttf]{UbuntuMono}
 \usepackage[most]{tcolorbox}
 \tcbuselibrary{breakable}
 \usepackage{lastpage}
@@ -245,7 +257,10 @@ latex_elements = {
 \usepackage{graphicx}
 \usepackage{titlesec}
 \usepackage{fontspec}
-\graphicspath{ {../../.sphinx/images/} }
+\usepackage{tikz}
+\usepackage{changepage}
+\usepackage{array}
+\usepackage{tabularx}
 \definecolor{yellowgreen}{RGB}{154, 205, 50}
 \definecolor{title}{RGB}{76, 17, 48}
 \definecolor{subtitle}{RGB}{116, 27, 71}
@@ -257,10 +272,10 @@ latex_elements = {
   \tcb@layer@dec%
 }
 \makeatother
-\newenvironment{sphinxclassprompt}{\color{yellowgreen}\setmonofont[Color = 9ACD32, Path = ../../.sphinx/fonts/, UprightFont = *-R]{UbuntuMono}}{}
+\newenvironment{sphinxclassprompt}{\color{yellowgreen}\setmonofont[Color = 9ACD32, UprightFont = *-R]{UbuntuMono}}{}
 \tcbset{enhanced jigsaw, colback=black, fontupper=\color{white}}
 \newtcolorbox{termbox}{use color stack, breakable, colupper=white, halign=flush left}
-\newenvironment{sphinxclassterminal}{\setmonofont[Color = white, Path = ../../.sphinx/fonts/, UprightFont = *-R]{UbuntuMono}\sphinxsetup{VerbatimColor={black}}\begin{termbox}}{\end{termbox}}
+\newenvironment{sphinxclassterminal}{\setmonofont[Color = white, UprightFont = *-R]{UbuntuMono}\sphinxsetup{VerbatimColor={black}}\begin{termbox}}{\end{termbox}}
 \newcommand{\dimtorightedge}{%
   \dimexpr\paperwidth-1in-\hoffset-\oddsidemargin\relax}
 \newcommand{\dimtotop}{%
@@ -281,7 +296,7 @@ latex_elements = {
 }
 \fancypagestyle{titlepage}{%
     \fancyhf{}
-    \fancyfoot[L]{\footnotesize \textcolor{copyright}{© 2023 Canonical Ltd. All rights reserved. \newline Confidential and proprietary, do not share without permission.}}
+    \fancyfoot[L]{\footnotesize \textcolor{copyright}{© 2024 Canonical Ltd. All rights reserved.}}
 }
 \newcommand\sphinxbackoftitlepage{\thispagestyle{titlepage}}
 \titleformat{\chapter}[block]{\Huge \color{title} \bfseries\filright}{\thechapter .}{1.5ex}{}
@@ -298,42 +313,44 @@ latex_elements = {
     'maketitle': r'''
 \begin{titlepage}
 \begin{flushleft}
-        \hbox
-        {%
-            \makebox[\dimtorightedge]{}%
-            \makebox[0pt][r]
-            {\raisebox{0pt}[\dimtotop]{\includegraphics[width=\paperwidth]{title-page-header}}}%
-        }
-\end{flushleft}
-\Huge \textcolor{title}{''' + project + r'''}
-
-\Large \textcolor{subtitle}{\textit{''' + pdf_subtitle + r'''}}
-
-\vfill
-
-\textcolor{label}{''' + copyright + r'''}
-
-\vfill
-
-\AddToHook{shipout/background}{
     \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south east, inner sep=0] at (current page.south east) {
-    \includegraphics[width=3.46in]{title-page-footer}
+    \includegraphics[width=\paperwidth, height=\paperheight]{front-page-light}
     };
     \end{tikzpicture}
-}
-\thispagestyle{titlepage}
+\end{flushleft}
+
+\vspace*{3cm}
+
+\begin{adjustwidth}{8cm}{0pt}
+\begin{flushleft}
+    \huge \textcolor{black}{\textbf{}{\raggedright{Ubuntu Packaging Guide}}}
+\end{flushleft}
+\end{adjustwidth}
+
+\vfill
+
+\begin{adjustwidth}{8cm}{0pt}
+\begin{tabularx}{0.5\textwidth}{ l l }
+    \hspace{3cm}  & \textcolor{lightgray}{© 2024 Canonical Ltd.}  \\
+    \hspace{3cm}  & \textcolor{lightgray}{All rights reserved.}   \\
+    \hspace{3cm}  &                                               \\
+    \hspace{3cm}  &                                               \\
+                                 
+\end{tabularx}
+\end{adjustwidth}
+
 \end{titlepage}
 \RemoveFromHook{shipout/background}
 \AddToHook{shipout/background}{
       \begin{tikzpicture}[remember picture,overlay]
       \node[anchor=south west, align=left, inner sep=0] at (current page.south west) {
-        \includegraphics[width=6.72in]{normal-page-footer}
+        \includegraphics[width=\paperwidth]{normal-page-footer}
       };
       \end{tikzpicture}
       \begin{tikzpicture}[remember picture,overlay]
       \node[anchor=north east, opacity=0.5, inner sep=35] at (current page.north east) {
-        \includegraphics[width=4cm]{normal-page-header}
+        \includegraphics[width=4cm]{Canonical-logo-4x}
       };
       \end{tikzpicture}
     }
