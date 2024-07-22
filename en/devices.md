@@ -7,15 +7,15 @@ table_of_contents: true
 
 ## Configuring devices
 
-You will need at least snapd 2.30 on your device and access to a
+You will need at least `snapd` 2.30 on your device and access to a
  [registered Snap Store Proxy](register.md).
 
-To configure snapd on a device to talk to the proxy, you need to `snap
-ack` the signed assertion that allows snapd to trust the proxy, e.g.:
+To configure `snapd` on a device to talk to the proxy, you need to `snap
+ack` the signed assertion that allows `snapd` to trust the proxy, e.g.:
 
     curl -sL http://<domain>/v2/auth/store/assertions | sudo snap ack /dev/stdin
 
-Once snapd knows about the store assertion, you then have to configure it to use the proxy:
+Once `snapd` knows about the store assertion, you then have to configure it to use the proxy:
 
     sudo snap set core proxy.store=STORE_ID
 
@@ -52,7 +52,7 @@ your Snap Store Proxy is able to connect to this specific serial-vault service.
 
 Since version 2.19 of the snap-store-proxy, the
 `proxy.device-auth.allowed-device-service-urls` setting can be used to control
-the list of allowed device services (Serial Vaults), eg.:
+the list of allowed device services (Serial Vaults), e.g.:
 
     sudo snap-proxy config \
         proxy.device-auth.allowed-device-service-urls='["https://sv1.internal", "https://sv2.internal"]'

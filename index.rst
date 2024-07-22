@@ -6,7 +6,7 @@ The **Snap Store Proxy** provides an on-premise edge proxy to the general
 
 Devices are registered with the Proxy, and all communication with the Snap Store will
 **flow through the Proxy**, thereby enabling network-restricted devices to access snaps.
-Upstream snap **revisions can be overriden** on the Proxy, allowing fine-grained revision
+Upstream snap **revisions can be overridden** on the Proxy, allowing fine-grained revision
 control for your devices. The Proxy furthermore supports air-gapped deployments when
 configured in **offline mode**.
 
@@ -26,24 +26,13 @@ In this documentation
 .. grid:: 1 1 2 2
    
 
-    .. grid-item:: :doc:`Tutorial <en/tutorial>`
+   .. grid-item:: :doc:`How-to guides <en/how-to>`
 
-        Get started - a hands-on introduction to the Snap Store Proxy for new users.
-
-    .. grid-item:: :doc:`How-to guides <en/how-to>`
-
-        Step-by-step guides covering key operations and common tasks.
-
-.. grid:: 1 1 2 2
-   :reverse:
+      Step-by-step guides covering key operations and common tasks.
 
    .. grid-item:: :doc:`Reference <en/reference>`
 
       Technical information - specifications, APIs, architecture.
-
-   .. grid-item:: :doc:`Explanation <en/explanation>`
-
-      Concepts - discussion and clarification of key topics.
 
 
 Project and community
@@ -56,13 +45,7 @@ The Snap Store Proxy is a member of the Snap Store family. It's a project that w
 * `File a bug <https://bugs.launchpad.net/snapstore-server>`_
 * `Get support <https://ubuntu.com/support/community-support>`_
 
-Thinking about deploying the Snap Store Proxy in your enterprise? `Get in touch! <https://ubuntu.com/core/services#get-in-touch>`_
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   Tutorial <en/tutorial>
+Thinking about deploying the Snap Store Proxy in your enterprise? `Get in touch! <https://ubuntu.com/core/services/contact-us>`_
 
 .. toctree::
    :maxdepth: 2
@@ -75,9 +58,3 @@ Thinking about deploying the Snap Store Proxy in your enterprise? `Get in touch!
    :hidden:
 
    Reference <en/reference>
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-
-   Explanation <en/explanation>

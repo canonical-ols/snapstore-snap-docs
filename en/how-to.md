@@ -36,13 +36,13 @@ section enables you to expand your knowledge.
     :hidden:
     :maxdepth: 1
 
-    Install an Enterprise Store <install>
-    Register an Enterprise Store <register>
+    Install a Snap Store Proxy <install>
+    Register a Snap Store Proxy <register>
     Configure HTTPS <https>
     Configure devices <devices> 
     Override snap revisions <overrides>
     Operate offline <airgap>
     Configure the Model Service <on-prem-model-service>
-    Manage charms in the Enterprise Store <charmhub-proxy>
+    Manage charms in the Snap Store Proxy <charmhub-proxy>
     Troubleshoot common issues <trouble>
 ```

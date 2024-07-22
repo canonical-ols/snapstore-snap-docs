@@ -89,7 +89,7 @@ html_context = {
 
     # Change to the GitHub URL for your project
     # This is used, for example, to link to the source files and allow creating GitHub issues directly from the documentation.
-    'github_url': 'https://github.com/canonical/sphinx-docs-starter-pack',
+    'github_url': 'https://github.com/canonical-ols/snapstore-snap-docs',
 
     # Change to the branch for this version of the documentation
     'github_version': 'main',
@@ -151,6 +151,8 @@ custom_linkcheck_anchors_ignore_for_url = []
 
 # Remove this variable to disable the MyST parser extensions.
 custom_myst_extensions = []
+
+myst_heading_anchors = 3
 
 # Add custom Sphinx extensions as needed.
 # This array contains recommended extensions that should be used.

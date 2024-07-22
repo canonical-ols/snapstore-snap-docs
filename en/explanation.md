@@ -1,5 +1,6 @@
 ---
 title: Snap Store Proxy Explanation guides
+orphan: true
 ---
 
 # Snap Store Proxy Explanation guides

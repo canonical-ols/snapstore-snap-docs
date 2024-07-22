@@ -7,7 +7,7 @@ table_of_contents: true
 
 The Overrides API supports two operations: list overrides, and set overrides.
 
-All operations require an "Authorization" header, as described in [API authentication](api-authentication.md).
+All operations require an "Authorisation" header, as described in [API authentication](api-authentication.md).
 
 ## List overrides
 
@@ -28,7 +28,7 @@ Note the `X-Ubuntu-Series` header.
 
 Response:
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 The JSON Schema for the response document is:
 
-```json
+```
 {
     "type": "object",
     "properties": {
@@ -119,7 +119,7 @@ Content-Type: application/json
 
 Response:
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
@@ -150,7 +150,7 @@ Content-Type: application/json
 
 The request body format should match the following JSON schema.
 
-```json
+```
 {
     "type": "array",
     "items": {

@@ -72,16 +72,16 @@ If this is being done on the snap-store-proxy host, the snap-store-proxy has to 
 
 After that, snap-store-proxy will be able to verify its status correctly.
 
-For client machines, snapd has to be restarted:
+For client machines, `snapd` has to be restarted:
 
     sudo systemctl restart snapd
 
-After that, snapd on the client device will be able to successfully verify the
+After that, `snapd` on the client device will be able to successfully verify the
 snap-store-proxy certificate.
 
 A more robust method of ensuring that client devices can talk to the
 snap-store-proxy using a self signed certificate or one issued by a self signed
-root is to configure the certificate in question using snapd itself:
+root is to configure the certificate in question using `snapd` itself:
 
     sudo snap set system store-certs.cert1="$(cat /path/to/my-cert-or-ca-cert.crt)"
 

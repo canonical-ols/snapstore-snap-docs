@@ -14,7 +14,7 @@ snap-proxy add-admin user@example.com
 
 The Snap Store and Snap Store Proxy use macaroons for authentication,
 which are a kind of bearer token that can be constrained and that can
-be authorized by third-party services.  We strongly recommend using
+be authorised by third-party services.  We strongly recommend using
 [pymacaroons](https://github.com/ecordell/pymacaroons) or
 [libmacaroons](https://github.com/rescrv/libmacaroons) to work with
 these tokens.
@@ -24,8 +24,7 @@ paper](https://research.google.com/pubs/pub41892.html).
 
 
 To login, you must first get a root macaroon from the snap store proxy,
-then discharge (verify) that macaroon with Ubuntu SSO
-(https://login.ubuntu.com/).
+then discharge (verify) that macaroon with [Ubuntu SSO](https://login.ubuntu.com/).
 
 ## Root Macaroon
 
@@ -41,7 +40,7 @@ Accept: application/json
 
 Response:
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
@@ -53,7 +52,7 @@ Content-Type: application/json
 
 The response is simple and matches this JSON Schema:
 
-```json
+```
 {
     'type': 'object',
     'properties': {
@@ -72,8 +71,8 @@ The root macaroon contains a caveat that the user must have a valid
 Ubuntu SSO account. To prove that is the case, we need to discharge that
 caveat with Ubuntu SSO.
 
-You need to deserialize this root macaroon, and extract the caveat ID
-with the location 'login.ubuntu.com'. For example, using pymacaroons:
+You need to deserialise this root macaroon, and extract the caveat ID
+with the location `login.ubuntu.com`. For example, using pymacaroons:
 
 ```python
 macaroon = pymacaroons.Macaroon.deserialize(root_macaroon)
@@ -86,7 +85,7 @@ Then we need to discharge the caveat with Ubuntu SSO.
 
 Request:
 
-```http
+```
 POST /api/v2/tokens/discharge HTTP/1.1
 Host: login.ubuntu.com
 Accept: application/json
@@ -102,7 +101,7 @@ Content-Type: application/json
 
 Response:
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
@@ -112,12 +111,13 @@ Content-Type: application/json
 }
 ```
 
-!!! NOTE:
-    For more detailed responses from Ubuntu SSO, particularly handling
-    invalid credentials and 2FA, see the  general 
-    [Ubuntu SSO documentation for OAuth tokens](
-    http://canonical-identity-provider.readthedocs.io/en/latest/resources/token.html),
-    which is also used by the macaroon discharge endpoint.
+```{note}
+For more detailed responses from Ubuntu SSO, particularly handling
+invalid credentials and 2FA, see the  general 
+[Ubuntu SSO documentation for OAuth tokens](
+http://canonical-identity-provider.readthedocs.io/en/latest/resources/token.html),
+which is also used by the macaroon discharge endpoint.
+```
 
 You will need to persist the raw root macaroon and the raw discharge
 macaroon.  Together, these are your authentication.
@@ -125,7 +125,7 @@ macaroon.  Together, these are your authentication.
 ## Request authentication
 
 To authenticate a request, you must bind the discharge macaroon to the
-root macaroon, and send that as your value in an 'Authorization' HTTP
+root macaroon, and send that as your value in an 'Authorisation' HTTP
 header.
 
 For example, with pymacaroons:
@@ -137,10 +137,11 @@ bound = root.prepare_for_request(discharge)
 header = 'Macaroon root="{}", discharge="{}"'.format(root_raw, bound.serialize())
 ```
 
-!!! NOTE:
-    If your discharge macaroon has expired, it will be indicated by
-    indicated by a 401 status code, and a header:
-    `HTTP/1.1 401 Unauthorized WWW-Authenticate: Macaroon needs_refresh=1`
+```{note}
+If your discharge macaroon has expired, it will be indicated by
+indicated by a 401 status code, and a header:
+`HTTP/1.1 401 Unauthorized WWW-Authenticate: Macaroon needs_refresh=1`
+```
 
 In this case you will need to refresh your discharge macaroon, described below,
 and retry the request.
@@ -166,7 +167,7 @@ Content-Type: application/json
 
 Response:
 
-```http
+```
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
