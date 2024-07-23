@@ -20,7 +20,7 @@ have much greater control over exactly what revisions are installed on each
 connected system.
 
 
-..rubric:: In this documentation
+.. rubric:: In this documentation
 
 .. grid:: 1 1 2 2
    
