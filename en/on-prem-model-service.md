@@ -26,7 +26,7 @@ Currently, only PKCS#11-compatible hardware can be used for key generation and s
 
 ## Setup
 
-This section assumes that the Snap Store Proxy has been installed and configured in air-gapped mode and that the Brand Store has been imported, as per the installation steps in the [Offline store section](airgap#installation). On Brand Store import, the Brand account and admin user will be automatically set up in the Model Service.
+This section assumes that the Snap Store Proxy has been installed and configured in air-gapped mode and that the Brand Store has been imported, as per the installation steps in the [Offline store section](airgap.md#installation). On Brand Store import, the Brand account and admin user will be automatically set up in the Model Service.
 
 ### Store admin token
 
@@ -44,9 +44,9 @@ Admin token usage:
     export STORE_ADMIN_TOKEN=$(cat /home/ubuntu/snap/store-admin/common/export/store-export-myDeviceViewStoreID-20240109T123041.macaroon)
 ```
 
-As outlined in the [air-gapped store setup instructions](airgap#brand-store-export), the account-key assertion for the key(s) used to [sign the model assertion(s)](https://ubuntu.com/core/docs/sign-model-assertion) must also be exported and pushed to the Proxy. Include them in the store export bundle by specifying the `--key` flag for each account-key SHA3-384.
+As outlined in the [air-gapped store setup instructions](airgap.md#brand-store-export), the account-key assertion for the key(s) used to [sign the model assertion(s)](https://ubuntu.com/core/docs/sign-model-assertion) must also be exported and pushed to the Proxy. Include them in the store export bundle by specifying the `--key` flag for each account-key SHA3-384.
 
-[Import the store bundle on the Proxy](airgap#brand-store-import), then login to the air-gapped store from the admin machine:
+[Import the store bundle on the Proxy](airgap.md#brand-store-import), then login to the air-gapped store from the admin machine:
 
 ```bash
 $ store-admin login --offline <http-location-of-the-store> <same-email-as-in-export-store>
@@ -68,7 +68,7 @@ $ p11tool --provider "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so" --list-token-u
 pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=DENK0300972
 ```
 
-Start the server, ensuring that the unix socket runs under `/var/snap/snap-store-proxy/common/pkcs11`. See the p11-kit [documentation](https://p11-glue.github.io/p11-glue/p11-kit/manual/) for other configuration options.
+Start the server, ensuring that the Unix socket runs under `/var/snap/snap-store-proxy/common/pkcs11`. See the p11-kit [documentation](https://p11-glue.github.io/p11-glue/p11-kit/manual/) for other configuration options.
 
 ```bash
 $ sudo p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=DENK0300972" -n "/var/snap/snap-store-proxy/common/pkcs11" -f
@@ -107,7 +107,7 @@ The Model Service management CLI is provided by the `store-admin` snap.
 
 Create a signing key using `store-admin` for signing serial requests:
 
-```bash
+```
 $ BRAND_ACCOUNT_ID=<brand-account-id> store-admin create key test-key
 Generating a signing keypair on the proxy's HSM. This may take some time.
 Signing key 'test-key' created.
@@ -120,10 +120,11 @@ test-key  PPkB6XcYjkxzA9c6dXsaM0sg9r_d5DZ2kDYvWPTeuSXofXGzMDBt7DoD_Xiw3see
 
 The `BRAND_ACCOUNT_ID` environment variable only needs to be set once; it will be stored and automatically used subsequently.
 
-!!! Neutral "Note":
-    If a 4096-bit RSA key takes more than 15 seconds to generate on your hardware
-    (e.g. Nitrokeys), then you would first have to extend the Proxy's internal service timeout:
-    `sudo snap-store-proxy config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
+```{note}
+If a 4096-bit RSA key takes more than 15 seconds to generate on your hardware
+(e.g. Nitrokeys), then you would first have to extend the Proxy's internal service timeout:
+`sudo snap-store-proxy config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
+```
 
 The key needs to be registered with the online Snap Store before it can sign serials:
 
@@ -147,8 +148,9 @@ Copy the assertion to the Snap Store Proxy's `$SNAP_COMMON` directory on the Pro
 sudo snap-proxy push-account-keys /var/snap/snap-store-proxy/common/test-key.assert
 ```
 
-!!! Neutral "Note":
-    Repeat these steps to add new account-keys to the proxy, if any are created after the initial store import and are used to sign new model assertions.
+```{note}
+Repeat these steps to add new account-keys to the proxy, if any are created after the initial store import and are used to sign new model assertions.
+```
 
 ### Add a model in the Model Service
 

@@ -50,13 +50,13 @@ Downloading traefik-k8s revision 176 (stable)
 Successfully exported charm bundle cos-lite: /home/ubuntu/snap/store-admin/common/export/cos-lite-20240426T143758.tar.gz
 ```
 
-If not specified, `channel` defaults to `<default-track>/stable`, `series` defaults to `jammy`, and `arch` defaults to `amd64`. If a charm is not found for a given Ubuntu series, the exporter will attempt to fallback or fallforward to the release available for the nearest LTS.
+If not specified, `channel` defaults to `<default-track>/stable`, `series` defaults to `jammy`, and `arch` defaults to `amd64`. If a charm is not found for a given Ubuntu series, the exporter will attempt to fallback or fall forward to the release available for the nearest LTS.
 
-The component charms in the bundle will be auto-exported based on the channel and series defined in the bundle. If it is necessary to modify the bundle before exporting the component charms, then the bundle.yaml can be printed to stdout by passing `--only-print-yaml=True`.
+The component charms in the bundle will be auto-exported based on the channel and series defined in the bundle. If it is necessary to modify the bundle before exporting the component charms, then the `bundle.yaml` can be printed to `stdout` by passing `--only-print-yaml=True`.
 
 ### Export charms
 
-To export individual charms, either start from an existing bundle.yaml or define one with a list of cherry-picked charms. The following shows an example for a custom-defined `charms.yaml` (can be any file name):
+To export individual charms, either start from an existing `bundle.yaml` or define one with a list of cherry-picked charms. The following shows an example for a custom-defined `charms.yaml` (can be any file name):
 
 ```yaml
 applications:
@@ -84,7 +84,7 @@ Downloading resources for postgresql-k8s
 Successfully exported charms to: /home/ubuntu/snap/store-admin/common/export/charms-export-20240426T163115.tar.gz
 ```
 
-The exported tar.gz contains the following:
+The exported `tar.gz` contains the following:
 
 ```bash
 charms-export-20240426T163115.tar.gz/
@@ -100,7 +100,7 @@ charms-export-20240426T163115.tar.gz/
 where:
 
 - `metadata.json` is the charm metadata fetched, this is required by CHP to write the charm's channel map and other metadata to enable deployments.
-- `bundle.yaml` is a copy of the user-specified export .yaml, provided for ease of reference.
+- `bundle.yaml` is a copy of the user-specified export `.yaml`, provided for ease of reference.
 - `postgresql-k8s_20.charm` is the binary downloaded from Charmhub, for the revision resolved.
 - `postgresql-k8s_publisher_account.assert` is the account assertion of the charm publisher.
 - `resources/` contain resource binaries attached to the exported charm revision.
@@ -108,7 +108,7 @@ where:
 ### Export snap resources
 
 Some charms may require a specific snap revision as a resource. These charms usually run the equivalent of `snap install <snap> --revision <rev>` in their setup code ([example](https://github.com/canonical/postgresql-operator/blob/9614915048ba612bb4be6a5fd8c752a46bb051ed/lib/charms/operator_libs_linux/v2/snap.py#L460)).
-To export snaps by revision, define a .yaml file of the following structure:
+To export snaps by revision, define a `.yaml` file of the following structure:
 
 ```yaml
 packages:
@@ -122,7 +122,7 @@ packages:
 
 When installing a snap by revision, the Snap Store requires that the revision exists in the snap's channel map history, i.e. the revision must have been released to any channel before it can be requested directly. Thus, `push_channel` needs to be specified to tell Snap Store Proxy the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the Proxy on push.
 
-The export .yaml can be supplied to the `export snaps` command like so:
+The export `.yaml` can be supplied to the `export snaps` command like so:
 
 ```bash
 $ store-admin export snaps --from-yaml snaps.yaml
@@ -161,9 +161,9 @@ The directory can then be manually copied to the air-gapped registry host, then 
 $ skopeo copy dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --dest-creds=<local-registry-username>:<local-registry-password>
 ```
 
-By default, if no override is supplied via the `resources` key in the .yaml supplied for charm export, Charmhub Proxy will assume an identical local registry image path (excluding the domain but including `charm/` and including the sha256 tag). When a deployment is requested, CHP will supply a regenerated blob using the local domain URL and credentials configured.
+By default, if no override is supplied via the `resources` key in the `.yaml` supplied for charm export, Charmhub Proxy will assume an identical local registry image path (excluding the domain but including `charm/` and including the sha256 tag). When a deployment is requested, CHP will supply a regenerated blob using the local domain URL and credentials configured.
 
-The `skopeo` commands above pushes the image to the same path in the local registry and saves the effort of manually remapping resources. If required, the image can be pushed to a custom path, but a mapping must be defined for the resource as in the example charms.yaml in [Export charms](#export-charms).
+The `skopeo` commands above pushes the image to the same path in the local registry and saves the effort of manually remapping resources. If required, the image can be pushed to a custom path, but a mapping must be defined for the resource as in the example `charms.yaml` in [Export charms](#export-charms).
 
 ## Import Packages
 Once the exported charm tar file is on the on-prem store host, they should be moved to the
@@ -187,7 +187,7 @@ When re-importing charms or importing other revisions, make sure to provide the 
 
 After importing, the charms/bundles are then available to be managed with Juju commands.  
 
-- When importing machine charms that depend on a snap for functionality, you must first manually [import the required snap. ](airgap.html#side-loading-snaps).
+- When importing machine charms that depend on a snap for functionality, you must first manually [import the required snap](airgap.md#side-loading-snaps).
 - When importing Kubernetes charms, ensure that the corresponding OCI image is copied to the local registry, maintaining its original path.
 
 
@@ -196,13 +196,13 @@ After importing, the charms/bundles are then available to be managed with Juju c
 Ensure you have Juju configured along with the necessary cloud environment. 
 
 For production environments, particularly if you need self-signed TLS certificates to function correctly, set up the Juju controller on a non-Kubernetes instance.
-Even if the Juju controller isn't hosted on a Kubernetes cluster, it can still manage Kubernetes models. This flexibility allows the controller to operate from a different environment, such as a virtual machine or an lxd container, while still effectively orchestrating resources within Kubernetes.
+Even if the Juju controller isn't hosted on a Kubernetes cluster, it can still manage Kubernetes models. This flexibility allows the controller to operate from a different environment, such as a virtual machine or an LXD container, while still effectively orchestrating resources within Kubernetes.
 
 
 This setup allows you to incorporate a self-signed certificate within the `cloudinit` configuration, enabling the Juju controller to trust the certificate.
 
 
-First, you need to prepare the Juju configuration file. In this file, override the default URLs for Charmhub and Snapstore. Additionally, if you're using a self-signed certificate for Charmhub, include it in the trusted certificates section of `cloudinit-userdata`. 
+First, you need to prepare the Juju configuration file. In this file, override the default URLs for Charmhub and Snap Store. Additionally, if you're using a self-signed certificate for Charmhub, include it in the trusted certificates section of `cloudinit-userdata`. 
 
 ### Self-signed certificate
 
@@ -212,7 +212,7 @@ You can create a self signed certificate for the Snap store proxy with the follo
 sudo snap-store-proxy import-certificate --selfsigned
 ```
 
-After it's created, you can retrieve the public key from the config:
+After it's created, you can retrieve the public key from the configuration:
 ```bash
 snap-store-proxy config proxy.tls.cert | cat > tls-cert.crt
 ```
@@ -225,7 +225,7 @@ sudo update-ca-certificates
 
 ### Configuration file
 
-Example of a juju configuration yaml. Note that ca-certs list is necessary only when using self-signed certificate for the local Charmhub.
+Example of a Juju configuration `.yaml`. Note that ca-certs list is necessary only when using self-signed certificate for the local Charmhub.
 ```yaml
 cloudinit-userdata: |
   ca-certs:
@@ -250,7 +250,7 @@ juju bootstrap lxd machine-controller --config=/var/snap/juju/common/juju-config
 ```
 
 
-The example below assumes that an LXD cloud is already set up and utilizes it to create a Juju controller:
+The example below assumes that an LXD cloud is already set up and utilises it to create a Juju controller:
 ```bash
 juju add-k8s k8s-cloud --controller=machine-controller 
 ```

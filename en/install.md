@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Install
 table_of_contents: true
 ---
 
@@ -10,20 +10,20 @@ table_of_contents: true
 To run the Snap Store Proxy, you will need:
 
 * A server running one of the [currently supported LTS versions of Ubuntu](https://ubuntu.com/about/release-cycle) on AMD64.
-* Firewall rules configured to allow traffic to servers mentioned at https://forum.snapcraft.io/t/network-requirements/5147.
+* [Firewall rules configured to allow traffic to servers](https://forum.snapcraft.io/t/network-requirements/5147).
 * A domain name for the server.
 * A PostgreSQL instance (see the Database section). 
 
 ## Getting started
 
 First, if your network requires an HTTPS proxy to get to the above
-domains, you must first configure snapd on the installation server to
+domains, you must first configure `snapd` on the installation server to
 use that HTTPS proxy in order to be able to install the snap-store-proxy snap
 package.
 
 Do this by adding the appropriate environment variables (`http_proxy`,
 `https_proxy`) to the server’s `/etc/environment` file, and restarting
-snapd:
+`snapd`:
 
     sudo systemctl restart snapd
 
@@ -70,11 +70,11 @@ using `psql` as your PostgreSQL server **superuser**:
 
 Simple local Ubuntu setup can look like this:
 
-1. Install postgresql
+1. Install PostgreSQL
 
         sudo apt install postgresql
 
-2. Save the above PostgreSQL script as proxydb.sql and run it:
+2. Save the above PostgreSQL script as `proxydb.sql` and run it:
 
         sudo -u postgres psql < proxydb.sql
 
@@ -114,7 +114,7 @@ On Ubuntu, the system trust store can be modified using `update-ca-certificates`
 as needed and snap-store-proxy will honour these changes by default (it might
 require a restart `sudo snap restart snap-store-proxy`).
 
-You can also override this default behavior and configure your Snap Store Proxy
+You can also override this default behaviour and configure your Snap Store Proxy
 to _only_ trust a specific list of CAs:
 
     cat your-ca.crt another-ca.crt | sudo snap-proxy use-ca-certs

@@ -1,5 +1,5 @@
 ---
-title: Snap overrides
+title: Override snap revisions
 table_of_contents: true
 ---
 
@@ -85,7 +85,7 @@ administer overrides:
     sudo snap install snapstore-client
 
 Authentication is performed using Ubuntu SSO, and users need to be
-authorized from the CLI on the server using:
+authorised from the CLI on the server using:
 
     sudo snap-proxy add-admin becky@example.com
 

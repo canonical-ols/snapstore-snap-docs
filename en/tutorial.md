@@ -1,5 +1,6 @@
 ---
 title: Snap Store Proxy Tutorials
+orphan: true
 ---
 
 # Snap Store Proxy Tutorials
@@ -11,7 +12,7 @@ We hope our tutorials make as few assumptions as possible and are broadly access
 to anyone with an interest in the Snap Store Proxy. They should also be a good place
 to start learning about the Proxy, how it works and what it’s capable of.
 
-| **Tutorials** | Step-by-step walkthroughs |
+| **Tutorial**  | Step-by-step walkthrough  |
 |---------------|---------------------------|
 |               |                           |
 
