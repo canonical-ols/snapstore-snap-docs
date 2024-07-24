@@ -1,6 +1,8 @@
 Snap Store Proxy documentation
 ==============================
 
+TEST
+
 The **Snap Store Proxy** provides an on-premise edge proxy to the general
 `Snap Store <https://snapcraft.io/store>`_ for your devices.
 
