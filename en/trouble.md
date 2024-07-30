@@ -45,8 +45,7 @@ If you need to move the snap-proxy to a new hostname, you can do:
 
 This perform another registration cycle and update the assertion file
 with the new domain name.
-This will then need to be acked on the client devices and will replace
-the existing assertion.
+Then you will need to run `snap ack` on the client devices to replace the existing assertion.
 
 ## Documentation
 
@@ -56,15 +55,13 @@ This documentation is shipped with the snap, and available at:
 
 ## Bug reporting
 
-Please file bugs against this project on Launchpad:
-
-[https://bugs.launchpad.net/snapstore](https://bugs.launchpad.net/snapstore)
+Please file bugs against [this project on Launchpad](https://bugs.launchpad.net/snapstore)
 
 
 ### Known issues
 
 1. The `snap download` command doesn't do the download of the snap through
-   snapd service, and therefore doesn't know about the Snap Store Proxy
+   `snapd` service, and therefore doesn't know about the Snap Store Proxy
    and will try to fetch the snap directly. [Forum
    thread](https://forum.snapcraft.io/t/improvements-in-snap-download/1422)
 2. Need to be root when configuring the snap proxy.

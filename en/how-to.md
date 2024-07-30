@@ -9,6 +9,8 @@ our *How-to* guides have more in-depth detail than our tutorials and can be appl
 a broader set of applications. They’ll help you achieve an end result but may require
 you to understand and adapt the steps to fit your specific requirements.
 
+
+
 | **How-to guides**                         | Get stuff done                                                        |
 |-------------------------------------------|-----------------------------------------------------------------------|
 | [Installation](install.md)                | Install and set up the Snap Store Proxy                               |
@@ -28,3 +30,19 @@ specs and authentication mechanism), and other supplementary reference materials
 
 Finally, for a better understanding of how the Snap Store Proxy works, our *Explanation*
 section enables you to expand your knowledge.
+
+```{eval-rst}
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+
+    Install a Snap Store Proxy <install>
+    Register a Snap Store Proxy <register>
+    Configure HTTPS <https>
+    Configure devices <devices> 
+    Override snap revisions <overrides>
+    Operate offline <airgap>
+    Configure the Model Service <on-prem-model-service>
+    Manage charms in the Snap Store Proxy <charmhub-proxy>
+    Troubleshoot common issues <trouble>
+```

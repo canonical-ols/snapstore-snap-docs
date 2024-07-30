@@ -1,5 +1,5 @@
 ---
-title: Offline store (air-gapped mode)
+title: Operate offline
 table_of_contents: true
 ---
 
@@ -40,9 +40,10 @@ can authenticate to such on-prem store and get access to imported brand store
 snaps which are not accessible to any other devices connecting to that on-prem
 store.
 
-!!! Neutral "Note":
-    Client devices have to be equipped with their
-    [serial assertions](devices.md#obtaining-serial-assertions).
+```{note}
+Client devices have to be equipped with their
+[serial assertions](devices.md#obtaining-serial-assertions).
+```
 
 ## Installation
 
@@ -54,13 +55,14 @@ followed by airgap mode activation:
 sudo snap-proxy enable-airgap-mode
 ```
 
-!!! Negative "":
-    Even though it's possible to enable airgap mode for an online proxy, it's
-    only advised to do so during the installation phase when no devices are yet
-    [connected](devices.md) to the proxy. Deactivating and activating airgap
-    mode while it's already serving clients will have undesirable and not
-    clearly defined consequences for the devices that were connected to it
-    before the mode switch as well as for the snap-store-proxy instance itself.
+```{note}
+Even though it's possible to enable airgap mode for an online proxy, it's
+only advised to do so during the installation phase when no devices are yet
+[connected](devices.md) to the proxy. Deactivating and activating airgap
+mode while it's already serving clients will have undesirable and not
+clearly defined consequences for the devices that were connected to it
+before the mode switch as well as for the snap-store-proxy instance itself.
+```
 
 ### Offline installation
 
@@ -85,11 +87,12 @@ an offline host (partly pre-configured as well):
 store-admin register --offline <target-http-location-of-the-store>
 ```
 
-!!! Warning "":
+```{warning}
     Full value of the target location, eg `https://snaps.internal`, will be encoded
     in an assertion file used for instructing client devices to connect to this
     store. It's important to decide if http or https will be used and what the host
     name will be at the point of registration.
+```
 
 The result of the above is a tarball `offline-snap-store.tar.gz` that is then
 moved to the target host machine for the offline store for installation.
@@ -130,10 +133,11 @@ If the registered store's location was an HTTPS one, follow the
 
 ## Brand store metadata import
 
-!!! Warning "":
+```{warning}
     This section is relevant for brand store customers wanting to host their
     brand store snaps offline and can be skipped if the offline store only has
     to support Global store client devices (eg. generic devices).
+```
 
 On-prem stores need various data (assertions, snap binaries and metadata,
 account information) - produced by the upstream Snap Store - to function. This
@@ -243,15 +247,15 @@ htop: htop-20221026T104628.tar.gz
 This produces a set of `tar.gz` files (one per snap name) that have to be moved
 to the on-prem store host and imported there.
 
-!!! Positive "":
-    By default snaps are exported from the Global store, and then imported as
-    such, meaning that any device connected to the on-prem store will be able to
-    install them (if it's configured to use the default Global store).
-    `store-admin export snaps` has a `--store` option allowing for authenticated
-    export of snaps from private device-view IoT App Stores - after importing
-    these, snaps will be accessible only to properly authenticated devices from
-    the relevant brand.
-
+```{note}
+By default snaps are exported from the Global store, and then imported as
+such, meaning that any device connected to the on-prem store will be able to
+install them (if it's configured to use the default Global store).
+`store-admin export snaps` has a `--store` option allowing for authenticated
+export of snaps from private device-view IoT App Stores - after importing
+these, snaps will be accessible only to properly authenticated devices from
+the relevant brand.
+```
 
 ### Importing (pushing) snaps
 
@@ -309,7 +313,7 @@ online Snap Store Proxy.
 ## Offline Upgrades
 
 To upgrade snap-store-proxy on an offline machine, first download the snap and
-its assertions on a machine with internet access, eg:
+its assertions on a machine with internet access, e.g.:
 
 
 ```bash
@@ -325,14 +329,14 @@ sudo snap ack snap-store-proxy_<revision>.assert
 sudo snap install snap-store-proxy_<revision>.snap
 ```
 
-And use analogous process to upgrade the base and snapd snaps.
+And use analogous process to upgrade the base and `snapd` snaps.
 
 
 ## Configuration backup
 
 Make sure to securely backup the snap-store-proxy configuration (including the
-proxy.device-auth.secret used for signing/verifying the device sessions). The
-config can be exported with:
+`proxy.device-auth.secret` used for signing/verifying the device sessions). The
+configuration can be exported with:
 
 ```bash
 sudo snap-store-proxy config > proxy-config-backup.txt

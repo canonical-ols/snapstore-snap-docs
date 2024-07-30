@@ -11,7 +11,7 @@ authentication mechanism), and other supplementary reference materials.
 |---------------------------------------------|--------------------------------------------------------------------------|
 | [Overrides API](api-overrides.md)           | API specs for the Overrides API                                          |
 | [API authentication](api-authentication.md) | API authentication for Proxy admins when using the Overrides API         |
-| [Feature list](feature-list.md)             | A summarized list of features of the Proxy                               |
+| [Feature list](feature-list.md)             | A summarised list of features of the Proxy                               |
 | [Product whitepaper](whitepaper.md)         | Whitepaper on managing snaps in an enterprise environment with the Proxy |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
@@ -24,3 +24,15 @@ you to understand and adapt the steps to fit your specific requirements.
 
 Finally, for a better understanding of how the Snap Store Proxy works, our *Explanation*
 section enables you to expand your knowledge.
+
+```{eval-rst}
+.. toctree::
+    :hidden:
+    :maxdepth: 1
+    :caption: Table of contents 
+
+    api-overrides
+    api-authentication
+    feature-list
+    whitepaper
+```
