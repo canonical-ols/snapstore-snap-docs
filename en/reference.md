@@ -13,6 +13,7 @@ authentication mechanism), and other supplementary reference materials.
 | [API authentication](api-authentication.md) | API authentication for Proxy admins when using the Overrides API         |
 | [Feature list](feature-list.md)             | A summarised list of features of the Proxy                               |
 | [Product whitepaper](whitepaper.md)         | Whitepaper on managing snaps in an enterprise environment with the Proxy |
+| [Cryptography](cryptography.md)             | An Outline of the usage of cryptographic technology                      |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
 what the Proxy is capable of while helping you achieve specific aims.
@@ -35,4 +36,5 @@ section enables you to expand your knowledge.
     api-authentication
     feature-list
     whitepaper
+    cryptography
 ```
