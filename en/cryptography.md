@@ -1,8 +1,3 @@
----
-title: Cryptography
-table_of_contents: true
----
-
 # Cryptography
 
 Various Cryptographic technologies are used to enable secure Snap Store Proxy operation.
