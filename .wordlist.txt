@@ -29,6 +29,7 @@ LTS
 Makefile
 Matrix
 Mattermost
+microk
 MyST
 namespace
 namespaces
