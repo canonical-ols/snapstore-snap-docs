@@ -17,7 +17,7 @@ in order to download the OCI [charm resources](https://juju.is/docs/juju/charm-r
 The credentials are encoded as JWT that are signed with RSA.
 
 - **Signing nonce**: A nonce is used as additional security for REST API access.
-RSA is used to sign and verity the nonce.
+RSA is used to sign and verify the nonce.
 
 
 | Function                     | Exposed | Technology               | Package/Library                                                                                                                                                                  |
