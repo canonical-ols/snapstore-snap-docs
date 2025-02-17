@@ -1,16 +1,28 @@
-/html
+
+# Starter pack rules start here
+
+# Environment
 /*env*/
-.sphinx/venv/
-.sphinx/requirements.txt
-.sphinx/warnings.txt
-.sphinx/.wordlist.dic
-.sphinx/.doctrees/
-.sphinx/node_modules/
-package*.json
-_build
-.DS_Store
-__pycache__
-.idea/
-.vscode/
-.sphinx/styles/*
-.sphinx/vale.ini
+docs/.sphinx/venv/
+
+# Sphinx
+docs/.sphinx/warnings.txt
+docs/.sphinx/.wordlist.dic
+docs/.sphinx/.doctrees/
+docs/.sphinx/node_modules/
+
+# Vale
+docs/.sphinx/styles/*
+docs/.sphinx/vale.ini
+
+# Build outputs
+docs/_build
+
+# Node.js
+docs/package*.json
+
+# Unrelated cache and config files
+docs/.DS_Store
+docs/__pycache__
+docs/.idea/
+docs/.vscode/
