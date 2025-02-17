@@ -195,7 +195,8 @@ redirects = {}
 
 linkcheck_ignore = [
     "http://127.0.0.1:8000",
-    'https://ubuntu.com/core/docs/gadget-snaps#heading--example-prepare'
+    'https://ubuntu.com/core/docs/gadget-snaps#heading--example-prepare',
+    'https://github.com/canonical/*'
     ]
 
 
