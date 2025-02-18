@@ -11,8 +11,8 @@ with an `--https` option, the resulting [assertion](devices.md) instructing
 client devices to connect to the proxy instead of the upstream store, is pointing
 those devices to use HTTPS to connect to the proxy.
 
-This document explains how to enable and configure TLS termination in the Snap
-Store Proxy.
+This document explains how to enable and configure TLS termination in the
+Enterprise Store.
 
 ## Certificate and Key
 
@@ -91,8 +91,8 @@ The above method works both on classic systems as well as Ubuntu Core.
 ## Next step
 
 Once you've confirmed that your Enterprise Store is running and accepting HTTPS
-connections, you can [configure client devices](devices.md) to use your Snap
-Store Proxy.
+connections, you can [configure client devices](devices.md) to use your
+Enterprise Store.
 
 At any time, you can use:
 

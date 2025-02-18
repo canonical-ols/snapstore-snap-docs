@@ -15,7 +15,7 @@ The Charmhub proxy does not incorporate an OCI registry. Users who work with Kub
 
 ## Offline Charmhub Configuration
 
-Once the user has completed the airgap [Store proxy installation](airgap.md#installation), the only remaining step is to configure the path to their local OCI registry. 
+Once the user has completed the [airgap installation](airgap.md#installation), the only remaining step is to configure the path to their local OCI registry. 
 
 ### Configure OCI registry
 
@@ -120,7 +120,7 @@ packages:
     push_channel: 8.0/edge
 ```
 
-When installing a snap by revision, the Snap Store requires that the revision exists in the snap's channel map history, i.e. the revision must have been released to any channel before it can be requested directly. Thus, `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the Proxy on push.
+When installing a snap by revision, the Snap Store requires that the revision exists in the snap's channel map history, i.e. the revision must have been released to any channel before it can be requested directly. Thus, `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the proxy on push.
 
 The export `.yaml` can be supplied to the `export snaps` command like so:
 
