@@ -354,5 +354,5 @@ Enterprise Store or the SaaS Snap Store. Some of the missing features are:
 * `validation` and `validation-set` assertions are not supported.
   
   ```{note}
-     Customers requiring finer control over which snap revisions are refreshed on devices connected to an airgapped store should use [Snap revision overrides]( https://documentation.ubuntu.com/snap-store-proxy/en/overrides/) or use a device management system like [Landscape](https://ubuntu.com/landscape/docs).
+     Customers requiring finer control over which snap revisions are refreshed on devices connected to an air-gapped store should use [Snap revision overrides]( https://documentation.ubuntu.com/snap-store-proxy/en/overrides/) or use a device management system like [Landscape](https://ubuntu.com/landscape/docs).
   ```
