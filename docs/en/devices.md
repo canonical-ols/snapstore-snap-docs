@@ -45,10 +45,11 @@ This means that you can use a specific serial-vault service to obtain serial
 assertions for your devices running behind an Enterprise Store. Make sure that
 your Enterprise Store is able to connect to this specific serial-vault service.
 
-!!! NOTE:
-    By default Enterprise Store allows only the
-    `https://serial-vault-partners.canonical.com` serial-vault requests to pass
-    through it.
+```{note}
+By default Enterprise Store allows only the
+`https://serial-vault-partners.canonical.com` serial-vault requests to pass
+through it.
+```
 
 Since version 2.19 of the snap-store-proxy, the
 `proxy.device-auth.allowed-device-service-urls` setting can be used to control
