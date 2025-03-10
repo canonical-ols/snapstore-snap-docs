@@ -87,7 +87,7 @@ pa11y-install:
 install: $(VENVDIR)
 
 run: install
-	. $(VENV); $(VENVDIR)/bin/sphinx-autobuild -b dirhtml "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
+	. $(VENV); $(VENVDIR)/bin/sphinx-autobuild -b dirhtml --port 8888 "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS)
 
 # Doesn't depend on $(BUILDDIR) to rebuild properly at every run.
 html: install

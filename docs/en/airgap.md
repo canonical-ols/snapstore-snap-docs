@@ -36,14 +36,9 @@ snaps included from the global store in their brand store) to their on-prem
 store.
 
 Devices with valid serial assertions for models belonging to a specific brand
-can authenticate to such on-prem store and get access to imported brand store
-snaps which are not accessible to any other devices connecting to that on-prem
-store.
-
-```{note}
-Client devices have to be equipped with their
-[serial assertions](devices.md#obtaining-serial-assertions).
-```
+can authenticate to their on-prem store and get access to imported brand store
+snaps. These snaps may not be accessible to any other devices connecting to that
+on-prem store.
 
 ## Installation
 
@@ -285,6 +280,7 @@ limited to:
 - `core18`
 - `core20`
 - `core22`
+- `core24`
 - `snapd`
 
 
@@ -353,5 +349,10 @@ Enterprise Store or the SaaS Snap Store. Some of the missing features are:
 
 * Searching for snaps
 
-* Generic Device registration. Serial Vault can be used to register custom model
-  devices.
+* Serial Vault must be used to register custom model devices.
+
+* `validation` and `validation-set` assertions are not supported.
+  
+  ```{note}
+     Customers requiring finer control over which snap revisions are refreshed on devices connected to an air-gapped store should use [Snap revision overrides]( https://documentation.ubuntu.com/snap-store-proxy/en/overrides/) or use a device management system like [Landscape](https://ubuntu.com/landscape/docs).
+  ```

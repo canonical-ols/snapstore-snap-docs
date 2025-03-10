@@ -82,7 +82,7 @@ There is a [CLI tool](https://snapcraft.io/snap-store-proxy-client) to
 help manage overrides, which uses the API and can be used remotely to
 administer overrides:
 
-    sudo snap install snapstore-client
+    sudo snap install snap-store-proxy-client
 
 Authentication is performed using Ubuntu SSO, and users need to be
 authorised from the CLI on the server using:
@@ -91,11 +91,11 @@ authorised from the CLI on the server using:
 
 On the client side, you authenticate by:
 
-    snapstore-client login
+    snap-store-proxy-client login
 
 Overrides are managed in the same way as with the `snap-proxy` command
 above, e.g.:
 
-    snapstore-client list-overrides
-    snapstore-client override foo stable=10
-    snapstore-client delete-override foo
+    snap-store-proxy-client list-overrides
+    snap-store-proxy-client override foo stable=10
+    snap-store-proxy-client delete-override foo
