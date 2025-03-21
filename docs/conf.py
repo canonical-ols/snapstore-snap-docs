@@ -160,7 +160,7 @@ html_context = {
 # TODO: If your documentation is hosted on https://docs.ubuntu.com/,
 #       uncomment and update as needed.
 
-#slug = "enterprise-store"
+slug = "enterprise-store"
 
 
 # Template and asset locations
