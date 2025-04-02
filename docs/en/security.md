@@ -1,20 +1,17 @@
----
-title: HTTPS
-table_of_contents: true
----
+# Enhance Enterprise Store's security
 
-# HTTPS
+## Enable HTTPS
+TLS termination is not enabled by default. This means that the Enterprise Store
+listens only on port 80 for unencrypted HTTP traffic after installation. If the
+Enterprise Store was [registered](register.md) with an `--https` option, the
+resulting [assertion](devices.md) instructing client devices to connect to the
+Enterprise Store instead of the upstream store, is pointing those devices to use
+HTTPS to connect to the Enterprise Store.
 
-TLS termination is not enabled by default. This means that the proxy listens
-only on port 80 after installation. If the proxy was [registered](register.md)
-with an `--https` option, the resulting [assertion](devices.md) instructing
-client devices to connect to the proxy instead of the upstream store, is pointing
-those devices to use HTTPS to connect to the proxy.
-
-This document explains how to enable and configure TLS termination in the
+This section explains how to enable and configure TLS termination in the
 Enterprise Store.
 
-## Certificate and Key
+### Certificate and Key
 
 Obtain an x509 key and certificate pair for your Enterprise Store domain (as
 well as any relevant intermediate certificates if applicable). You can determine
@@ -27,7 +24,7 @@ certificate as well.
 
 How to obtain the certificate/key pair is out of scope of this document.
 
-## Importing the Key/Certificate pair
+### Importing the Key/Certificate pair
 
 Running the below command will import the key/certificate pair (and any
 intermediate certificates as needed) and re-configure your Enterprise Store:
@@ -45,7 +42,7 @@ After this is done, TLS termination will be enabled, and any HTTP traffic to
 your Enterprise Store will be redirected to HTTPS. This command can be re-run as
 needed.
 
-## Self signed certificates
+### Self signed certificates
 
 The TLS certificate above may be self signed or ultimately signed by a self
 signed root CA that is not included in the system certificate store on your
@@ -88,7 +85,7 @@ root is to configure the certificate in question using `snapd` itself:
 The above method works both on classic systems as well as Ubuntu Core.
 
 
-## Next step
+### Next step
 
 Once you've confirmed that your Enterprise Store is running and accepting HTTPS
 connections, you can [configure client devices](devices.md) to use your

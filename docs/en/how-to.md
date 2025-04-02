@@ -15,7 +15,7 @@ you to understand and adapt the steps to fit your specific requirements.
 |-------------------------------------------|-----------------------------------------------------------------------|
 | [Installation](install.md)                | Install and set up the Enterprise Store                               |
 | [Proxy registration](register.md)         | Register the Proxy with the online Snap Store                         |
-| [TLS configuration](https.md)             | Configure TLS termination in the Proxy                                |
+| [Security enhancements ](security.md)     | Enhance Enterprise Store's security                                   |
 | [Configuring snap devices](devices.md)    | Point your devices to the Proxy instead of the online Snap Store      |
 | [Overriding snap revisions](overrides.md) | Control the specific revision of a snap in a channel for your devices |
 | [Offline store](airgap.md)                | Deploy the Proxy in an air-gapped environment                         |
@@ -38,7 +38,7 @@ section enables you to expand your knowledge.
 
     Install an Enterprise Store <install>
     Register an Enterprise Store <register>
-    Configure HTTPS <https>
+    Enhance Enterprise Store's security <security>
     Configure devices <devices> 
     Override snap revisions <overrides>
     Operate offline <airgap>
