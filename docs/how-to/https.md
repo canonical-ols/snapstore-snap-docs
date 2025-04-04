@@ -49,11 +49,11 @@ needed.
 
 The TLS certificate above may be self signed or ultimately signed by a self
 signed root CA that is not included in the system certificate store on your
-client snap devices or the snap-store-proxy host itself. If this is true, then
+client snap devices or the enterprise-storehost itself. If this is true, then
 you need to make sure that the self signed certificates in question are added
 to:
 
-* the system certificate store on the snap-store-proxy host,
+* the system certificate store on the enterprise-storehost,
 
 * as well as its client devices.
 
@@ -66,21 +66,21 @@ question in a specific directory:
 
     sudo update-ca-certificates
 
-If this is being done on the snap-store-proxy host, the snap-store-proxy has to be restarted:
+If this is being done on the enterprise-storehost, the enterprise-storehas to be restarted:
 
     sudo snap restart snap-store-proxy
 
-After that, snap-store-proxy will be able to verify its status correctly.
+After that, enterprise-storewill be able to verify its status correctly.
 
 For client machines, `snapd` has to be restarted:
 
     sudo systemctl restart snapd
 
 After that, `snapd` on the client device will be able to successfully verify the
-snap-store-proxy certificate.
+enterprise-storecertificate.
 
 A more robust method of ensuring that client devices can talk to the
-snap-store-proxy using a self signed certificate or one issued by a self signed
+enterprise-storeusing a self signed certificate or one issued by a self signed
 root is to configure the certificate in question using `snapd` itself:
 
     sudo snap set system store-certs.cert1="$(cat /path/to/my-cert-or-ca-cert.crt)"
