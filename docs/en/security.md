@@ -171,12 +171,11 @@ $ sudo snap-store-proxy config proxy.https.proxy=http://squid.internal:3128
 $ sudo ufw allow out from any to <squid IP address> 3128
 ```
 
-By doing the above and configuring Squid to only allow traffic to the required
-domains as noted in
-[network requirements](https://snapcraft.io/docs/network-requirements), you can
-limit the blast radius from potential vulnerabilities, if you also ensure that
-it's only possible to talk to the outside world via that Squid proxy by
-employing firewall rules.
+By configuring Squid to only allow traffic to the
+[required domains](https://snapcraft.io/docs/network-requirements), and
+ensuring external communication is routed through the Squid proxy using
+appropriate firewall rules, you can limit the blast radius of potential
+vulnerabilities.
 
 #### Offline mode
 
