@@ -264,8 +264,8 @@ Example of importing a `jq.tar.gz` snap bundle on the air-gapped proxy host:
 sudo snap-store-proxy push-snap /var/snap/snap-store-proxy/common/snaps-to-push/jq-20200406T103511.tar.gz
 ```
 
-The `jq` snap is now available for installation from this air-gapped Snap Store
-Proxy. This means that `snap info jq` and `snap install jq` will succeed on a
+The `jq` snap is now available for installation from this air-gapped Enterprise
+Store. This means that `snap info jq` and `snap install jq` will succeed on a
 connected client device.
 
 ### Essential snaps
