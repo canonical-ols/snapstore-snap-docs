@@ -56,7 +56,7 @@ only advised to do so during the installation phase when no devices are yet
 [connected](devices.md) to the proxy. Deactivating and activating airgap
 mode while it's already serving clients will have undesirable and not
 clearly defined consequences for the devices that were connected to it
-before the mode switch as well as for the snap-store-proxy instance itself.
+before the mode switch as well as for the enterprise-storeinstance itself.
 ```
 
 ### Offline installation
@@ -83,10 +83,10 @@ store-admin register --offline <target-http-location-of-the-store>
 ```
 
 ```{warning}
-    Full value of the target location, eg `https://snaps.internal`, will be encoded
-    in an assertion file used for instructing client devices to connect to this
-    store. It's important to decide if http or https will be used and what the host
-    name will be at the point of registration.
+Full value of the target location, eg `https://snaps.internal`, will be encoded
+in an assertion file used for instructing client devices to connect to this
+store. It's important to decide if http or https will be used and what the host
+name will be at the point of registration.
 ```
 
 The result of the above is a tarball `offline-snap-store.tar.gz` that is then
@@ -116,11 +116,11 @@ tar xvzf offline-snap-store.tar.gz
 cd offline-snap-store
 sudo ./install.sh
 
-sudo snap-store-proxy config proxy.db.connection="$POSTGRESQL_CONN_STRING"
+sudo enterprise-storeconfig proxy.db.connection="$POSTGRESQL_CONN_STRING"
 
-sudo snap-store-proxy enable-airgap-mode
+sudo enterprise-storeenable-airgap-mode
 
-sudo snap-store-proxy status
+sudo enterprise-storestatus
 ```
 
 If the registered store's location was an HTTPS one, follow the
@@ -129,9 +129,9 @@ If the registered store's location was an HTTPS one, follow the
 ## Brand store metadata import
 
 ```{warning}
-    This section is relevant for brand store customers wanting to host their
-    brand store snaps offline and can be skipped if the offline store only has
-    to support Global store client devices (eg. generic devices).
+This section is relevant for brand store customers wanting to host their
+brand store snaps offline and can be skipped if the offline store only has
+to support Global store client devices (eg. generic devices).
 ```
 
 On-prem stores need various data (assertions, snap binaries and metadata,
@@ -261,11 +261,11 @@ can be imported.
 Example of importing a `jq.tar.gz` snap bundle on the air-gapped proxy host:
 
 ```bash
-sudo snap-store-proxy push-snap /var/snap/snap-store-proxy/common/snaps-to-push/jq-20200406T103511.tar.gz
+sudo enterprise-storepush-snap /var/snap/snap-store-proxy/common/snaps-to-push/jq-20200406T103511.tar.gz
 ```
 
-The `jq` snap is now available for installation from this air-gapped Snap Store
-Proxy. This means that `snap info jq` and `snap install jq` will succeed on a
+The `jq` snap is now available for installation from this air-gapped Enterprise
+Store. This means that `snap info jq` and `snap install jq` will succeed on a
 connected client device.
 
 ### Essential snaps
@@ -287,12 +287,12 @@ limited to:
 ## Status
 
 ```
-snap-store-proxy status
+enterprise-storestatus
 ```
 lists the imported stores and account keys and
 
 ```
-snap-store-proxy list-pushed-snaps
+enterprise-storelist-pushed-snaps
 ```
 lists all imported snaps.
 
@@ -308,17 +308,17 @@ online Enterprise Store.
 
 ## Offline Upgrades
 
-To upgrade snap-store-proxy on an offline machine, first download the snap and
+To upgrade enterprise-storeon an offline machine, first download the snap and
 its assertions on a machine with internet access, e.g.:
 
 
 ```bash
-snap download snap-store-proxy --channel=latest/stable
+snap download enterprise-store--channel=latest/stable
 ```
 
 Same can be done for its base snap `core22` and for the `snapd` snap itself.
 
-Then move the files over to the offline snap-store-proxy machine and:
+Then move the files over to the offline enterprise-storemachine and:
 
 ```bash
 sudo snap ack snap-store-proxy_<revision>.assert
@@ -330,16 +330,16 @@ And use analogous process to upgrade the base and `snapd` snaps.
 
 ## Configuration backup
 
-Make sure to securely backup the snap-store-proxy configuration (including the
+Make sure to securely backup the enterprise-storeconfiguration (including the
 `proxy.device-auth.secret` used for signing/verifying the device sessions). The
 configuration can be exported with:
 
 ```bash
-sudo snap-store-proxy config > proxy-config-backup.txt
-sudo snap-store-proxy config proxy.device-auth.secret > proxy.device-auth.secret.txt
-sudo snap-store-proxy config proxy.auth.secret > proxy.auth.secret.txt
-sudo snap-store-proxy config proxy.key.private > proxy.key.private.txt
-sudo snap-store-proxy config proxy.tls.key > proxy.tls.key.txt
+sudo enterprise-storeconfig > proxy-config-backup.txt
+sudo enterprise-storeconfig proxy.device-auth.secret > proxy.device-auth.secret.txt
+sudo enterprise-storeconfig proxy.auth.secret > proxy.auth.secret.txt
+sudo enterprise-storeconfig proxy.key.private > proxy.key.private.txt
+sudo enterprise-storeconfig proxy.tls.key > proxy.tls.key.txt
 ```
 
 ## Limitations
