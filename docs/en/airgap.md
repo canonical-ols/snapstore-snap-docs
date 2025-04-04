@@ -124,7 +124,7 @@ sudo snap-store-proxy status
 ```
 
 If the registered store's location was an HTTPS one, follow the
-[HTTPS setup](https.md) instructions to configure the TLS certificate.
+[HTTPS setup](security.md) instructions to configure the TLS certificate.
 
 ## Brand store metadata import
 

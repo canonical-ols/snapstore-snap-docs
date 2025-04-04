@@ -41,5 +41,6 @@ pair can be viewed using:
 
 ## Next step
 
-Configure the proxy to [serve HTTPS](https.md) traffic if `--https` registration
-option was used, or proceed to [configure client devices](devices.md).
+Configure the proxy to [serve HTTPS](security.md) traffic if `--https`
+registration option was used, or proceed to [configure client
+devices](devices.md).
