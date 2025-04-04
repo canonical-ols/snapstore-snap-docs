@@ -73,7 +73,7 @@ core18 stable armhf is tracking upstream (revision 1706)
 
 ## Overrides API
 
-Alternatively, you can also manage overrides via a [REST API](api-overrides.md)
+Alternatively, you can also manage overrides via a [REST API](../reference/api-overrides.md)
 
 
 ## Command line tool
