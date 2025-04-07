@@ -1,4 +1,4 @@
-# Upgrade from Snap Store Proxy to Enterprise Store
+# Migrate from Snap Store Proxy to Enterprise Store
 
 [Snap Store Proxy](https://snapcraft.io/snap-store-proxy) has been renamed to [Enterprise Store](https://snapcraft.io/enterprise-store). The Snap Store Proxy snap will be maintained for the time being, but it is recommended to upgrade to the Enterprise Store snap.
 
