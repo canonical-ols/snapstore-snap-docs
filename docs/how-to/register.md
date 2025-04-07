@@ -11,11 +11,11 @@ To register the proxy, you will need to provide Ubuntu SSO credentials
 for the desired account you wish to link the proxy with, and answer
 some simple questions about your deployment:
 
-    sudo snap-proxy register --https
+    sudo enterprise-store register --https
 
 or:
 
-    sudo snap-proxy register
+    sudo enterprise-store register
 
 If the `--https` option is omitted, the resulting [assertion](devices.md)
 instructing client devices to use the proxy instead of the upstream store, will
@@ -23,7 +23,7 @@ instruct them to use HTTP to connect to the proxy instead of HTTPS.
 
 You can examine your proxy's registration status with:
 
-    snap-proxy status
+    enterprise-store status
 
 This will show the registration status of your proxy, as well as local
 status information of this server.
@@ -36,7 +36,7 @@ After successful registration it's advised to securely store the private key
 generated during the process. This key is your proxy's identity. The key
 pair can be viewed using:
 
-    sudo snap-proxy config proxy.key.public proxy.key.private
+    sudo enterprise-store config proxy.key.public proxy.key.private
 
 
 ## Next step

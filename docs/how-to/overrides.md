@@ -16,19 +16,19 @@ There are a few different ways to configure overrides.
 
 ## Proxy server
 
-To configure overrides from the proxy server, use the `snap-proxy` command.
+To configure overrides from the proxy server, use the `enterprise-store` command.
 
 To add an override:
 
-    sudo snap-proxy override <snap> <channel>=<revision>
+    sudo enterprise-store override <snap> <channel>=<revision>
 
 To list overrides currently in place:
 
-    sudo snap-proxy list-overrides <snap>
+    sudo enterprise-store list-overrides <snap>
 
 To remove all current overrides on a channel:
 
-    sudo snap-proxy delete-override <snap> <channel>
+    sudo enterprise-store delete-override <snap> <channel>
 
 ### Revisions and Architectures
 
@@ -51,11 +51,11 @@ supporting one architecture.
 
 ```
 # 1722 is one of the amd64 revisions of the core18 snap.
-$ sudo snap-proxy override core18 stable=1722
+$ sudo enterprise-store override core18 stable=1722
 core18 stable amd64 1722
 
 # 1725 is one of the armhf revisions of the core18 snap.
-$ sudo snap-proxy override core18 stable=1725
+$ sudo enterprise-store override core18 stable=1725
 core18 stable armhf 1725
 
 # We can see that we've overriden the stable channel revisions for both
@@ -87,13 +87,13 @@ administer overrides:
 Authentication is performed using Ubuntu SSO, and users need to be
 authorised from the CLI on the server using:
 
-    sudo snap-proxy add-admin becky@example.com
+    sudo enterprise-store add-admin becky@example.com
 
 On the client side, you authenticate by:
 
     snap-store-proxy-client login
 
-Overrides are managed in the same way as with the `snap-proxy` command
+Overrides are managed in the same way as with the `enterprise-store` command
 above, e.g.:
 
     snap-store-proxy-client list-overrides

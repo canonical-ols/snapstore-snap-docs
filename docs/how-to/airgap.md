@@ -47,7 +47,7 @@ regular [installation](install.md) and [registration](register.md) can be used
 followed by airgap mode activation:
 
 ```bash
-sudo snap-proxy enable-airgap-mode
+sudo enterprise-store enable-airgap-mode
 ```
 
 ```{note}
@@ -205,10 +205,10 @@ The above will export the following data:
 
 ### Brand store import
 
-The exported `store-export-*.tar.gz` file can be imported on the target on-prem host using the `snap-proxy push-store` command. Example:
+The exported `store-export-*.tar.gz` file can be imported on the target on-prem host using the `enterprise-store push-store` command. Example:
 
 ```
-sudo snap-proxy push-store \
+sudo enterprise-store push-store \
     /var/snap/snap-store-proxy/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
 
 ```

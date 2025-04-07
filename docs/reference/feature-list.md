@@ -19,7 +19,7 @@ title: Feature list
 
 * Management options
 
-    * `snap-proxy` CLI interface included with the
+    * `enterprise-store` CLI interface included with the
       [Enterprise Store](https://snapcraft.io/snap-store-proxy) snap
 
     * Remote management using the
@@ -35,7 +35,7 @@ is a requirement, even though Enterprise Store caches downloaded snap files,
 which substantially reduces internet traffic. There's currently no generally
 available offline mode for the Enterprise Store itself. See
 [Network Connectivity](../how-to/install.md#network-connectivity) for the
-`snap-proxy check-connections` command and the up-to-date
+`enterprise-store check-connections` command and the up-to-date
 [Network requirements for Snappy](https://forum.snapcraft.io/t/network-requirements-for-snappy/5147)
 post for a list of domains Enterprise Store needs access to.
 ```

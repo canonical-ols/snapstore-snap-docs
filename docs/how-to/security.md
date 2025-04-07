@@ -17,7 +17,7 @@ Obtain an x509 key and certificate pair for your Enterprise Store domain (as
 well as any relevant intermediate certificates if applicable). You can determine
 the domain by running:
 
-    snap-proxy config proxy.domain
+    enterprise-store config proxy.domain
 
 This name will be the subject and should be one of the alternative names on the
 certificate as well.
@@ -29,14 +29,14 @@ How to obtain the certificate/key pair is out of scope of this document.
 Running the below command will import the key/certificate pair (and any
 intermediate certificates as needed) and re-configure your Enterprise Store:
 
-    cat my.cert my.key [intermediate.cert ...]  | sudo snap-proxy import-certificate
+    cat my.cert my.key [intermediate.cert ...]  | sudo enterprise-store import-certificate
 
 For example when configuring a Let's Encrypt issued certificate, you'd want to
 include the key, the certificate and intermediate certificates. Since Let's
 Encrypt provides `fullchain.pem` that includes both the site and intermediate
 certificates, you can use:
 
-    cat fullchain.pem my.key | sudo snap-proxy import-certificate
+    cat fullchain.pem my.key | sudo enterprise-store import-certificate
 
 After this is done, TLS termination will be enabled, and any HTTP traffic to
 your Enterprise Store will be redirected to HTTPS. This command can be re-run as
@@ -93,7 +93,7 @@ Enterprise Store.
 
 At any time, you can use:
 
-    snap-proxy status
+    enterprise-store status
 
 to check the status of your Enterprise Store.
 

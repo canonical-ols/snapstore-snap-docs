@@ -21,7 +21,7 @@ Once `snapd` knows about the store assertion, you then have to configure it to u
 
 You can retrieve the `STORE_ID` using the status command on the Proxy server:
 
-    snap-proxy status
+    enterprise-store status
 
 ## Disconnecting devices
 
@@ -55,7 +55,7 @@ Since version 2.19 of the snap-store-proxy, the
 `proxy.device-auth.allowed-device-service-urls` setting can be used to control
 the list of allowed device services (Serial Vaults), e.g.:
 
-    sudo snap-proxy config \
+    sudo enterprise-store config \
         proxy.device-auth.allowed-device-service-urls='["https://sv1.internal", "https://sv2.internal"]'
 
 
