@@ -21,6 +21,7 @@ you to understand and adapt the steps to fit your specific requirements.
 | [Offline store](how-to/airgap.md)                | Deploy the Enterprise Store in an air-gapped environment                         |
 | [Model service](how-to/on-prem-model-service.md) | Configure an air-gapped Proxy for signing device serial requests      |
 | [Troubleshooting](how-to/trouble.md)             | Check Proxy configuration status and diagnose common issues           |
+| [Migrate](how-to/upgrade.md)                     | How to migrate from the Snap Store Proxy snap to the Enterprise Store snap             |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
 what the Proxy is capable of while helping you achieve specific aims.
