@@ -7,7 +7,7 @@ table_of_contents: true
 
 To check egress firewall rules:
 
-    snap-proxy check-connections
+    enterprise-store check-connections
 
 Logs are available in systemd logs:
 
@@ -18,30 +18,30 @@ or:
     journalctl -u 'snap.snap-store-proxy.*'
 
 
-The snap-proxy snap includes multiple systemd services, the status of
+The enterprise-store snap includes multiple systemd services, the status of
 which can be checked with:
 
-    snap-proxy status
+    enterprise-store status
 
 Or:
 
     sudo systemctl status -a 'snap.snap-store-proxy.*'
 
-To restart the snap-proxy services, run:
+To restart the enterprise-store services, run:
 
-    sudo snap restart snap-proxy
+    sudo snap restart enterprise-store
 
 The download cache is at `/var/snap/snap-store-proxy/current/nginx/cache`.
 The default limit is 2GB, this can be changed with:
 
-    sudo snap-proxy config proxy.cache.size=4096  # in mb
+    sudo enterprise-store config proxy.cache.size=4096  # in mb
 
 ## Moving to a new hostname
 
-If you need to move the snap-proxy to a new hostname, you can do:
+If you need to move the enterprise-store to a new hostname, you can do:
 
-    sudo snap-proxy config proxy.domain=NEWDOMAIN
-    sudo snap-proxy reregister
+    sudo enterprise-store config proxy.domain=NEWDOMAIN
+    sudo enterprise-store reregister
 
 This perform another registration cycle and update the assertion file
 with the new domain name.

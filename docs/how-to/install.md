@@ -18,7 +18,7 @@ To run the Enterprise Store, you will need:
 
 First, if your network requires an HTTPS proxy to get to the above
 domains, you must first configure `snapd` on the installation server to
-use that HTTPS proxy in order to be able to install the snap-store-proxy snap
+use that HTTPS proxy in order to be able to install the enterprise-store snap
 package.
 
 Do this by adding the appropriate environment variables (`http_proxy`,
@@ -32,14 +32,14 @@ Installing the stable release of the Enterprise Store is as simple as:
     sudo snap install snap-store-proxy
 
 This will install the snap, which provides a collection of systemd
-services, and the `snap-proxy` CLI tool to control the proxy.
+services, and the `enterprise-store` CLI tool to control the proxy.
 
 ## Domain configuration
 
 The Enterprise Store will require a domain or IP address to be set
 for the configuration and access by other devices, e.g.:
 
-    sudo snap-proxy config proxy.domain="snaps.myorg.internal"
+    sudo enterprise-store config proxy.domain="snaps.myorg.internal"
 
 This can be done after the database is created, but is required
 before registration can succeed.
@@ -82,7 +82,7 @@ Simple local Ubuntu setup can look like this:
 
 Once the database is prepared, set the connection string:
 
-    sudo snap-proxy config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db"
+    sudo enterprise-store config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db"
 
 After doing this, you will be prompted to enter the password for that PostgreSQL
 user.
@@ -94,12 +94,12 @@ user.
 You can check that the Proxy can access all the network locations it
 needs to with:
 
-    snap-proxy check-connections
+    enterprise-store check-connections
 
 If you require traffic between your Enterprise Store and the internet to go via
 another HTTP proxy, you can configure your Enterprise Store to do so with:
 
-    sudo snap-proxy config proxy.https.proxy="https://myproxy.internal:3128"
+    sudo enterprise-store config proxy.https.proxy="https://myproxy.internal:3128"
 
 Enterprise Store also uses the `https_proxy` environment variable if it's set.
 `http_proxy` is ignored as all outgoing traffic is encrypted.
@@ -111,20 +111,20 @@ root [CAs](https://en.wikipedia.org/wiki/Certificate_authority) from its base
 Ubuntu based snap.
 
 On Ubuntu, the system trust store can be modified using `update-ca-certificates`
-as needed and snap-store-proxy will honour these changes by default (it might
+as needed and enterprise-store will honour these changes by default (it might
 require a restart `sudo snap restart snap-store-proxy`).
 
 You can also override this default behaviour and configure your Enterprise Store
 to _only_ trust a specific list of CAs:
 
-    cat your-ca.crt another-ca.crt | sudo snap-proxy use-ca-certs
+    cat your-ca.crt another-ca.crt | sudo enterprise-store use-ca-certs
 
 This can be useful in cases when you want your Enterprise Store to only trust
 your internal CA for example.
 
 To reset the CA certificates back to the system defaults, run:
 
-    sudo snap-proxy remove-ca-certs
+    sudo enterprise-store remove-ca-certs
 
 ## Next step
 

@@ -25,11 +25,11 @@ In this setup, the local Charmhub does not directly access the registry; rather,
 
 The domain name and credentials are configured to override the default upstream domain and credentials, ensuring that charm OCI image paths are correctly served from your local setup.
 ```bash
-sudo snap-store-proxy config proxy.oci-registry.domain=<registry-domain>
+sudo enterprise-store config proxy.oci-registry.domain=<registry-domain>
 ```
 If required, set the credentials for registry access.
 ```bash
-sudo snap-store-proxy config proxy.oci-registry.username=some-username proxy.oci-registry.password=some-password
+sudo enterprise-store config proxy.oci-registry.username=some-username proxy.oci-registry.password=some-password
 ```
 
 ## Export packages
@@ -173,13 +173,13 @@ can be imported.
 Example of importing `charms-export-20240429T090849.tar.gz` from the previous example:
 
 ```bash
-sudo snap-store-proxy push-charms /var/snap/snap-store-proxy/common/charms-to-push/charms-export-20240429T090849.tar.gz
+sudo enterprise-store push-charms /var/snap/snap-store-proxy/common/charms-to-push/charms-export-20240429T090849.tar.gz
 ```
 
 Example of importing a `cos-lite` bundle:
 
 ```bash
-sudo snap-store-proxy push-charm-bundle /var/snap/snap-store-proxy/common/charms-to-push/cos-lite-20240401T172030.tar.gz
+sudo enterprise-store push-charm-bundle /var/snap/snap-store-proxy/common/charms-to-push/cos-lite-20240401T172030.tar.gz
 ```
 
 When re-importing charms or importing other revisions, make sure to provide the `--push-channel-map`.
@@ -209,12 +209,12 @@ First, you need to prepare the Juju configuration file. In this file, override t
 
 You can create a self signed certificate for the Enterprise Store with the following command:
 ```bash
-sudo snap-store-proxy import-certificate --selfsigned
+sudo enterprise-store import-certificate --selfsigned
 ```
 
 After it's created, you can retrieve the public key from the configuration:
 ```bash
-snap-store-proxy config proxy.tls.cert | cat > tls-cert.crt
+enterprise-store config proxy.tls.cert | cat > tls-cert.crt
 ```
 When using a self-signed certificate, it’s crucial to ensure that the underlying operating system where the Juju client is running trusts the certificate. You can achieve this by adding the certificate to the system's trusted store. 
 You can achieve that with the following commands:

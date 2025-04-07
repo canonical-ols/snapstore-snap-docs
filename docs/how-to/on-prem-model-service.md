@@ -94,9 +94,9 @@ Token 0:
     Label: SmartCard-HSM (UserPIN)
 ...
 
-$ sudo snap-proxy config proxy.hsm.token-label="SmartCard-HSM (UserPIN)"
+$ sudo enterprise-store config proxy.hsm.token-label="SmartCard-HSM (UserPIN)"
 
-$ sudo snap-proxy config proxy.hsm.token-pin=74656
+$ sudo enterprise-store config proxy.hsm.token-pin=74656
 ```
 
 ## Model Service CLI Usage
@@ -123,7 +123,7 @@ The `BRAND_ACCOUNT_ID` environment variable only needs to be set once; it will b
 ```{note}
 If a 4096-bit RSA key takes more than 15 seconds to generate on your hardware
 (e.g. Nitrokeys), then you would first have to extend the Proxy's internal service timeout:
-`sudo snap-store-proxy config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
+`sudo enterprise-store config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
 ```
 
 The key needs to be registered with the online Snap Store before it can sign serials:
@@ -145,7 +145,7 @@ snap known --remote account-key public-key-sha3-384=PPkB6XcYjkxzA9c6dXsaM0sg9r_d
 Copy the assertion to the Enterprise Store's `$SNAP_COMMON` directory on the Proxy host, then push the assertion to the Proxy:
 
 ```bash
-sudo snap-proxy push-account-keys /var/snap/snap-store-proxy/common/test-key.assert
+sudo enterprise-store push-account-keys /var/snap/snap-store-proxy/common/test-key.assert
 ```
 
 ```{note}

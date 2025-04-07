@@ -6,10 +6,10 @@ table_of_contents: true
 # API authentication
 
 Authentication with the API requires a valid Ubuntu SSO user. This user
-must be configured as an admin using the `snap-proxy` tool:
+must be configured as an admin using the `enterprise-store` tool:
 
 ```bash
-snap-proxy add-admin user@example.com
+enterprise-store add-admin user@example.com
 ```
 
 The Snap Store and Enterprise Store use macaroons for authentication,

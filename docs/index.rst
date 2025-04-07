@@ -25,11 +25,11 @@ connected system.
 .. grid:: 1 1 2 2
    
 
-   .. grid-item:: :doc:`How-to guides <en/how-to>`
+   .. grid-item:: :doc:`How-to guides <how-to>`
 
       Step-by-step guides covering key operations and common tasks.
 
-   .. grid-item:: :doc:`Reference <en/reference>`
+   .. grid-item:: :doc:`Reference <reference>`
 
       Technical information - specifications, APIs, architecture.
 
@@ -44,16 +44,20 @@ The Enterprise Store is a member of the Snap Store family. It's a project that w
 * `File a bug <https://bugs.launchpad.net/snapstore-server>`_
 * `Get support <https://ubuntu.com/support/community-support>`_
 
+Learn more about how the Enterprise Store overcomes challenges presented by
+restricted networks and management policies from this
+`whitepaper on Enterprise Snap Management <https://ubuntu.com/engage/enterprise-snap-management>`_.
+
 Thinking about deploying the Enterprise Store in your enterprise? `Get in touch! <https://ubuntu.com/core/services/contact-us>`_
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   How-to <en/how-to>
+   How-to <how-to>
 
 .. toctree::
    :maxdepth: 2
    :hidden:
 
-   Reference <en/reference>
+   Reference <reference>
