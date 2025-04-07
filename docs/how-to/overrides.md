@@ -42,7 +42,7 @@ set for.
 
 Revisions for specific snaps can be looked up using the `snap info` command,
 which lists currently available revisions for the architecture of the device
-running this command. Snap Stores Devices API
+running this command. Snap Store's Devices API
 [snaps_info](https://api.snapcraft.io/docs/info.html) endpoint can also be used
 to obtain available revisions for selected architectures.
 
@@ -60,20 +60,20 @@ core18 stable armhf 1725
 
 # We can see that we've overriden the stable channel revisions for both
 # amd64 and armhf and that both upstream counterparts ar at lower revisions.
-$ sudo snap-store-proxy list-overrides core18
+$ sudo enterprise-store list-overrides core18
 core18 stable amd64 1722 (upstream 1705)
 core18 stable armhf 1725 (upstream 1706)
 
 # Deleting a channel-specific override deletes overrides for all revisions
 # and architectures.
-$ sudo snap-store-proxy delete-override core18 stable
+$ sudo enterprise-store delete-override core18 stable
 core18 stable amd64 is tracking upstream (revision 1705)
 core18 stable armhf is tracking upstream (revision 1706)
 ```
 
 ## Overrides API
 
-Alternatively, you can also manage overrides via a [REST API](api-overrides.md)
+Alternatively, you can also manage overrides via a [REST API](../reference/api-overrides.md)
 
 
 ## Command line tool

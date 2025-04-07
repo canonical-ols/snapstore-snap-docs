@@ -18,7 +18,7 @@ To run the Enterprise Store, you will need:
 
 First, if your network requires an HTTPS proxy to get to the above
 domains, you must first configure `snapd` on the installation server to
-use that HTTPS proxy in order to be able to install the snap-store-proxy snap
+use that HTTPS proxy in order to be able to install the enterprise-store snap
 package.
 
 Do this by adding the appropriate environment variables (`http_proxy`,
@@ -111,7 +111,7 @@ root [CAs](https://en.wikipedia.org/wiki/Certificate_authority) from its base
 Ubuntu based snap.
 
 On Ubuntu, the system trust store can be modified using `update-ca-certificates`
-as needed and snap-store-proxy will honour these changes by default (it might
+as needed and enterprise-store will honour these changes by default (it might
 require a restart `sudo snap restart snap-store-proxy`).
 
 You can also override this default behaviour and configure your Enterprise Store

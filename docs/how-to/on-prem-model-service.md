@@ -123,7 +123,7 @@ The `BRAND_ACCOUNT_ID` environment variable only needs to be set once; it will b
 ```{note}
 If a 4096-bit RSA key takes more than 15 seconds to generate on your hardware
 (e.g. Nitrokeys), then you would first have to extend the Proxy's internal service timeout:
-`sudo snap-store-proxy config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
+`sudo enterprise-store config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
 ```
 
 The key needs to be registered with the online Snap Store before it can sign serials:

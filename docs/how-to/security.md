@@ -46,11 +46,11 @@ needed.
 
 The TLS certificate above may be self signed or ultimately signed by a self
 signed root CA that is not included in the system certificate store on your
-client snap devices or the snap-store-proxy host itself. If this is true, then
+client snap devices or the enterprise-store host itself. If this is true, then
 you need to make sure that the self signed certificates in question are added
 to:
 
-* the system certificate store on the snap-store-proxy host,
+* the system certificate store on the enterprise-store host,
 
 * as well as its client devices.
 
@@ -63,21 +63,21 @@ question in a specific directory:
 
     sudo update-ca-certificates
 
-If this is being done on the snap-store-proxy host, the snap-store-proxy has to be restarted:
+If this is being done on the enterprise-store host, the enterprise-store has to be restarted:
 
     sudo snap restart snap-store-proxy
 
-After that, snap-store-proxy will be able to verify its status correctly.
+After that, enterprise-store will be able to verify its status correctly.
 
 For client machines, `snapd` has to be restarted:
 
     sudo systemctl restart snapd
 
 After that, `snapd` on the client device will be able to successfully verify the
-snap-store-proxy certificate.
+enterprise-store certificate.
 
 A more robust method of ensuring that client devices can talk to the
-snap-store-proxy using a self signed certificate or one issued by a self signed
+enterprise-store using a self signed certificate or one issued by a self signed
 root is to configure the certificate in question using `snapd` itself:
 
     sudo snap set system store-certs.cert1="$(cat /path/to/my-cert-or-ca-cert.crt)"
@@ -134,7 +134,7 @@ The Enterprise Store requires network access to the PostgreSQL database. To find
 out the address of currently configured database:
 
 ```
-$ snap-store-proxy config | grep db\.connection
+$ enterprise-store config | grep db\.connection
 proxy.db.connection: postgresql://snapproxy:<redacted>@10.126.46.135:5432/snapproxy
 ```
 
@@ -167,7 +167,7 @@ forwarding proxy (like Squid) to proxy any outgoing HTTPS traffic.
 Example:
 
 ```
-$ sudo snap-store-proxy config proxy.https.proxy=http://squid.internal:3128
+$ sudo enterprise-store config proxy.https.proxy=http://squid.internal:3128
 $ sudo ufw allow out from any to <squid IP address> 3128
 ```
 

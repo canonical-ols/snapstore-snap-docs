@@ -9,11 +9,10 @@ authentication mechanism), and other supplementary reference materials.
 
 | **Reference**                               | How the Proxy works                                                      |
 |---------------------------------------------|--------------------------------------------------------------------------|
-| [Overrides API](api-overrides.md)           | API specs for the Overrides API                                          |
-| [API authentication](api-authentication.md) | API authentication for Proxy admins when using the Overrides API         |
-| [Feature list](feature-list.md)             | A summarised list of features of the Proxy                               |
-| [Product whitepaper](whitepaper.md)         | Whitepaper on managing snaps in an enterprise environment with the Proxy |
-| [Cryptography](cryptography.md)             | An Outline of the usage of cryptographic technology                      |
+| [Overrides API](reference/api-overrides.md)           | API specs for the Overrides API                                          |
+| [API authentication](reference/api-authentication.md) | API authentication for Proxy admins when using the Overrides API         |
+| [Feature list](reference/feature-list.md)             | A summarised list of features of the Proxy                               |
+| [Cryptography](reference/cryptography.md)             | An Outline of the usage of cryptographic technology                      |
 
 Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
 what the Proxy is capable of while helping you achieve specific aims.
@@ -32,9 +31,8 @@ section enables you to expand your knowledge.
     :maxdepth: 1
     :caption: Table of contents 
 
-    api-overrides
-    api-authentication
-    feature-list
-    whitepaper
-    cryptography
+    reference/api-overrides
+    reference/api-authentication
+    reference/feature-list
+    reference/cryptography
 ```
