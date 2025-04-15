@@ -65,7 +65,7 @@ question in a specific directory:
 
 If this is being done on the enterprise-store host, the enterprise-store has to be restarted:
 
-    sudo snap restart snap-store-proxy
+    sudo snap restart enterprise-store
 
 After that, enterprise-store will be able to verify its status correctly.
 

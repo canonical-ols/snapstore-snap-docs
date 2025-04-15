@@ -14,7 +14,7 @@ The following requirements need to be met to use the on-prem Model Service:
 - A PKCS#11-compatible Hardware Security Module (HSM) or Smart Card.
 - The PKCS#11 module / shared library for the hardware. e.g. `opensc-pkcs11.so`
 - The Enterprise Store host machine must run Ubuntu 22.04 (Jammy) with the `p11-kit` and `gnutls-bin` packages installed.
-- Revision 99 of `snap-store-proxy` and revision 28 of `store-admin`, or newer.
+- Revision 99 of `snap-store-proxy` and revision 28 of `store-admin`, or newer. All `enterprise-store` revisions are supported.
 
 The supported way to manage models, signing keys, and serial policies in the on-prem Model Service is via the `store-admin` snap.
 
@@ -68,19 +68,19 @@ $ p11tool --provider "/usr/lib/x86_64-linux-gnu/opensc-pkcs11.so" --list-token-u
 pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=DENK0300972
 ```
 
-Start the server, ensuring that the Unix socket runs under `/var/snap/snap-store-proxy/common/pkcs11`. See the p11-kit [documentation](https://p11-glue.github.io/p11-glue/p11-kit/manual/) for other configuration options.
+Start the server, ensuring that the Unix socket runs under `/var/snap/enterprise-store/common/pkcs11`. See the p11-kit [documentation](https://p11-glue.github.io/p11-glue/p11-kit/manual/) for other configuration options.
 
 ```bash
-$ sudo p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=DENK0300972" -n "/var/snap/snap-store-proxy/common/pkcs11" -f
+$ sudo p11-kit server --provider /usr/lib/x86_64-linux-gnu/opensc-pkcs11.so "pkcs11:model=PKCS%2315%20emulated;manufacturer=www.CardContact.de;serial=DENK0300972" -n "/var/snap/enterprise-store/common/pkcs11" -f
 
-P11_KIT_SERVER_ADDRESS=unix:path=/var/snap/snap-store-proxy/common/pkcs11; export P11_KIT_SERVER_ADDRESS;
+P11_KIT_SERVER_ADDRESS=unix:path=/var/snap/enterprise-store/common/pkcs11; export P11_KIT_SERVER_ADDRESS;
 P11_KIT_SERVER_PID=26963; export P11_KIT_SERVER_PID;
 ```
 
 Restart the Model Service (this needs to be done each time the p11-kit server is restarted):
 
 ```bash
-snap restart snap-store-proxy.snapmodels
+snap restart enterprise-store.snapmodels
 ```
 
 ### Enterprise Store configuration
@@ -145,7 +145,7 @@ snap known --remote account-key public-key-sha3-384=PPkB6XcYjkxzA9c6dXsaM0sg9r_d
 Copy the assertion to the Enterprise Store's `$SNAP_COMMON` directory on the Proxy host, then push the assertion to the Proxy:
 
 ```bash
-sudo enterprise-store push-account-keys /var/snap/snap-store-proxy/common/test-key.assert
+sudo enterprise-store push-account-keys /var/snap/enterprise-store/common/test-key.assert
 ```
 
 ```{note}

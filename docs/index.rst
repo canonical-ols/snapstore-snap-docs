@@ -39,7 +39,7 @@ Project and community
 
 The Enterprise Store is a member of the Snap Store family. It's a project that welcomes suggestions, fixes and constructive feedback.
 
-* `Get the Enterprise Store as a snap <https://snapcraft.io/snap-store-proxy>`_
+* `Get the Enterprise Store as a snap <https://snapcraft.io/enterprise-store>`_
 * `Join the Discourse forum <https://forum.snapcraft.io/c/store/16>`_
 * `File a bug <https://bugs.launchpad.net/snapstore-server>`_
 * `Get support <https://ubuntu.com/support/community-support>`_
