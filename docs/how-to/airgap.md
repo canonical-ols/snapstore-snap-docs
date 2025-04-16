@@ -209,7 +209,7 @@ The exported `store-export-*.tar.gz` file can be imported on the target on-prem 
 
 ```
 sudo enterprise-store push-store \
-    /var/snap/snap-store-proxy/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
+    /var/snap/enterprise-store/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
 
 ```
 
@@ -255,13 +255,13 @@ the relevant brand.
 ### Importing (pushing) snaps
 
 Once the snap bundles are on the on-prem store host, they should be moved to the
-`/var/snap/snap-store-proxy/common/snaps-to-push/` directory, from where they
+`/var/snap/enterprise-store/common/snaps-to-push/` directory, from where they
 can be imported.
 
 Example of importing a `jq.tar.gz` snap bundle on the air-gapped proxy host:
 
 ```bash
-sudo enterprise-store push-snap /var/snap/snap-store-proxy/common/snaps-to-push/jq-20200406T103511.tar.gz
+sudo enterprise-store push-snap /var/snap/enterprise-store/common/snaps-to-push/jq-20200406T103511.tar.gz
 ```
 
 The `jq` snap is now available for installation from this air-gapped Enterprise
@@ -321,8 +321,8 @@ Same can be done for its base snap `core22` and for the `snapd` snap itself.
 Then move the files over to the offline enterprise-store machine and:
 
 ```bash
-sudo snap ack snap-store-proxy_<revision>.assert
-sudo snap install snap-store-proxy_<revision>.snap
+sudo snap ack enterprise-store_<revision>.assert
+sudo snap install enterprise-store_<revision>.snap
 ```
 
 And use analogous process to upgrade the base and `snapd` snaps.
@@ -354,5 +354,5 @@ Enterprise Store or the SaaS Snap Store. Some of the missing features are:
 * `validation` and `validation-set` assertions are not supported.
   
   ```{note}
-     Customers requiring finer control over which snap revisions are refreshed on devices connected to an air-gapped store should use [Snap revision overrides]( https://documentation.ubuntu.com/snap-store-proxy/en/overrides/) or use a device management system like [Landscape](https://ubuntu.com/landscape/docs).
+     Customers requiring finer control over which snap revisions are refreshed on devices connected to an air-gapped store should use [Snap revision overrides](https://documentation.ubuntu.com/enterprise-store/main/how-to/overrides/) or use a device management system like [Landscape](https://ubuntu.com/landscape/docs).
   ```

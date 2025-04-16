@@ -167,19 +167,19 @@ The `skopeo` commands above pushes the image to the same path in the local regis
 
 ## Import Packages
 Once the exported charm tar file is on the on-prem store host, they should be moved to the
-`/var/snap/snap-store-proxy/common/charms-to-push/` directory, from where they
+`/var/snap/enterprise-store/common/charms-to-push/` directory, from where they
 can be imported.
 
 Example of importing `charms-export-20240429T090849.tar.gz` from the previous example:
 
 ```bash
-sudo enterprise-store push-charms /var/snap/snap-store-proxy/common/charms-to-push/charms-export-20240429T090849.tar.gz
+sudo enterprise-store push-charms /var/snap/enterprise-store/common/charms-to-push/charms-export-20240429T090849.tar.gz
 ```
 
 Example of importing a `cos-lite` bundle:
 
 ```bash
-sudo enterprise-store push-charm-bundle /var/snap/snap-store-proxy/common/charms-to-push/cos-lite-20240401T172030.tar.gz
+sudo enterprise-store push-charm-bundle /var/snap/enterprise-store/common/charms-to-push/cos-lite-20240401T172030.tar.gz
 ```
 
 When re-importing charms or importing other revisions, make sure to provide the `--push-channel-map`.

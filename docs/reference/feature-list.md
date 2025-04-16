@@ -20,7 +20,7 @@ title: Feature list
 * Management options
 
     * `enterprise-store` CLI interface included with the
-      [Enterprise Store](https://snapcraft.io/snap-store-proxy) snap
+      [Enterprise Store](https://snapcraft.io/enterprise-store) snap
 
     * Remote management using the
       [Enterprise Store Client](https://snapcraft.io/snap-store-proxy-client)

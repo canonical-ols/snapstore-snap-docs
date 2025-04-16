@@ -11,11 +11,11 @@ To check egress firewall rules:
 
 Logs are available in systemd logs:
 
-    snap logs snap-store-proxy
+    snap logs enterprise-store
 
 or:
 
-    journalctl -u 'snap.snap-store-proxy.*'
+    journalctl -u 'snap.enterprise-store.*'
 
 
 The enterprise-store snap includes multiple systemd services, the status of
@@ -25,13 +25,13 @@ which can be checked with:
 
 Or:
 
-    sudo systemctl status -a 'snap.snap-store-proxy.*'
+    sudo systemctl status -a 'snap.enterprise-store.*'
 
 To restart the enterprise-store services, run:
 
     sudo snap restart enterprise-store
 
-The download cache is at `/var/snap/snap-store-proxy/current/nginx/cache`.
+The download cache is at `/var/snap/enterprise-store/current/nginx/cache`.
 The default limit is 2GB, this can be changed with:
 
     sudo enterprise-store config proxy.cache.size=4096  # in mb

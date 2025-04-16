@@ -51,7 +51,7 @@ By default Enterprise Store allows only the
 through it.
 ```
 
-Since version 2.19 of the snap-store-proxy, the
+Since version 2.19 of the enterprise-store, the
 `proxy.device-auth.allowed-device-service-urls` setting can be used to control
 the list of allowed device services (Serial Vaults), e.g.:
 

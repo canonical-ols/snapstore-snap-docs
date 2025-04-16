@@ -29,7 +29,7 @@ Do this by adding the appropriate environment variables (`http_proxy`,
 
 Installing the stable release of the Enterprise Store is as simple as:
 
-    sudo snap install snap-store-proxy
+    sudo snap install enterprise-store
 
 This will install the snap, which provides a collection of systemd
 services, and the `enterprise-store` CLI tool to control the proxy.
@@ -112,7 +112,7 @@ Ubuntu based snap.
 
 On Ubuntu, the system trust store can be modified using `update-ca-certificates`
 as needed and enterprise-store will honour these changes by default (it might
-require a restart `sudo snap restart snap-store-proxy`).
+require a restart `sudo snap restart enterprise-store`).
 
 You can also override this default behaviour and configure your Enterprise Store
 to _only_ trust a specific list of CAs:
