@@ -1,37 +1,25 @@
-Canonical's Sphinx Starter Pack
-===============================
+Enterprise Store documentation
+==============================
 
-*A pre-configured repository to build and publish documentation with Sphinx.*
+This repository contains documentation for Canonical's Enterprise Store.
 
-Description
------------
+The Enterprise Store provides an on-premise edge proxy to the public Snap
+Store and Charmhub for your devices.
 
-The Documentation starter pack includes:
+This set of documentation uses Canonical's [Sphinx starter pack](https://github.com/canonical/sphinx-docs-starter-pack) as a base.
 
-* A bundled Sphinx_ theme, configuration, and extensions
-* Support for both reStructuredText (reST) and MyST Markdown
-* Build checks for links, spelling, and inclusive language
-* Customisation support layered over a core configuration
+Project and community
+---------------------
 
-See the full documentation: https://canonical-starter-pack.readthedocs-hosted.com/
+The Enterprise Store is a member of the Snap Store family. It's a project that welcomes suggestions, fixes and constructive feedback.
 
-Structure
----------
+* `Get the Enterprise Store as a snap <https://snapcraft.io/enterprise-store>`_
+* `Join the Discourse forum <https://forum.snapcraft.io/c/store/16>`_
+* `File a bug <https://bugs.launchpad.net/snapstore-server>`_
+* `Get support <https://ubuntu.com/support/community-support>`_
 
-This section outlines the structure of this repository, and some key files.
+Learn more about how the Enterprise Store overcomes challenges presented by
+restricted networks and management policies from this
+`whitepaper on Enterprise Snap Management <https://ubuntu.com/engage/enterprise-snap-management>`_.
 
-
-docs
-****
-
-This directory contains the documentation for the starter pack itself.
-To view it in your browser, change to this directory and type `make run`.
-
-tests
-*****
-
-This directory contains files used to test the functionality of the starter pack project.
-
-.. LINKS
-
-.. _`Sphinx`: https://www.sphinx-doc.org/
+Thinking about deploying the Enterprise Store in your enterprise? `Get in touch! <https://ubuntu.com/core/services/contact-us>`_
