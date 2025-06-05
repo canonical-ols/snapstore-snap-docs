@@ -1,7 +1,7 @@
 Enterprise Store documentation
 ==============================
 
-The **Enterprise Store** provides an on-premise edge proxy to the general
+The **Enterprise Store** (formerly Snap Store Proxy) provides an on-premise edge proxy to the general
 `Snap Store <https://snapcraft.io/store>`_ for your devices.
 
 Devices are registered with the Proxy, and all communication with the Snap Store will
