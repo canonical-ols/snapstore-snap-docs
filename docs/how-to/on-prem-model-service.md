@@ -26,7 +26,7 @@ Currently, only PKCS#11-compatible hardware can be used for key generation and s
 
 ## Setup
 
-This section assumes that the Enterprise Store has been installed and configured in air-gapped mode and that the Brand Store has been imported, as per the installation steps in the [Offline store section](airgap.md#installation). On Brand Store import, the Brand account and admin user will be automatically set up in the Model Service.
+This section assumes that the Enterprise Store has been installed and configured in air-gapped mode and that the Dedicated Snap Store has been imported, as per the installation steps in the [Offline store section](airgap.md#installation). On Dedicated Snap Store import, the brand account and admin user will be automatically set up in the Model Service.
 
 ### Store admin token
 
@@ -44,9 +44,9 @@ Admin token usage:
     export STORE_ADMIN_TOKEN=$(cat /home/ubuntu/snap/store-admin/common/export/store-export-myDeviceViewStoreID-20240109T123041.macaroon)
 ```
 
-As outlined in the [air-gapped store setup instructions](airgap.md#brand-store-export), the account-key assertion for the key(s) used to [sign the model assertion(s)](https://ubuntu.com/core/docs/sign-model-assertion) must also be exported and pushed to the Proxy. Include them in the store export bundle by specifying the `--key` flag for each account-key SHA3-384.
+As outlined in the [air-gapped store setup instructions](airgap.md#dedicated-snap-store-export), the account-key assertion for the key(s) used to [sign the model assertion(s)](https://ubuntu.com/core/docs/sign-model-assertion) must also be exported and pushed to the Proxy. Include them in the store export bundle by specifying the `--key` flag for each account-key SHA3-384.
 
-[Import the store bundle on the Proxy](airgap.md#brand-store-import), then login to the air-gapped store from the admin machine:
+[Import the store bundle on the Proxy](airgap.md#dedicated-snap-store-import), then login to the air-gapped store from the admin machine:
 
 ```bash
 $ store-admin login --offline <http-location-of-the-store> <same-email-as-in-export-store>

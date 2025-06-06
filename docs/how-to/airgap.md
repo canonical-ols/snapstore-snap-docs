@@ -24,19 +24,19 @@ Proxy operators side-load all necessary snaps and other metadata into their
 local store by exporting them from the SaaS store first and then importing into
 their offline store.
 
-### Brand Store support
+### Dedicated Snap Store support
 
-[Brand Store](https://ubuntu.com/core/docs/store-overview)
-(also known as [IoT App Store](https://ubuntu.com/internet-of-things/appstore))
+[Dedicated Snap Store](https://ubuntu.com/core/docs/store-overview)
+(also known as [IoT App Store](https://ubuntu.com/internet-of-things/appstore), or Brand Store)
 customers can use the Enterprise Store in offline mode to securely serve updates
 to their fleet of devices.
 
-Operators can import their brand store snaps (including any essential and other
-snaps included from the global store in their brand store) to their on-prem
+Operators can import their Dedicated Snap Store snaps (including any essential and other
+snaps included from the global store in their Dedicated Snap Store) to their on-prem
 store.
 
 Devices with valid serial assertions for models belonging to a specific brand
-can authenticate to their on-prem store and get access to imported brand store
+can authenticate to their on-prem store and get access to imported Dedicated Snap Store
 snaps. These snaps may not be accessible to any other devices connecting to that
 on-prem store.
 
@@ -126,11 +126,11 @@ sudo enterprise-store status
 If the registered store's location was an HTTPS one, follow the
 [HTTPS setup](security.md) instructions to configure the TLS certificate.
 
-## Brand store metadata import
+## Dedicated Snap Store metadata import
 
 ```{warning}
-    This section is relevant for brand store customers wanting to host their
-    brand store snaps offline and can be skipped if the offline store only has
+    This section is relevant for Dedicated Snap Store customers wanting to host their
+    Dedicated Snap Store snaps offline and can be skipped if the offline store only has
     to support Global store client devices (eg. generic devices).
 ```
 
@@ -146,16 +146,16 @@ used for signing brand devices'
 [serials](https://ubuntu.com/core/docs/reference/assertions/serial) have to be
 registered with the SaaS Snap Store using `snapcraft register-key` (by the brand
 account) prior to the export in order for the on-prem store to be able to
-authenticate brand store devices.
+authenticate Dedicated Snap Store devices.
 
 The store export and import steps can be repeated to "synchronise" the data
 and/or snaps from the SaaS store as needed.
 
-### Brand store export
+### Dedicated Snap Store export
 
-To export brand store metadata needed for import to the on-prem store, the
+To export Dedicated Snap Store metadata needed for import to the on-prem store, the
 `store-admin export store` command can be used on a machine with internet
-access. Authentication using an account with *Admin* role for the brand store in
+access. Authentication using an account with *Admin* role for the Dedicated Snap Store in
 question is required. Example:
 
 ```
@@ -203,7 +203,7 @@ The above will export the following data:
   fashion).
 
 
-### Brand store import
+### Dedicated Snap Store import
 
 The exported `store-export-*.tar.gz` file can be imported on the target on-prem host using the `enterprise-store push-store` command. Example:
 
