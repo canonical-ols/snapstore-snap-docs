@@ -21,7 +21,7 @@ Client devices connect to the offline store. The local store doesn't directly
 contact the general SaaS Snap Store nor the internet.
 
 Proxy operators side-load all necessary snaps and other metadata into their
-local store by exporting them from the SaaS store first and then importing into
+local store by exporting them from the SaaS Snap Store first and then importing into
 their offline store.
 
 ### Dedicated Snap Store support
@@ -136,7 +136,7 @@ If the registered store's location was an HTTPS one, follow the
 
 On-prem stores need various data (assertions, snap binaries and metadata,
 account information) - produced by the upstream Snap Store - to function. This
-data has to be exported from the SaaS IoT App store and imported into the
+data has to be exported from the Dedicated Snap store and imported into the
 on-prem store at least once.
 
 Any
@@ -144,12 +144,12 @@ Any
 used for signing brand devices'
 [models](https://ubuntu.com/core/docs/reference/assertions/model) and
 [serials](https://ubuntu.com/core/docs/reference/assertions/serial) have to be
-registered with the SaaS Snap Store using `snapcraft register-key` (by the brand
+registered with the general SaaS Snap Store using `snapcraft register-key` (by the brand
 account) prior to the export in order for the on-prem store to be able to
 authenticate Dedicated Snap Store devices.
 
 The store export and import steps can be repeated to "synchronise" the data
-and/or snaps from the SaaS store as needed.
+and/or snaps from the SaaS stores as needed.
 
 ### Dedicated Snap Store export
 
@@ -188,7 +188,7 @@ Store data exported to: /home/ubuntu/snap/store-admin/common/export/store-export
 
 The above will export the following data:
 
-- SaaS IoT App Stores' (device view store and its parent) metadata,
+- Dedicated Snap Store (device view store and its parent) metadata.
 
 - Registered public keys in form of account-key assertions for key IDs specified
   with the `--key` option. Make sure to include the keys used for signing client
@@ -247,7 +247,7 @@ By default snaps are exported from the Global store, and then imported as
 such, meaning that any device connected to the on-prem store will be able to
 install them (if it's configured to use the default Global store).
 `store-admin export snaps` has a `--store` option allowing for authenticated
-export of snaps from private device-view IoT App Stores - after importing
+export of snaps from private device-view Dedicated Snap Stores - after importing
 these, snaps will be accessible only to properly authenticated devices from
 the relevant brand.
 ```
@@ -345,7 +345,7 @@ sudo enterprise-store config proxy.tls.key > proxy.tls.key.txt
 ## Limitations
 
 Offline mode provides only a subset of the core functionality of the online
-Enterprise Store or the SaaS Snap Store. Some of the missing features are:
+Enterprise Store or the SaaS stores. Some of the missing features are:
 
 * Searching for snaps
 
