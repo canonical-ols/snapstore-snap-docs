@@ -166,8 +166,8 @@ slug = "enterprise-store"
 
 # Template and asset locations
 
-html_static_path = [".sphinx/_static"]
-templates_path = [".sphinx/_templates"]
+html_static_path = ["_static"]
+templates_path = ["_templates"]
 
 #######################
 # Sitemap configuration: https://sphinx-sitemap.readthedocs.io/
@@ -274,13 +274,15 @@ exclude_patterns = [
 # Adds custom CSS files, located under 'html_static_path'
 
 html_css_files = [
-    "css/pdf.css",
+    "css/cookie-banner.css",
 ]
 
 
 # Adds custom JavaScript files, located under 'html_static_path'
 
-# html_js_files = []
+html_js_files = [
+    "js/bundle.js"
+]
 
 # By default, the documentation includes a feedback button at the top.
 # You can disable it by setting the following configuration to True.
