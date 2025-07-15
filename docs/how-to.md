@@ -23,14 +23,8 @@ you to understand and adapt the steps to fit your specific requirements.
 | [Troubleshooting](how-to/trouble.md)             | Check Proxy configuration status and diagnose common issues           |
 | [Migrate](how-to/migrate.md)                     | How to migrate from the Snap Store Proxy snap to the Enterprise Store snap             |
 
-Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
-what the Proxy is capable of while helping you achieve specific aims.
-
 Take a look at our *Reference* section for technical details (such as the Overrides API
 specs and authentication mechanism), and other supplementary reference materials.
-
-Finally, for a better understanding of how the Enterprise Store works, our *Explanation*
-section enables you to expand your knowledge.
 
 ```{eval-rst}
 .. toctree::

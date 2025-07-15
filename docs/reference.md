@@ -14,16 +14,10 @@ authentication mechanism), and other supplementary reference materials.
 | [Feature list](reference/feature-list.md)             | A summarised list of features of the Proxy                               |
 | [Cryptography](reference/cryptography.md)             | An Outline of the usage of cryptographic technology                      |
 
-Alternatively, our *Tutorials* section contain step-by-step tutorials to help outline
-what the Proxy is capable of while helping you achieve specific aims.
-
 If you have a specific goal, but are already familiar with the Enterprise Store,
 our *How-to* guides have more in-depth detail than our tutorials and can be applied to
 a broader set of applications. They’ll help you achieve an end result but may require
 you to understand and adapt the steps to fit your specific requirements.
-
-Finally, for a better understanding of how the Enterprise Store works, our *Explanation*
-section enables you to expand your knowledge.
 
 ```{eval-rst}
 .. toctree::
