@@ -121,11 +121,11 @@ html_context = {
     # Your Mattermost channel URL
     #
     # TODO: Change to your Mattermost channel URL or leave empty.
-    "mattermost": "https://chat.canonical.com/canonical/channels/documentation",
+    #"mattermost": "https://chat.canonical.com/canonical/channels/documentation",
     # Your Matrix channel URL
     #
     # TODO: Change to your Matrix channel URL or leave empty.
-    "matrix": "https://matrix.to/#/#documentation:ubuntu.com",
+    #"matrix": "https://matrix.to/#/#documentation:ubuntu.com",
     # Your documentation GitHub repository URL
     #
     # TODO: Change to your documentation GitHub repository URL or leave empty.
@@ -147,7 +147,7 @@ html_context = {
     # Valid options: none, prev, next, both
     # "sequential_nav": "both",
     # TODO: To enable listing contributors on individual pages, set to True
-    "display_contributors": True,
+    "display_contributors": False,
 
     # Controls time frame for showing the contributors
     "display_contributors_since": "",
