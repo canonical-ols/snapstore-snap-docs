@@ -187,6 +187,12 @@ if 'READTHEDOCS_VERSION' in os.environ:
 else:
     sitemap_url_scheme = 'VERSION/{link}'
 
+sitemap_excludes = [
+    "genindex/",
+    "404/",
+    "search/",
+]
+
 #############
 # Redirects #
 #############
