@@ -330,12 +330,3 @@ not changed. For example:
 In the case of divergent configuration, you should replicate
 the desired configuration across the units, following the YAML
 export/import instructions from above.
-
-<!-- TODO: docs on upgrading snap units -->
-<!--
-TODO: docs on migrating existing data from a single-unit ES.
-Consider taking the end-state of Gravity's tutorial and then
-migrating from there.
-
-snapstorage PG DB would collide with UUIDs. Copy blobs from local into S3?
--->
