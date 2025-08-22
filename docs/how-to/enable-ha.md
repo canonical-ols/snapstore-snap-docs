@@ -179,13 +179,14 @@ Reverse proxies like HAProxy or NGINX are situated between clients
 and the backend Enterprise Store units. They need to be configured
 correctly to interact with the backend units.
 
-Reverse proxies must set the `X-Forwarded-Proto` HTTP header
-appropriately depending the protocol used by the client. Unsupported
-protocols should be denied. For example, if you don't want to handle
-unencrypted HTTP traffic with clients, then the reverse proxy should
-deny the request (or upgrade the connection to HTTPS). Clients should
-not be able to directly set the `X-Forwarded-Proto` header in their
-requests; only the reverse proxy should.
+Reverse proxies must set the `X-Forwarded-Proto` HTTP
+header appropriately depending the protocol used by the client
+(`http`/`https`). Unsupported protocols should be denied. For example,
+if you don't want to handle unencrypted HTTP traffic with clients,
+then the reverse proxy should deny the request (or upgrade the
+connection to HTTPS). Clients should not be able to directly set
+the `X-Forwarded-Proto` header in their requests; only the reverse
+proxy should.
 
 Reverse proxies should also specify the relevant backend units in
 the configuration.
@@ -198,6 +199,9 @@ frontend my_frontend
   bind *:443 ssl crt /etc/ssl/private/reverse-proxy.pem
   # Set the X-Forwarded-Proto header appropriately
   http-request add-header X-Forwarded-Proto https if { ssl_fc }
+  # Uncomment and use section below if using HTTP instead
+  # bind *:80
+  # http-request add-header X-Forwarded-Proto http if !{ ssl_fc }
   default_backend web_servers
 
 backend web_servers
