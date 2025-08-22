@@ -22,7 +22,8 @@ you to understand and adapt the steps to fit your specific requirements.
 | [Model service](how-to/on-prem-model-service.md) | Configure an air-gapped Proxy for signing device serial requests      |
 | [Troubleshooting](how-to/trouble.md)             | Check Proxy configuration status and diagnose common issues           |
 | [Migrate](how-to/migrate.md)                     | How to migrate from the Snap Store Proxy snap to the Enterprise Store snap             |
-| [Enable High-Availability (HA)](how-to/enable-ha.md)                     | How to enable High-Availability for the Enterprise Store |
+| [Enable High-Availability (HA)](how-to/high-availability.md)                     | How to enable High-Availability for the Enterprise Store |
+
 Take a look at our *Reference* section for technical details (such as the Overrides API
 specs and authentication mechanism), and other supplementary reference materials.
 
@@ -41,5 +42,5 @@ specs and authentication mechanism), and other supplementary reference materials
     Manage charms in the Enterprise Store <how-to/charmhub-proxy>
     Troubleshoot common issues <how-to/trouble>
     Migrate from Snap Store Proxy to Enterprise Store <how-to/migrate>
-    Enable High-Availability <how-to/enable-ha>
+    Enable High-Availability <how-to/high-availability>
 ```
