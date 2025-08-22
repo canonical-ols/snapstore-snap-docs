@@ -57,13 +57,15 @@ used by client devices.
 
 ### Pin the snap
 
-It is also recommended to pin the enterprise-store snap on the
-unit with:
+It is recommended to pin the enterprise-store snap on the
+unit to to prevent automatic updates:
 
     snap refresh --hold enterprise-store
 
-to prevent automatic updates, which could result in multiple units
-having different versions of the enterprise-store snap.
+```{note}
+Issues may be encountered if running multiple enterprise-store versions
+in the same HA cluster.
+```
 
 ### Connect to PostgreSQL
 See the [installation](install.md) guide for setting up and connecting
@@ -178,9 +180,7 @@ and the backend Enterprise Store units. They need to be configured
 correctly to interact with the backend units.
 
 Reverse proxies must set the `X-Forwarded-Proto` HTTP header
-appropriately depending the protocol used by the client. For
-unencrypted HTTP requests, the `X-Forwarded-Proto` header must be
-`http`. For HTTPS requests, the header must be `https`. Unsupported
+appropriately depending the protocol used by the client. Unsupported
 protocols should be denied. For example, if you don't want to handle
 unencrypted HTTP traffic with clients, then the reverse proxy should
 deny the request (or upgrade the connection to HTTPS). Clients should
@@ -232,7 +232,7 @@ script as on the other unit, or finding its revision with:
 
     snap list enterprise-store
 
-and installing on the new unit with:
+Then install on the new unit with:
 
     sudo snap install enterprise-store --revision=<revision>
 
@@ -265,7 +265,7 @@ On the new unit, import the `store-config.yaml` file:
 
     cat store-config.yaml | sudo enterprise-store config --import-yaml
 
-and move the `store.assert` file to the appropriate location:
+Then move the `store.assert` file to the appropriate location:
 
     cp store.assert /var/snap/enterprise-store/common/nginx/airgap/store.assert
 
@@ -301,12 +301,12 @@ of the Enterprise Store. These backups include:
 * PostgreSQL data
 * S3 data
 * Private keys, certificates and configuration of other components
-of the network topology ie. reverse proxies, memcached, etc.
+of the network topology (such as reverse proxies, memcached, etc.)
 
 ## Keep unit configuration consistent
-It is important for the Enterprise Store configuration across units
-to be the same. Divergent configurations will likely lead to divergent
-behaviour when handling requests.
+It is important for the Enterprise Store configuration to be the same
+across units within the same cluster. Divergent configurations will likely
+lead to divergent behaviour when handling requests.
 
 One way of checking that unit configurations are consistent is to
 compare the hash of the configuration options across the units using:
