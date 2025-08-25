@@ -11,9 +11,10 @@ You will need at least `snapd` 2.30 on your device and access to a
  [registered Enterprise Store](register.md).
 
 To configure `snapd` on a device to talk to the proxy, you need to `snap
-ack` the signed assertion that allows `snapd` to trust the proxy, e.g.:
+ack` the signed assertion that allows `snapd` to trust the proxy:
 
-    curl -sL http://<domain>/v2/auth/store/assertions | sudo snap ack /dev/stdin
+    DOMAIN=$(sudo enterprise-store config proxy.domain)
+    curl -sL http://$DOMAIN/v2/auth/store/assertions | sudo snap ack /dev/stdin
 
 Once `snapd` knows about the store assertion, you then have to configure it to use the proxy:
 
