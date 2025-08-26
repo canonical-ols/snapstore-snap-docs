@@ -63,3 +63,4 @@ TLS
 walkthrough
 whitepaper
 microk
+memcached
