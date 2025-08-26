@@ -57,12 +57,14 @@ version of the `snap-store-proxy` snap, which will contain the
 cat store-config.yaml | sudo enterprise-store config --import-yaml
 ```
 
-This command may fail, since the Enterprise Store service ports
-conflict with the existing Snap Store Proxy service ports. This should
-be expected. An example output of this is:
+**This command will fail** if Snap Store Proxy is running, as the Enterprise
+Store service ports conflict with the existing Snap Store Proxy service ports.
+This is expected. An example output of this is:
 
-```bash
-$ cat store-config.yaml | sudo enterprise-store config --import-yaml
+```{terminal}
+:input: cat store-config.yaml | sudo enterprise-store config --import-yaml
+:copy:
+
 Configured database for packagereview role.
 Configured database for packagereview-celery role.
 Configured database for snaprevs role.
@@ -74,7 +76,7 @@ Configured database for snapmodels role.
 error: Command '['snapctl', 'restart', '--reload', 'enterprise-store.nginx', 'enterprise-store.snapmodels', 'enterprise-store.memcached', 'enterprise-store.storeadmingw', 'enterprise-store.packagereview', 'enterprise-store.snapassert', 'enterprise-store.snapauth', 'enterprise-store.snapproxy', 'enterprise-store.snapstorage', 'enterprise-store.packagereview-worker', 'enterprise-store.snapident', 'enterprise-store.snaprevs', 'enterprise-store.snapdevicegw', 'enterprise-store.publishergw']' returned non-zero exit status 1.
 ```
 
-5. Use the Enterprise Store's services instead of the Snap Store Proxy's.
+5. Replace the Snap Store Proxy's services with the configured Enterprise Store.
 
 Disable the Snap Store Proxy snap (this may cause temporary downtime):
 
@@ -88,8 +90,7 @@ Start the Enterprise Store services:
 sudo snap start enterprise-store
 ```
 
-The Enterprise Store services should now be able to bind to the
-appropriate ports. Check the status:
+Check the status:
 
 ```
 enterprise-store status
