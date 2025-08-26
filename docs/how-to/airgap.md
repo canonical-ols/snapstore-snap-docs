@@ -332,14 +332,10 @@ And use analogous process to upgrade the base and `snapd` snaps.
 
 Make sure to securely backup the enterprise-store configuration (including the
 `proxy.device-auth.secret` used for signing/verifying the device sessions). The
-configuration can be exported with:
+full configuration can be exported with:
 
 ```bash
-sudo enterprise-store config > proxy-config-backup.txt
-sudo enterprise-store config proxy.device-auth.secret > proxy.device-auth.secret.txt
-sudo enterprise-store config proxy.auth.secret > proxy.auth.secret.txt
-sudo enterprise-store config proxy.key.private > proxy.key.private.txt
-sudo enterprise-store config proxy.tls.key > proxy.tls.key.txt
+sudo enterprise-store config --export-yaml | cat > store-config.yaml
 ```
 
 ## Limitations
