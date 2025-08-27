@@ -12,11 +12,11 @@ table_of_contents: true
 * `snapd` ≥ 2.30 on the client device
 * Access to a [registered Enterprise Store](register.md)
 
-1.  Get the Store URL and Store ID from the Enterprise Store using the `status` command, for example:
-
+First, get the *Store URL* and *Store ID* from the Enterprise Store by running:
+    
     sudo enterprise-store status
 
-Take the required information from the response, for example:
+The output will look something like the following:
 
     Store URL: http://proxy.example.com
     Store DB: ok
@@ -33,20 +33,20 @@ Take the required information from the response, for example:
     snapproxy: running
     snaprevs: running
 
-2. Fetch and acknowledge the store assertion on the client device:
+Next, fetch and acknowledge the store assertion on the client device by running:
 
     curl -sL http://proxy.example.com/v2/auth/store/assertions | sudo snap ack /dev/stdin
 
 ```{note}
-Replace `http://proxy.example.com` with your Store URL.
+Replace `http://proxy.example.com` with your *Store URL*.
 ```
 
-3. Configure `snapd` to use the Enterprise Store on the client device:
+Finally, configure `snapd` to use the Enterprise Store on the client device by running:
 
     sudo snap set core proxy.store=3dqTufgqR25SBaBoCuqCFwLcU01Gp24U
 
 ```{note}
-Replace `3dqTufgqR25SBaBoCuqCFwLcU01Gp24U` with your Store ID.
+Replace `3dqTufgqR25SBaBoCuqCFwLcU01Gp24U` with your *Store ID*.
 ```
 
 ## Disconnecting devices
