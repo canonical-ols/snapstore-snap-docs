@@ -7,22 +7,46 @@ table_of_contents: true
 
 ## Configuring devices
 
-You will need at least `snapd` 2.30 on your device and access to a
- [registered Enterprise Store](register.md).
+**Prerequisites**
+* `snapd` ≥ 2.30 on the client device
+* Access to a [registered Enterprise Store](register.md)
 
-To configure `snapd` on a device to talk to the proxy, you need to `snap
-ack` the signed assertion that allows `snapd` to trust the proxy:
+First, get the *Store URL* and *Store ID* from your Enterprise Store:
+    
+    sudo enterprise-store status
 
-    DOMAIN=$(sudo enterprise-store config proxy.domain)
-    curl -sL http://$DOMAIN/v2/auth/store/assertions | sudo snap ack /dev/stdin
+The output will look something like this:
 
-Once `snapd` knows about the store assertion, you then have to configure it to use the proxy:
+    Store URL: http://proxy.example.com
+    Store DB: ok
+    Store ID: 3dqTufgqR25SBaBoCuqCFwLcU01Gp24U
+    Status: approved
+    Connected Devices (updated daily): 0
+    Device Limit: 25
+    Internal Service Status:
+    memcached: running
+    nginx: running
+    snapauth: running
+    snapdevicegw: running
+    snapdevicegw-local: running
+    snapproxy: running
+    snaprevs: running
 
-    sudo snap set core proxy.store=STORE_ID
+Next, fetch and acknowledge the store assertion on the client device:
 
-You can retrieve the `STORE_ID` using the status command on the Proxy server:
+    curl -sL http://proxy.example.com/v2/auth/store/assertions | sudo snap ack /dev/stdin
 
-    enterprise-store status
+```{note}
+Replace `http://proxy.example.com` with your *Store URL*.
+```
+
+Finally, configure `snapd` to use your Enterprise Store on the client device:
+
+    sudo snap set core proxy.store=3dqTufgqR25SBaBoCuqCFwLcU01Gp24U
+
+```{note}
+Replace `3dqTufgqR25SBaBoCuqCFwLcU01Gp24U` with your *Store ID*.
+```
 
 ## Disconnecting devices
 

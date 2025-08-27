@@ -39,7 +39,7 @@ services, and the `enterprise-store` CLI tool to control the proxy.
 The Enterprise Store will require a domain or IP address to be set
 for the configuration and access by other devices, e.g.:
 
-    sudo enterprise-store config proxy.domain="snaps.myorg.internal"
+    sudo enterprise-store config proxy.domain="proxy.example.com"
 
 This can be done after the database is created, but is required
 before registration can succeed.
