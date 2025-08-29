@@ -119,8 +119,6 @@ Within the **test-store** container, install the Enterprise Store snap and verif
 :input: sudo snap install enterprise-store
 
 :input: snap list enterprise-store
-
-
 ```
 
 Next, configure the domain for Enterprise Store:

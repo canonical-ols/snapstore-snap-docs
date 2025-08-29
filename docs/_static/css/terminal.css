@@ -1,0 +1,7 @@
+summary.sd-card-header {
+    background-color: var(--color-code-background);
+}
+
+div.terminal-code .highlight {
+    background-color: #202020;
+}
