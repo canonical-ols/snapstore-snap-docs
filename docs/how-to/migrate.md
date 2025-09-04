@@ -213,9 +213,9 @@ The following SQL transaction should yield the desired outcome:
 ```sql
 BEGIN;
 -- Consider double-checking the state before and after the UPDATE
--- SELECT * from snapstorage.package_store;
+-- SELECT * FROM snapstorage.package_store;
 UPDATE snapstorage.package_store SET bucket = regexp_replace(bucket, '\/var\/snap\/(snap-store-proxy)', '/var/snap/enterprise-store', 'g');
--- SELECT * from snapstorage.package_store;
+-- SELECT * FROM snapstorage.package_store;
 COMMIT;
 ```
 
