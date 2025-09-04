@@ -60,7 +60,7 @@ used by client devices.
 It is recommended to pin the enterprise-store snap on the
 unit to to prevent automatic updates:
 
-    snap refresh --hold enterprise-store
+    sudo snap refresh --hold enterprise-store
 
 ```{note}
 Issues may be encountered if running multiple enterprise-store versions
@@ -247,7 +247,7 @@ Or for an offline install of a downloaded snap:
 
 After installing, remember to pin the snap:
 
-    snap refresh --hold enterprise-store
+    sudo snap refresh --hold enterprise-store
 
 ### Export and import the config
 Next, export the config from the existing enterprise-store unit:
@@ -271,7 +271,7 @@ On the new unit, import the `store-config.yaml` file:
 
 Then move the `store.assert` file to the appropriate location:
 
-    cp store.assert /var/snap/enterprise-store/common/nginx/airgap/store.assert
+    sudo cp store.assert /var/snap/enterprise-store/common/nginx/airgap/store.assert
 
 You may also need to repeat any other relevant configuration steps
 from the initial unit, such as trusting the S3 certificate.
