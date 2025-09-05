@@ -242,7 +242,7 @@ linkcheck_retries = 3
 # NOTE: By default, the following MyST extensions are enabled:
 #       substitution, deflist, linkify
 
-# myst_enable_extensions = set()
+myst_enable_extensions = {"colon_fence"}
 myst_heading_anchors = 3
 
 # Custom Sphinx extensions; see

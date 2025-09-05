@@ -22,14 +22,14 @@ connected system.
 
 .. rubric:: In this documentation
 
-.. grid:: 1 1 2 2
+.. grid:: 2
    
 
-   .. grid-item:: :doc:`How-to guides <how-to>`
+   .. grid-item-card:: :doc:`How-to guides <how-to>`
 
       Step-by-step guides covering key operations and common tasks.
 
-   .. grid-item:: :doc:`Reference <reference>`
+   .. grid-item-card:: :doc:`Reference <reference>`
 
       Technical information - specifications, APIs, architecture.
 
