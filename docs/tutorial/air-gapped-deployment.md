@@ -94,7 +94,7 @@ Normally, you need to obtain software online, and transfer it to your test-offli
 
 We want to obtain:
 
-- Postgres, to provide the store's database
+- PostgreSQL, to provide the store's database
 - A registered Enterprise Store
 - Snaps to make available in the offline store
 
