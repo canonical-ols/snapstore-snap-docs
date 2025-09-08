@@ -317,7 +317,7 @@ The latter two steps are slightly different when dealing with
 an existing Enterprise Store.
 
 Once the above steps are completed, at a high-level, we first need
-to need to move the reverse proxy from the internal Nginx instance
+to move the reverse proxy from the internal Nginx instance
 on the Enterprise Store unit to an external reverse proxy, and then
 switch the traffic of incoming devices/clients to use the newly set
 up external reverse proxy.
@@ -354,14 +354,6 @@ to the reverse proxy. These can be obtained with:
 ```{warning}
 The private key should be stored and transferred securely.
 ```
-
-<!-- These are located at: -->
-<!-- /var/snap/enterprise-store/current/nginx/<domain>.cert -->
-<!-- /var/snap/enterprise-store/current/nginx/<domain>.key -->
-
-<!-- where `<domain>` is from: -->
-
-<!-- sudo enterprise-store config proxy.domain -->
 
 Use these files to configure the reverse proxy to serve the HTTPS
 certificate. For example, with HAProxy, concatenate the two into a
@@ -487,7 +479,7 @@ Create the S3 bucket to match this configuration value's name.
 Connect to the PostgreSQL database and run:
 
     SELECT * FROM snapstorage.package_store WHERE path='LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap';
-replacing the `path` value as needed with the matching blob name
+Replace the `path` value as needed with the matching blob name
 above. This should yield a record similar to:
 
 ```
@@ -619,7 +611,7 @@ to the "local" backend:
 
     sudo enterprise-store config proxy.storage.backend="local"
 
-and restoring to the backup of the `snapstorage.package_store`
+Then restore the backup of the `snapstorage.package_store`
 table.
 ```
 
