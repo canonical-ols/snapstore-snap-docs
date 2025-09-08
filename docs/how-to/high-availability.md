@@ -33,6 +33,10 @@ store](airgap.md) depending on your use-case. These already assume the
 use of a single unit, and a new Enterprise Store being set up. However,
 there are some deviations to some of the steps in a HA setup.
 
+If you already have an existing, non-HA Enterprise Store
+with a single unit, refer to the [Existing Enterprise
+Store](#existing-enterprise-store) section.
+
 ### TLS Termination
 In HA setups, it is common to terminate the TLS connection at the
 reverse proxy, with traffic to the backend units using unencrypted
@@ -60,7 +64,7 @@ used by client devices.
 It is recommended to pin the enterprise-store snap on the
 unit to to prevent automatic updates:
 
-    snap refresh --hold enterprise-store
+    sudo snap refresh --hold enterprise-store
 
 ```{note}
 Issues may be encountered if running multiple enterprise-store versions
@@ -247,7 +251,7 @@ Or for an offline install of a downloaded snap:
 
 After installing, remember to pin the snap:
 
-    snap refresh --hold enterprise-store
+    sudo snap refresh --hold enterprise-store
 
 ### Export and import the config
 Next, export the config from the existing enterprise-store unit:
@@ -271,7 +275,7 @@ On the new unit, import the `store-config.yaml` file:
 
 Then move the `store.assert` file to the appropriate location:
 
-    cp store.assert /var/snap/enterprise-store/common/nginx/airgap/store.assert
+    sudo cp store.assert /var/snap/enterprise-store/common/nginx/airgap/store.assert
 
 You may also need to repeat any other relevant configuration steps
 from the initial unit, such as trusting the S3 certificate.
@@ -296,6 +300,323 @@ backend web_servers
 
 Don't forget to restart the reverse proxy to pick up the configuration
 changes.
+
+## Existing Enterprise Store
+Migrating to HA from an existing, non-HA Enterprise Store is generally
+similar to the steps above, but with some key differences, like
+updating TLS termination to occur at the reverse proxy and migrating
+existing blobs from the single Enterprise Store unit to S3.
+
+First, follow the steps for [configuring the initial
+unit](#configure-the-initial-unit), skipping the steps for:
+* registration
+* setting up a reverse proxy
+* connecting to S3
+
+The latter two steps are slightly different when dealing with
+an existing Enterprise Store.
+
+Once the above steps are completed, at a high-level, we first need
+to move the reverse proxy from the internal Nginx instance
+on the Enterprise Store unit to an external reverse proxy, and then
+switch the traffic of incoming devices/clients to use the newly set
+up external reverse proxy.
+
+Then, we move existing blobs from the Enterprise Store snap unit
+to S3 storage, before switching the Enterprise Store unit to use S3
+as the storage backend.
+
+### Backup
+Make a backup and store the file securely:
+
+    sudo enterprise-store config --export-yaml | cat > store-config.yaml
+
+In case something goes wrong, it is possible to revert to a known-good
+configuration with:
+
+    cat store-config.yaml | sudo enterprise-store config --import-yaml
+
+### Reverse Proxy
+We want to set up a reverse proxy in front of the existing Enterprise
+Store snap unit, with devices directing traffic towards the reverse
+proxy instead of the Enterprise Store snap unit. This is relatively
+simple if using HTTP. However, if using HTTPS, it's a bit more
+involved. Please modify the steps as necessary for a HTTP Enterprise
+Store. This section assumes the goal of TLS termination occuring at
+the reverse proxy.
+
+Copy the certificate and private key from the Enterprise Store unit
+to the reverse proxy. These can be obtained with:
+
+    sudo enterprise-store config proxy.tls.cert | cat > enterprise-store.cert
+    sudo enterprise-store config proxy.tls.key | cat > enterprise-store.key
+
+```{warning}
+The private key should be stored and transferred securely.
+```
+
+Use these files to configure the reverse proxy to serve the HTTPS
+certificate. For example, with HAProxy, concatenate the two into a
+PEM file:
+
+    sudo cat enterprise-store.key enterprise-store.cert | sudo tee /etc/ssl/private/reverse-proxy.pem > /dev/null
+
+Then, use the snap unit as a backend server. In this example, we use
+the HTTPS port. Since TLS termination typically occurs at the reverse
+proxy in HA setups, skip verification of SSL for the snap unit. In
+HAProxy, this could look like:
+
+```
+frontend my_frontend
+  mode http
+  # Use HTTPS
+  bind *:443 ssl crt /etc/ssl/private/reverse-proxy.pem
+  # Set the X-Forwarded-Proto header appropriately
+  http-request add-header X-Forwarded-Proto https if { ssl_fc }
+  # Uncomment and use section below if using HTTP instead
+  # bind *:80
+  # http-request add-header X-Forwarded-Proto http if !{ ssl_fc }
+  default_backend web_servers
+
+backend web_servers
+  mode http
+  balance roundrobin
+  # Add health checks to units
+  option httpchk HEAD /_status/check
+  # Use the HTTPS backend and don't verify its certificate
+  server s1 unit-ip-1.test:443 ssl verify none check
+```
+
+Remember to restart the reverse proxy to pick up the configuration changes.
+
+Verify that traffic to the reverse proxy is working and going to the
+snap unit. A simple check could be:
+
+    curl https://<domain>/_status/check
+
+Make the switch so that all traffic from devices/clients goes to the
+reverse proxy instead of the Enterprise Store unit. This could mean
+editing `/etc/hosts` files or updating DNS. Then, [make the unit
+reverse proxy aware](#make-the-unit-reverse-proxy-aware) with:
+
+    sudo enterprise-store config proxy.trust-forwarded-proto="true"
+
+Verify that traffic looks fine.
+
+To make TLS termination occur at the reverse proxy, we need to convert
+the snap unit to use HTTP instead of HTTPS. Add a HTTP server to the
+unit and point it the snap backend. In HAProxy, this looks like:
+
+```
+backend web_servers
+  mode http
+  balance roundrobin
+  # Add health checks to units (important to help with switching
+  # units in this example)
+  option httpchk HEAD /_status/check
+  # Use the HTTPS backend and don't verify its certificate
+  server s1 unit-ip-1.test:443 ssl verify none check
+  # New server - clients may temporarily be redirected to HTTPS
+  # while this is included, despite already being on a HTTPS
+  # connection. This may cause temporary issues if clients
+  # don't follow redirects.
+  server s2 unit-ip-1.test:80 check
+```
+
+Restart the reverse proxy. Remove the certificate from the snap unit,
+so that it expects HTTP traffic:
+
+    sudo enterprise-store config proxy.tls.key='' proxy.tls.cert=''
+
+Remove the HTTPS backend from the reverse proxy:
+
+```
+backend web_servers
+  mode http
+  balance roundrobin
+  # Add health checks to units
+  option httpchk HEAD /_status/check
+  server s1 unit-ip-1.test:80 check
+```
+
+Restart the reverse proxy, and verify that traffic to the reverse
+proxy is working as expected.
+
+### S3 (Offline Store)
+First, [set the relevant S3 options](#connect-to-s3-offline-store),
+but **do not switch over to using S3 as the storage backend** yet.
+
+Package uploads should be avoided during this S3 migration, to prevent
+new uploads not being migrated. This can be done by avoiding running
+Enterprise Store commands like `push-snap` and `push-charms`, as well
+as on-prem publishing operations. Another way would be to temporarily
+take the Enterprise Store down for maintenance, either by modifying
+the reverse proxy or disabling the snap on the Enterprise Store unit.
+
+#### Migrate scanned package blobs
+Scanned blobs can be found on the Enterprise Store unit using:
+
+```{terminal}
+:input: ls -1 /var/snap/enterprise-store/common/snapstorage-local/scanned
+:copy:
+LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap
+```
+
+In the example output above, the
+`LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap` file needs to be migrated
+to the appropriate S3 bucket.
+
+The name of the S3 bucket can be found with:
+
+    sudo enterprise-store config proxy.storage.s3.scanned-container-name
+
+By default, this value is "scanned-production". The next steps assume
+"scanned-production" as the value, but this should be replaced as
+necessary to match the value from the output of the previous command.
+
+Create the S3 bucket to match this configuration value's name.
+
+Connect to the PostgreSQL database and run:
+
+    SELECT * FROM snapstorage.package_store WHERE path='LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap';
+Replace the `path` value as needed with the matching blob name
+above. This should yield a record similar to:
+
+```
+-[ RECORD 1 ]+------------------------------------------------------------
+id           | 1
+object_uuid  | 7f802195-e352-46d7-ba15-5a7fe10ef895
+path         | LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap
+bucket       | /var/snap/enterprise-store/common/snapstorage-local/scanned
+content_type | application/octet-stream
+object_type  | snap
+object_size  | 7897088
+mark_deleted | f
+when_created | 2025-08-27 02:13:39.159852
+```
+
+Keep note of the `object_uuid` field, since this will be the name
+of the package blob in the S3 bucket.
+
+Create a new directory on the Enterprise Store unit to store the
+renamed package blobs:
+
+    mkdir scanned-production
+
+Copy the package blob into this directory, using the corresponding
+`object_uuid` as the name:
+
+    cp /var/snap/enterprise-store/common/snapstorage-local/scanned/LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap scanned-production/7f802195-e352-46d7-ba15-5a7fe10ef895
+
+Repeat this for all of the blobs under
+`/var/snap/enterprise-store/common/snapstorage-local/scanned`.
+
+Once completed, upload the renamed blobs from the `scanned-production`
+directory to the appropriate S3 bucket ("scanned-production" in the
+default case), keeping the UUID as the file name. In this example,
+the final S3 bucket structure will look like:
+
+    scanned-production/7f802195-e352-46d7-ba15-5a7fe10ef895
+
+Verify that the amount of blobs in the S3 bucket match the count from the
+local Enterprise Store unit. The blob count on the unit can be found with:
+
+    ls -1 /var/snap/enterprise-store/common/snapstorage-local/scanned | wc -l
+
+#### Migrate unscanned blobs
+Unscanned blobs can be found on the Enterprise Store unit using:
+
+```{terminal}
+:input: find /var/snap/enterprise-store/common/snapstorage-local/unscanned/ -type f
+:copy:
+/var/snap/enterprise-store/common/snapstorage-local/unscanned/e33d585a-cdf3-420e-9b6e-125d069542a5/hello-world_29.snap
+```
+In the example output above,
+`e33d585a-cdf3-420e-9b6e-125d069542a5/hello-world_29.snap` needs
+to be migrated to the appropriate S3 bucket. Note that the UUID is
+`e33d585a-cdf3-420e-9b6e-125d069542a5` in this example.
+
+The name of the S3 bucket can be found with:
+
+    sudo enterprise-store config proxy.storage.s3.unscanned-container-name
+
+By default, this value is "unscanned-production". The next steps assume
+"unscanned-production" as the value, but this should be replaced as
+necessary to match the value from the output of the previous command.
+
+Create the S3 bucket to match this configuration value's name.
+
+Create a new directory on the Enterprise Store unit to store the
+renamed unscanned blobs:
+
+    mkdir unscanned-production
+
+Copy the blob into this directory, using the corresponding
+UUID as the file name:
+
+    cp /var/snap/enterprise-store/common/snapstorage-local/unscanned/e33d585a-cdf3-420e-9b6e-125d069542a5/hello-world_29.snap unscanned-production/e33d585a-cdf3-420e-9b6e-125d069542a5
+
+Repeat this for all of the blobs under
+`/var/snap/enterprise-store/common/snapstorage-local/unscanned`.
+
+Once completed, upload the renamed blobs from the `unscanned-production`
+directory to the appropriate S3 bucket ("unscanned-production" in the
+default case), keeping the UUID as the file name. In this example,
+the final S3 bucket structure will look like:
+
+    unscanned-production/e33d585a-cdf3-420e-9b6e-125d069542a5
+
+Verify that the amount of blobs in the S3 bucket match the count from the
+local Enterprise Store unit. The blob count on the unit can be found with:
+
+    ls -1 /var/snap/enterprise-store/common/snapstorage-local/unscanned | wc -l
+
+#### Switch to using S3
+Make a backup of the `snapstorage.package_store` table in the
+PostgreSQL database, to use in case the migration goes wrong. The
+next steps will cause some downtime.
+
+Run the DB migration to change the `bucket` names in the
+`snapstorage.package_store` table. Similar to the sections above, the
+example below assumes the use of the default "unscanned-production" and
+"scanned-production" bucket names. Replace these as needed depending
+on the chosen bucket names. The example migration is:
+
+```sql
+BEGIN;
+-- Consider double-checking the state before and after the UPDATEs
+-- SELECT * FROM snapstorage.package_store;
+UPDATE snapstorage.package_store SET bucket = 'scanned-production' WHERE bucket='/var/snap/enterprise-store/common/snapstorage-local/scanned';
+-- SELECT * FROM snapstorage.package_store;
+UPDATE snapstorage.package_store SET bucket = 'unscanned-production' WHERE bucket LIKE '/var/snap/enterprise-store/common/snapstorage-local/unscanned%';
+-- SELECT * FROM snapstorage.package_store;
+COMMIT;
+```
+
+Switch to using the S3 backend on the Enterprise Store unit:
+
+    sudo enterprise-store config proxy.storage.backend="s3"
+
+Verify that it works by running:
+
+    enterprise-store status
+
+There should be no failing services, especially
+`snapstorage`. Additionally, verify that package downloads are
+working as expected.
+
+```{note}
+If something goes wrong, revert to the initial state by switching
+to the "local" backend:
+
+    sudo enterprise-store config proxy.storage.backend="local"
+
+Then restore the backup of the `snapstorage.package_store`
+table.
+```
+
+At this point the initial unit has been configured for HA, so
+[additional units can be added](#add-another-unit).
 
 ## Keep backups
 It is advisable to maintain frequent backups of various components
