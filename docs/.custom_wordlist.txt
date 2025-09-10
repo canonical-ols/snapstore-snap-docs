@@ -64,4 +64,5 @@ walkthrough
 whitepaper
 microk
 memcached
+sideload
 snapstorage
