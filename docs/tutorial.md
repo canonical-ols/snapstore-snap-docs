@@ -9,11 +9,11 @@ processes required to operate a store online and offline.
 ::::{grid} 2
 :::{grid-item-card} {doc}`Get started with the Enterprise Store <tutorial/get-started>`
 
-Step-by-step guides covering key operations and common tasks.
+Guidance for an initial setup of the Enterprise Store.
 :::
-:::{grid-item-card} {doc}`Reference <tutorial/air-gapped-deployment>`
+:::{grid-item-card} {doc}`Getting started with an air-gapped store <tutorial/air-gapped-deployment>`
 
-Technical information - specifications, APIs, architecture.
+Guidance for an air-gapped deployment of the Enterprise Store.
 :::
 ::::
 
