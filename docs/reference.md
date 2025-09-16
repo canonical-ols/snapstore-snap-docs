@@ -29,4 +29,5 @@ you to understand and adapt the steps to fit your specific requirements.
     reference/api-authentication
     reference/feature-list
     reference/cryptography
+    reference/configuration
 ```
