@@ -11,19 +11,19 @@ you to understand and adapt the steps to fit your specific requirements.
 
 
 
-| **How-to guides**                                               | Get stuff done                                                              |
-|-----------------------------------------------------------------|-----------------------------------------------------------------------------|
-| [Installation](how-to/install.md)                               | Install and set up the Enterprise Store                                     |
-| [Proxy registration](how-to/register.md)                        | Register the Proxy with the online Snap Store                               |
-| [Security enhancements ](how-to/security.md)                    | Enhance Enterprise Store's security                                         |
-| [Configuring snap devices](how-to/devices.md)                   | Point your devices to the Enterprise Store instead of the online Snap Store |
-| [Overriding snap revisions](how-to/overrides.md)                | Control the specific revision of a snap in a channel for your devices       |
-| [Offline store](how-to/airgap.md)                               | Deploy the Enterprise Store in an air-gapped environment                    |
-| [Model service](how-to/on-prem-model-service.md)                | Configure an air-gapped Proxy for signing device serial requests            |
-| [Troubleshooting](how-to/trouble.md)                            | Check Proxy configuration status and diagnose common issues                 |
-| [Migrate](how-to/migrate.md)                                    | How to migrate from the Snap Store Proxy snap to the Enterprise Store snap  |
-| [Enable High-Availability (HA)](how-to/high-availability.md)    | How to enable High-Availability for the Enterprise Store                    |
-| [Integrate a Dedicated Snap Store](how-to/set-up-on-prem-dss.md)| How to integrate with a Dedicated Snap Store                                |
+| **How-to guides**                                                             | Get stuff done                                                              |
+|-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
+| [Installation](how-to/install.md)                                             | Install and set up the Enterprise Store                                     |
+| [Proxy registration](how-to/register.md)                                      | Register the Proxy with the online Snap Store                               |
+| [Security enhancements ](how-to/security.md)                                  | Enhance Enterprise Store's security                                         |
+| [Configuring snap devices](how-to/devices.md)                                 | Point your devices to the Enterprise Store instead of the online Snap Store |
+| [Overriding snap revisions](how-to/overrides.md)                              | Control the specific revision of a snap in a channel for your devices       |
+| [Offline store](how-to/airgap.md)                                             | Deploy the Enterprise Store in an air-gapped environment                    |
+| [Model service](how-to/on-prem-model-service.md)                              | Configure an air-gapped Proxy for signing device serial requests            |
+| [Troubleshooting](how-to/trouble.md)                                          | Check Proxy configuration status and diagnose common issues                 |
+| [Migrate](how-to/migrate.md)                                                  | How to migrate from the Snap Store Proxy snap to the Enterprise Store snap  |
+| [Enable High-Availability (HA)](how-to/high-availability.md)                  | How to enable High-Availability for the Enterprise Store                    |
+| [Integrate a Dedicated Snap Store](how-to/integrate-a-dedicated-snap-store.md)| How to integrate with a Dedicated Snap Store                                |
 
 Take a look at our *Reference* section for technical details (such as the Overrides API
 specs and authentication mechanism), and other supplementary reference materials.
