@@ -1,12 +1,12 @@
 # Integrate a Dedicated Snap Store
 
-Dedicated Snap Stores can work with Enterprise Stores, with some limitations. Support includes
-offline and proxy-restricted operations.
+Enterprise Stores are designed to work with Dedicated Snap Stores, with some limitations.
+Support includes offline and proxy-restricted operations.
 
 Supported functionality includes:
 
-* Support for publisher snaps not available in the SaaS Store
-* Publication of snaps to the Enterprise Store 
+* Synchronisation of credentials and snaps from a Dedicated Snap Store
+* Publication of snaps directly to the Enterprise Store
 
 | **How-to guides**                                                               | Get stuff done                                                                             |
 |---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
