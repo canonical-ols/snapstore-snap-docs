@@ -1,4 +1,4 @@
-# Build Core images from your store
+# Build Ubuntu Core images from your store
 
 ```{warning}
 This functionality requires a [Dedicated Snap Store](https://ubuntu.com/internet-of-things/appstore), also known as an IoT App Store.
@@ -24,3 +24,6 @@ the form of environment variables to `ubuntu-image`, including:
 ```{note}
 The `UBUNTU_STORE_ID` is only required for classic images.
 ```
+
+See the [Ubuntu Core documentation](https://documentation.ubuntu.com/core/)
+for more information on Ubuntu Core.

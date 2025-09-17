@@ -1,4 +1,4 @@
-# How to publish snaps to the Enterprise Store
+# Publish snaps directly to the Enterprise Store
 
 ```{warning}
 This functionality requires a [Dedicated Snap Store](https://ubuntu.com/internet-of-things/appstore), also known as an IoT App Store.

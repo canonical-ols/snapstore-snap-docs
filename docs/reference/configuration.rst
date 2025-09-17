@@ -1,5 +1,5 @@
-Enterprise Store configuration
-******************************
+Store configuration
+*******************
 
 Enterprise Stores take a range of configuration for various purposes. These
 values are set with ``enterprise-store config <KEY>=<Value>``.
