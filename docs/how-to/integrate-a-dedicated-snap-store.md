@@ -11,7 +11,7 @@ Supported functionality includes:
 | **How-to guides**                                                               | Get stuff done                                                                             |
 |---------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------|
 | [Synchronise with a Dedicated Snap Store](synchronise-with-a-dedicated-store.md)| Export Dedicated Store snaps and credentials, and import them to your Enterprise Store     |
-| [Publish snaps to the store](publish-snaps.md)                                  | Publish snaps directly to your Entprise Store                                              |
+| [Publish snaps to the store](publish-snaps.md)                                  | Publish snaps directly to your Enterprise Store                                            |
 | [Build Core images](build-images.md)                                            | Build Ubuntu Core images from snaps in your Enterprise Store                               |
 
 See the [Dedicated Snap Store](https://documentation.ubuntu.com/dedicated-snap-store/)
