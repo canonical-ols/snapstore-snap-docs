@@ -44,6 +44,38 @@ for the configuration and access by other devices, e.g.:
 This can be done after the database is created, but is required
 before registration can succeed.
 
+## Port configuration
+
+You can optionally change the ports that the Enterprise Store or its internal services
+listen on. 
+
+For example, to change the internal `snapdevicegw` service to listen on a different 
+port, run:
+
+    sudo enterprise-store config proxy.port.snapdevicegw=9000
+
+The port for the Enterprise Store's external URL, corresponding to `proxy.port.http` (or 
+`proxy.port.https` if registered with `--https`), must be set before registration to 
+ensure that the store is registered with the correct URL. 
+
+As of the time of writing this, these are all the available port configuration options
+with their defaults.
+
+    proxy.port.http: 80
+    proxy.port.https: 443
+    proxy.port.memcached: 11211
+    proxy.port.packagereview: 8006
+    proxy.port.publishergw: 8010
+    proxy.port.snapassert: 5000
+    proxy.port.snapauth: 8005
+    proxy.port.snapdevicegw: 8000
+    proxy.port.snapident: 8001
+    proxy.port.snapmodels: 8007
+    proxy.port.snaprevs: 8002
+    proxy.port.snapstorage: 8011
+    proxy.port.storeadmingw: 8013
+
+
 ## Database
 
 When setting up an Enterprise Store for production usage, we recommend you have a
