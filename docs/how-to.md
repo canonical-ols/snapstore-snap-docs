@@ -14,7 +14,7 @@ you to understand and adapt the steps to fit your specific requirements.
 | **How-to guides**                                                             | Get stuff done                                                              |
 |-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | [Installation](how-to/install.md)                                             | Install and set up the Enterprise Store                                     |
-| [Proxy registration](how-to/register.md)                                      | Register the store with the online Snap Store                               |
+| [Proxy registration](how-to/register.md)                                      | Register the store with the SaaS Store                                      |
 | [Configuring snap devices](how-to/devices.md)                                 | Point your devices to the Enterprise Store instead of the SaaS Store        |
 | [Overriding snap revisions](how-to/overrides.md)                              | Control the specific revisions of snaps in the channels of your store       |
 | [Offline store](how-to/airgap.md)                                             | Deploy the Enterprise Store in an air-gapped environment                    |

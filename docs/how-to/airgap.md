@@ -85,7 +85,7 @@ store-admin register --offline <target-http-location-of-the-store>
 ```{warning}
 Full value of the target location, eg `https://snaps.internal`, will be encoded
 in an assertion file used for instructing client devices to connect to this
-store. It's important to decide if http or https will be used and what the host
+store. It's important to decide if HTTP or HTTPS will be used and what the host
 name will be at the point of registration.
 ```
 

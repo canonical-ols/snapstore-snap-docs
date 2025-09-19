@@ -126,7 +126,7 @@ If a 4096-bit RSA key takes more than 15 seconds to generate on your hardware
 `sudo enterprise-store config internal.publishergw.snapmodels.read-timeout={timeout-in-seconds}`
 ```
 
-The key needs to be registered with the online Snap Store before it can sign serials:
+The key needs to be registered with the SaaS Store before it can sign serials:
 
 ```bash
 $ store-admin register-key PPkB6XcYjkxzA9c6dXsaM0sg9r_d5DZ2kDYvWPTeuSXofXGzMDBt7DoD_Xiw3see
