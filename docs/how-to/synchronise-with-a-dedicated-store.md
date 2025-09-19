@@ -47,7 +47,7 @@ store:
 This will export any snaps available in the store, with their channel maps, metadata,
 and assertions.
 
-Once you move the exported store bunclde to your on-prem store, you can run the import command:
+Once you move the exported store bundle to your on-prem store, you can run the import command:
 
 ```{terminal}
 :user: user

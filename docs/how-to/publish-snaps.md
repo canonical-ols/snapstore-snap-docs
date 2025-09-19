@@ -4,7 +4,7 @@
 This functionality requires a [Dedicated Snap Store](https://ubuntu.com/internet-of-things/appstore), also known as an IoT App Store.
 ```
 
-To publishing snaps directly to an Enterprise Store, you need the Enterprise Store
+To publish snaps directly to an Enterprise Store, you need the Enterprise Store
 to be configured with a Brand account, and for the snaps in question to be
 registered to the same Brand account. Additionally, once registered, customers
 need to **submit a support ticket** to request the modification of each snap's

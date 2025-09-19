@@ -15,7 +15,7 @@ Supported functionality includes:
 | [Build Core images](build-images.md)                                            | Build Ubuntu Core images from snaps in your Enterprise Store                               |
 
 See the [Dedicated Snap Store](https://documentation.ubuntu.com/dedicated-snap-store/)
-documentation for more information on Dedicated Snap Store capabilities. 
+documentation for more information on Dedicated Snap Store capabilities.
 
 ```{toctree}
 :hidden:
