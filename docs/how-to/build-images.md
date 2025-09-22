@@ -4,7 +4,7 @@
 This functionality requires a [Dedicated Snap Store](https://ubuntu.com/internet-of-things/appstore), also known as an IoT App Store.
 ```
 
-Ubuntu Core image building from an air-gapped Enterprise Store requires passing'
+Ubuntu Core image building from an air-gapped Enterprise Store requires passing
 extra options in the form of environment variables to `ubuntu-image`, including:
 
 * The URL of the Enterprise Store
