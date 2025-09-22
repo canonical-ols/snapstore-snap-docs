@@ -26,3 +26,6 @@ docs/.DS_Store
 docs/__pycache__
 docs/.idea/
 docs/.vscode/
+
+# Scripts
+scripts

@@ -83,10 +83,10 @@ store-admin register --offline <target-http-location-of-the-store>
 ```
 
 ```{warning}
-    Full value of the target location, eg `https://snaps.internal`, will be encoded
-    in an assertion file used for instructing client devices to connect to this
-    store. It's important to decide if http or https will be used and what the host
-    name will be at the point of registration.
+Full value of the target location, eg `https://snaps.internal`, will be encoded
+in an assertion file used for instructing client devices to connect to this
+store. It's important to decide if HTTP or HTTPS will be used and what the host
+name will be at the point of registration.
 ```
 
 The result of the above is a tarball `offline-snap-store.tar.gz` that is then
@@ -129,9 +129,9 @@ If the registered store's location was an HTTPS one, follow the
 ## Brand store metadata import
 
 ```{warning}
-    This section is relevant for brand store customers wanting to host their
-    brand store snaps offline and can be skipped if the offline store only has
-    to support Global store client devices (eg. generic devices).
+This section is relevant for brand store customers wanting to host their
+brand store snaps offline and can be skipped if the offline store only has
+to support Global store client devices (eg. generic devices).
 ```
 
 On-prem stores need various data (assertions, snap binaries and metadata,
