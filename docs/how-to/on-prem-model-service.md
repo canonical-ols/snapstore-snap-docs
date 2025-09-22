@@ -1,22 +1,22 @@
 ---
-title: On-prem model service
+title: Enterprise Store Model Service
 table_of_contents: true
 ---
 
-# On-Prem Model Service
+# Air-gapped Model Service
 
-The Snap Store's Model Service is the device serial provisioning service that is intended to supersede the [Serial Vault](https://ubuntu.com/core/services/guide/serial-vault-overview). While the Serial Vault had to be deployed separately in on-prem scenarios, the Model Service is packaged into the Enterprise Store.
+The Snap Store's Model Service is the device serial provisioning service that is intended to supersede the [Serial Vault](https://ubuntu.com/core/services/guide/serial-vault-overview). While the Serial Vault had to be deployed separately in air-gapped scenarios, the Model Service is packaged into the Enterprise Store.
 
 The Model Service is currently only available in [air-gapped](airgap.md) mode. When operating in online mode, the Proxy can forward serial requests made by devices to the online Serial Vault or the online Model Service.
 
-The following requirements need to be met to use the on-prem Model Service:
+The following requirements need to be met to use the Model Service within the Enterprise Store:
 
 - A PKCS#11-compatible Hardware Security Module (HSM) or Smart Card.
 - The PKCS#11 module / shared library for the hardware. e.g. `opensc-pkcs11.so`
 - The Enterprise Store host machine must run Ubuntu 22.04 (Jammy) with the `p11-kit` and `gnutls-bin` packages installed.
 - Revision 99 of `snap-store-proxy` and revision 28 of `store-admin`, or newer. All `enterprise-store` revisions are supported.
 
-The supported way to manage models, signing keys, and serial policies in the on-prem Model Service is via the `store-admin` snap.
+The supported way to manage models, signing keys, and serial policies in the Enterprise Store Model Service is via the `store-admin` snap.
 
 ## HSM-based key management and signing
 
