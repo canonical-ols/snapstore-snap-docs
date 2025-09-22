@@ -449,7 +449,7 @@ but **do not switch over to using S3 as the storage backend** yet.
 Package uploads should be avoided during this S3 migration, to prevent
 new uploads not being migrated. This can be done by avoiding running
 Enterprise Store commands like `push-snap` and `push-charms`, as well
-as on-prem publishing operations. Another way would be to temporarily
+as air-gapped publishing operations. Another way would be to temporarily
 take the Enterprise Store down for maintenance, either by modifying
 the reverse proxy or disabling the snap on the Enterprise Store unit.
 

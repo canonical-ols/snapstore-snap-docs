@@ -29,7 +29,7 @@ sha3-384 fingerprints of the respective registered keys:
 
 ```{terminal}
 :user: user
-:host: admin-box
+:host: admin-host
 :copy:
 :input: store-admin export store --arch=amd64 --arch=arm64 --channel=stable --channel=edge --key=keyId1 --key=keyId2 --key=keyId3 myDeviceViewStoreID
 
@@ -63,16 +63,16 @@ Data will be exported to the `/home/<user>/snap/store-admin/common/export/` dire
 ```
 
 ```{warning}
-Make sure to include the keys used for signing client device serial and model assertions, and the key that will be used for signing snap revision assertions for snaps published directly to the on-prem store. These keys have to be registered using `snapcraft register-key` command prior to the export.
+Make sure to include the keys used for signing client device serial and model assertions, and the key that will be used for signing snap revision assertions for snaps published directly to the Enterprise Store. These keys have to be registered using `snapcraft register-key` command prior to the export.
 ```
 
 ## Import store data
 
-Move the exported store bundle to the on-prem store machine and run the import command:
+Move the exported store bundle to the Enterprise Store machine and run the import command:
 
 ```{terminal}
 :user: user
-:host: onprem-box
+:host: enterprise-store-host
 :copy:
 :input: sudo snap-proxy push-store --revision-authority-key-id keyid1 --revision-authority-key /var/snap/enterprise-store/common/snaps-to-push/keyid1.private.key /var/snap/enterprise-store/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
 
@@ -94,7 +94,7 @@ The key file specified with `--revision-authority-key` contains the **private ke
 
 ```{terminal}
 :user: user
-:host: host
+:host: admin-host
 :copy:
 :input: gpg --homedir ~/.snap/gnupg --export-secret-keys --armor <key-name>`
 ```
@@ -106,32 +106,32 @@ It is not necessary to specify `--revision-authority-key` nor `--revision-author
 
 ## Configure Enterprise Store provenance
 
-Configure the snap revision provenance for this on-prem store (the value for this setting must be the one chosen earlier). For example, using `acme-site-7`:
+Configure the snap revision provenance for this Enterprise Store (the value for this setting must be the one chosen earlier). For example, using `acme-site-7`:
 
 ```{terminal}
 :user: user
-:host: host
+:host: enterprise-store-host
 :copy:
 :input: sudo enterprise-store config internal.airgap.store.provenance-allowlist=acme-site-7
 ```
 
 ## Build and publish with Snapcraft
 
-Snapcraft is used to build revision authority delegated snaps, and to publish them to the on-prem store.
+Snapcraft is used to build revision authority delegated snaps, and to publish them to the Enteprise Store.
 
 
 ```{terminal}
 :user: user
-:host: host
+:host: admin-host
 :copy:
 :input: sudo snap install snapcraft --classic
 ```
 
-Configure Snapcraft for your on-prem store using the data exported from the data provided with `store-admin export store`:
+Configure Snapcraft for your Enterprise Store using the data exported from the data provided with `store-admin export store`:
 
 ```{terminal}
 :user: user
-:host: admin-box
+:host: admin-host
 :input: export SNAPCRAFT_ADMIN_MACAROON=$(cat /home/<user>/snap/store-admin/common/export/storeID.macaroon)
 
 :input: export SNAPCRAFT_STORE_AUTH=onprem
@@ -139,12 +139,12 @@ Configure Snapcraft for your on-prem store using the data exported from the data
 :input: export STORE_UPLOAD_URL="https://example.store"
 ```
 
-Next, login to the on-prem store as the publisher and export the credentials to a file:
+Next, login to the Enteprise Store store as the publisher and export the credentials to a file:
 
 
 ```{terminal}
 :user: user
-:host: admin-box
+:host: admin-host
 :input: snapcraft export-login <publisher_account>
 ```
 
@@ -152,14 +152,14 @@ Set the credential produced by `export-login` as `SNAPCRAFT_STORE_CREDENTIALS` e
 
 ```{terminal}
 :user: user
-:host: admin-box
+:host: admin-host
 :input: export SNAPCRAFT_STORE_CREDENTIALS="$(cat <publisher_account>)"
 ```
 
-You can now `snapcraft upload` and `snapcraft release` to the on-prem store.
+You can now `snapcraft upload` and `snapcraft release` to the Enteprise Store.
 
 ```{note}
-Commands supported by on-prem stores are:
+Commands supported by Enteprise Stores set up in this way are:
 
 * `snapcraft status <snap-name>`
 * `snapcraft list-revisions <snap-name>`

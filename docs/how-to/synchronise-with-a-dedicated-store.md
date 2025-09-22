@@ -47,11 +47,11 @@ store:
 This will export any snaps available in the store, with their channel maps, metadata,
 and assertions.
 
-Once you move the exported store bundle to your on-prem store, you can run the import command:
+Once you move the exported store bundle to your store, you can run the import command:
 
 ```{terminal}
 :user: user
-:host: onprem-box
+:host: enterprise-store-host
 :input: sudo enterprise-store push-store /var/snap/enterprise-store/common/snaps-to-push/store-export-StoreID.tar.gz
 
 Uploaded snap and assertions for core revision 13250
