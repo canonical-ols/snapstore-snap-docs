@@ -58,7 +58,8 @@ The port for the Enterprise Store's external URL, corresponding to `proxy.port.h
 `proxy.port.https` if registered with `--https`), must be set before registration to 
 ensure that the store is registered with the correct URL. 
 
-As of the time of writing this, these are all the available port configuration options
+```{dropdown} Available port configuration options
+As of the time of writing, these are all the available port configuration options
 with their defaults.
 
     proxy.port.http: 80
@@ -74,7 +75,7 @@ with their defaults.
     proxy.port.snaprevs: 8002
     proxy.port.snapstorage: 8011
     proxy.port.storeadmingw: 8013
-
+```
 
 ## Database
 
