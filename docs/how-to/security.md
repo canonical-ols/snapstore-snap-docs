@@ -185,3 +185,8 @@ In [offline](airgap.md) mode, the Enterprise Store only requires network access 
 1. Any external [device service](https://snapcraft.io/docs/the-gadget-snap) if
    it's needed. For example if you're using
    ``serial-vault-partners.canonical.com`` for device registration.
+
+## More information
+
+For information on the cryptographic protocols used in the Enterprise Store,
+please refer to the [Cryptography](/reference/cryptography.md) page.
