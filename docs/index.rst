@@ -19,11 +19,11 @@ With the Enterprise Store, snaps are as easy-to-use as ever, and administrators
 have much greater control over exactly what revisions are installed on each
 connected system.
 
-
-.. rubric:: In this documentation
-
-.. grid:: 2
+.. grid:: 1
    
+   .. grid-item-card:: :doc:`Getting started <tutorial/get-started>`
+
+      A tutorial walking through setup and usage of the store.
 
    .. grid-item-card:: :doc:`How-to guides <how-to>`
 
@@ -33,6 +33,7 @@ connected system.
 
       Technical information - specifications, APIs, architecture.
 
+For **security** information, see how to :doc:`how-to/security`.
 
 Project and community
 ---------------------
