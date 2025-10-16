@@ -244,11 +244,9 @@ In **test-offine-store**, install PostgreSQL and it's dependency `core24`:
 :host: test-offline-store
 :copy:
 :input: snap ack /root/core24_1196.assert
-
 :input: snap install /root/core24_1196.snap
 
 :input: snap ack /root/postgresql_73.assert
-
 :input: snap install /root/postgresql_73.snap
 ```
 
