@@ -237,7 +237,7 @@ curl: (7) Failed to connect to api.snapcraft.io port 80 after 4103 ms: Network i
 
 ## Install your offline store
 
-In **test-offine-store**, install PostgreSQL and it's dependency `core24`: 
+In **test-offine-store**, install PostgreSQL and its dependency `core24`: 
 
 ```{terminal}
 :user: root
@@ -326,7 +326,7 @@ The Enterprise Store should now be fully set up and configured.
 
 Snaps in the offline Enterprise Store need to be sideloaded. Normally they need to be transferred from an online environment, but in this case we have already downloaded the snaps we want to test.
 
-On the **test-offline-store**, push the helix snap and it's dependency `core24` to the Enterprise Store:
+On the **test-offline-store**, push the helix snap and its dependency `core24` to the Enterprise Store:
 
 ```{terminal}
 :user: root
