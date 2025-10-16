@@ -104,19 +104,19 @@ On the **test-offline-store**, download PostgreSQL:
 :user: root
 :host: test-offline-store
 :copy:
-:input: snap download postgresql
+:input: snap download postgresql --revision 73
 Fetching snap "postgresql"
 Fetching assertions for "postgresql"
 Install the snap with:
-   snap ack postgresql_62.assert
-   snap install postgresql_62.snap
+   snap ack postgresql_73.assert
+   snap install postgresql_73.snap
 
-:input: snap download core24
+:input: snap download core24 --revision 1196
 Fetching snap "core24"
 Fetching assertions for "core24"
 Install the snap with:
-   snap ack core24_1055.assert
-   snap install core24_1055.snap
+   snap ack core24_1196.assert
+   snap install core24_1196.snap
 ```
 
 To obtain a functional Enterprise Store for installation offline, you need to register it while online. This is something done by using the `store-admin` snap and specifically registering an offline store with your Ubuntu One credentials.
@@ -127,7 +127,7 @@ On the **test-offline-store**, install the `store-admin` snap:
 :user: root
 :host: test-offline-store
 :copy:
-:input: sudo snap install store-admin
+:input: sudo snap install store-admin --revision 40
 ```
 
 Then, register an offline store with the domain to be used offline:
@@ -145,14 +145,37 @@ You may be prompted to open a browser and verify your Ubuntu One account.
 
 To sideload a snap into an air-gapped Enterprise Store, you need to use an online device with the store-admin snap installed to export the snap, move it to your air-gapped device, then import it into the store.
 
-On your **test-offline-store**, use `store-admin` to export the `helix` and `htop` snaps:
+Make a list of snaps we want to have in our store.
 
 ```{terminal}
-:user: user
-:host: host
-:dir: enterprise-store-tutorial
+:user: root
+:host: test-offline-store
 :copy:
-:input: store-admin export snaps helix htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
+:input: nano ~/packages.yaml
+```
+
+Copy the following into `~/packages.yaml`, and save the file:
+
+```
+packages:
+  - name: helix
+    revision: 120
+    push_channel: latest/stable
+  - name: htop
+    revision: 5181
+    push_channel: latest/stable
+  - name: core24
+    revision: 1196
+    push_channel: latest/stable
+```
+
+On your **test-offline-store**, use `store-admin` to export these snaps:
+
+```{terminal}
+:user: root
+:host: test-offline-store
+:copy:
+:input: store-admin export snaps --from-yaml packages.yaml --export-dir .
 ```
 
 ```{note}
@@ -214,15 +237,19 @@ curl: (7) Failed to connect to api.snapcraft.io port 80 after 4103 ms: Network i
 
 ## Install your offline store
 
-In **test-offine-store**, install PostgreSQL: 
+In **test-offine-store**, install PostgreSQL and it's dependency `core24`: 
 
 ```{terminal}
 :user: root
 :host: test-offline-store
 :copy:
-:input: snap ack /root/postgresql_62.assert
+:input: snap ack /root/core24_1196.assert
 
-:input: snap install /root/postgresql_62.snap
+:input: snap install /root/core24_1196.snap
+
+:input: snap ack /root/postgresql_73.assert
+
+:input: snap install /root/postgresql_73.snap
 ```
 
 In **test-offline-store**, unzip the store:
@@ -301,16 +328,22 @@ The Enterprise Store should now be fully set up and configured.
 
 Snaps in the offline Enterprise Store need to be sideloaded. Normally they need to be transferred from an online environment, but in this case we have already downloaded the snaps we want to test.
 
-On the **test-offline-store**, push the helix snap to the Enterprise Store:
+On the **test-offline-store**, push the helix snap and it's dependency `core24` to the Enterprise Store:
 
 ```{terminal}
 :user: root
 :host: test-offline-device
 :copy:
+:input: enterprise-store push-snap /root/core24-*.tar.gz
+
+
+[snap core24] Uploaded snap blob and assertions for core24 revision 1196
+[snap core24] Channelmaps were successfully updated.
+
 :input: enterprise-store push-snap /root/helix-*.tar.gz
 
+
 [snap helix] Uploaded snap blob and assertions for helix revision 120
-[snap helix] Uploaded snap blob and assertions for helix revision 121
 [snap helix] Channelmaps were successfully updated.
 ```
 
@@ -323,6 +356,7 @@ Check that the snaps have been successfully pushed to the store:
 :input: enterprise-store list-pushed-snaps
 
 Name    Stores
+core24  ubuntu
 helix   ubuntu
 ```
 

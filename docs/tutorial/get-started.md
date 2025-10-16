@@ -223,7 +223,7 @@ Within the **test-store** container, register your Enterprise Store:
 :user: root
 :host: test-store
 :copy:
-:input: sudo enterprise-store register
+:input: enterprise-store register
 ```
 
 ```{note}
@@ -256,7 +256,7 @@ From within the **test-device** container, connect to your Enterprise Store and 
 :user: root
 :host: test-device
 :copy:
-:input: curl -sL http://test-store/v2/auth/store/assertions | sudo snap ack /dev/stdin
+:input: curl -sL http://test-store/v2/auth/store/assertions | snap ack /dev/stdin
 ```
 
 Verify the assertion on your device:
@@ -425,7 +425,7 @@ Now, within the **test-device**, refresh the snap:
 :user: root
 :host: test-device
 :copy:
-:input: sudo snap refresh jq
+:input: snap refresh jq
 
 jq 1.5+dfsg-1 from Michael Vigt (mvo) refreshed
 ```
