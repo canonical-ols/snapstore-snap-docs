@@ -20,7 +20,7 @@ The credentials are encoded as JWT that are signed with RSA.
 RSA is used to sign and verify the nonce.
 
 
-| Function                     | Exposed | Technology               | Package/Library                                                                                                                                                                  |
+| Function                        | Exposed | Technology               | Package/Library                                                                                                                                                                  |
 |---------------------------------|---------|--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Signing assertions              | Yes     | SHA3-384, RSA 4096/8192  | [snapd](https://github.com/canonical/snapd), [lp-signing](https://launchpad.net/lp-signing)                                                                                      |
 | Hash of artefacts               | Yes     | SHA3-384, SHA256, SHA512 | [review-tools](https://launchpad.net/review-tools)                                                                                                                               |
