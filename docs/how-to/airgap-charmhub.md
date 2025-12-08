@@ -6,7 +6,7 @@ description: Distribute charms and charm bundles in air-gapped environments usin
 
 # Offline Charmhub (air-gapped mode)
 
-Version 2.30 (and above) of the Enterprise Store snap can also distribute charms and charm bundles in addition to snaps. Currently, this functionality is only available in offline mode, enabling the proxy to act as a local (on-premise) Charmhub.
+The Enterprise Store snap can also distribute charms and charm bundles in addition to snaps. Currently, this functionality is only available in offline mode, enabling the proxy to act as a local (on-premise) Charmhub.
 
 This mode is particularly useful in network-restricted environments where external internet traffic is either not allowed or not possible.
 
