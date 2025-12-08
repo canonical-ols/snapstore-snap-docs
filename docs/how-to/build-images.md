@@ -1,3 +1,9 @@
+---
+title: Build Ubuntu Core images from your store
+table_of_contents: true
+description: Build Ubuntu Core images from an air-gapped Enterprise Store using ubuntu-image with Dedicated Snap Store credentials.
+---
+
 # Build Ubuntu Core images from your store
 
 ```{warning}
@@ -14,11 +20,11 @@ extra options in the form of environment variables to `ubuntu-image`, including:
 ```{terminal}
 :user: user
 :host: admin-box
-:input: export UBUNTU_STORE_URL="https://snaps.acme.internal"
 
-:input: export UBUNTU_STORE_AUTH="$(cat acme-onprem-credentials)"
-:input: export UBUNTU_STORE_ID="StoreIdXYZ"
-:input: ubuntu-image classic acme-core20-amd64.model
+export UBUNTU_STORE_URL="https://snaps.acme.internal"
+export UBUNTU_STORE_AUTH="$(cat acme-onprem-credentials)"
+export UBUNTU_STORE_ID="StoreIdXYZ"
+ubuntu-image classic acme-core20-amd64.model
 ```
 
 ```{note}

@@ -1,3 +1,9 @@
+---
+title: Integrate a Dedicated Snap Store
+table_of_contents: true
+description: Integrate the Enterprise Store with a Dedicated Snap Store to synchronise credentials and snaps or publish directly to the Enterprise Store.
+---
+
 # Integrate a Dedicated Snap Store
 
 Enterprise Stores are designed to work with Dedicated Snap Stores, with some limitations.

@@ -1,6 +1,7 @@
 ---
 title: Overrides API
 table_of_contents: true
+description: API specifications for listing and setting snap revision overrides in the Enterprise Store.
 ---
 
 # Overrides API
@@ -22,8 +23,8 @@ GET /v2/metadata/overrides/snap_a HTTP/1.1
 Host: <store domain>
 Accept: application/json
 X-Ubuntu-Series: 16
-
 ```
+
 Note the `X-Ubuntu-Series` header.
 
 Response:

@@ -1,3 +1,9 @@
+---
+title: Getting started with an air-gapped store
+table_of_contents: true
+description: Step-by-step tutorial for setting up and testing the Enterprise Store in an offline, air-gapped environment.
+---
+
 # Getting started with an air-gapped store
 
 In this tutorial, we will set up and test the Enterprise Store in a functionally
@@ -39,7 +45,8 @@ Ensure LXD is installed on your **host machine**:
 :user: user
 :host: host
 :copy:
-:input: sudo snap install lxd
+
+sudo snap install lxd
 ```
 
 Ensure LXD is set up properly:
@@ -48,7 +55,8 @@ Ensure LXD is set up properly:
 :user: user
 :host: host
 :copy:
-:input: sudo lxd init --minimal
+
+sudo lxd init --minimal
 ```
 
 Launch two containers, **test-offline-store**, and **test-offline-device**:
@@ -57,9 +65,9 @@ Launch two containers, **test-offline-store**, and **test-offline-device**:
 :user: user
 :host: host
 :copy:
-:input: sudo lxc launch ubuntu:22.04 test-offline-store
 
-:input: sudo lxc launch ubuntu:22.04 test-offline-device
+sudo lxc launch ubuntu:22.04 test-offline-store
+sudo lxc launch ubuntu:22.04 test-offline-device
 ```
 
 
@@ -75,17 +83,11 @@ We can open a container by running bash. For example, to open the CLI of the **t
 :user: user
 :host: host
 :copy:
-:input: sudo lxc exec test-offline-store -- bash
+
+sudo lxc exec test-offline-store -- bash
 ```
 
-This will simulate SSH access to the container, and show you as root within the container:
-
-```{terminal}
-:user: root
-:host: test-offline-store
-:copy:
-:input:
-```
+This will simulate SSH access to the container, and show you as root within the container.
 ````
 
 ## Download required software
@@ -104,14 +106,23 @@ On the **test-offline-store**, download PostgreSQL:
 :user: root
 :host: test-offline-store
 :copy:
-:input: snap download postgresql
+
+snap download postgresql
+
 Fetching snap "postgresql"
 Fetching assertions for "postgresql"
 Install the snap with:
    snap ack postgresql_62.assert
    snap install postgresql_62.snap
+```
 
-:input: snap download core24
+```{terminal}
+:user: root
+:host: test-offline-store
+:copy:
+
+snap download core24
+
 Fetching snap "core24"
 Fetching assertions for "core24"
 Install the snap with:
@@ -127,7 +138,8 @@ On the **test-offline-store**, install the `store-admin` snap:
 :user: root
 :host: test-offline-store
 :copy:
-:input: sudo snap install store-admin
+
+sudo snap install store-admin
 ```
 
 Then, register an offline store with the domain to be used offline:
@@ -136,7 +148,8 @@ Then, register an offline store with the domain to be used offline:
 :user: root
 :host: test-offline-store
 :copy:
-:input: store-admin register --offline http://test-offline-store
+
+store-admin register --offline http://test-offline-store
 ```
 
 ```{note}
@@ -152,7 +165,8 @@ On your **test-offline-store**, use `store-admin` to export the `helix` and `hto
 :host: host
 :dir: enterprise-store-tutorial
 :copy:
-:input: store-admin export snaps helix htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
+
+store-admin export snaps helix htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
 ```
 
 ```{note}
@@ -175,9 +189,9 @@ From your **host machine**, use `iptables` to isolate our LXC containers:
 :host: host
 :dir: enterprise-store-tutorial
 :copy:
-:input: sudo iptables -I FORWARD -i lxdbr0 -j REJECT
 
-:input: sudo iptables -I FORWARD -i lxdbr0 -o lxdbr0 -j ACCEPT
+sudo iptables -I FORWARD -i lxdbr0 -j REJECT
+sudo iptables -I FORWARD -i lxdbr0 -o lxdbr0 -j ACCEPT
 ```
 
 ```{note}
@@ -196,7 +210,8 @@ Test access to `api.snapcraft.io` on your host machine:
 :host: host
 :dir: enterprise-store-tutorial
 :copy:
-:input: curl api.snapcraft.io
+
+curl api.snapcraft.io
 
 snapcraft.io store API service - Copyright 2018-2022 Canonical.
 ```
@@ -207,7 +222,8 @@ Compare it to the same command used in **test-offline-store**:
 :user: root
 :host: test-offline-store
 :copy:
-:input: curl api.snapcraft.io
+
+curl api.snapcraft.io
 
 curl: (7) Failed to connect to api.snapcraft.io port 80 after 4103 ms: Network is unreachable
 ```
@@ -220,9 +236,9 @@ In **test-offine-store**, install PostgreSQL:
 :user: root
 :host: test-offline-store
 :copy:
-:input: snap ack /root/postgresql_62.assert
 
-:input: snap install /root/postgresql_62.snap
+snap ack /root/postgresql_62.assert
+snap install /root/postgresql_62.snap
 ```
 
 In **test-offline-store**, unzip the store:
@@ -231,9 +247,9 @@ In **test-offline-store**, unzip the store:
 :user: root
 :host: test-offline-store
 :copy:
-:input: tar -xvzf offline-snap-store.tar.gz
 
-:input: cd offline-snap-store
+tar -xvzf offline-snap-store.tar.gz
+cd offline-snap-store
 ```
 
 Then use the install script, and verify the installation:
@@ -243,9 +259,9 @@ Then use the install script, and verify the installation:
 :host: test-offline-store
 :dir: /offline-snap-store
 :copy:
-:input: ./install.sh
 
-:input: enterprise-store status
+./install.sh
+enterprise-store status
 
 Store URL: http://test-offline-store
 Store DB: not configured (check the installation guide at http://localhost/docs/ or visit https://docs.ubuntu.com/enterprise-store/en/install#database)
@@ -257,7 +273,8 @@ Next, configure PostgreSQL for use with the Enterprise Store:
 :user: root
 :host: test-offline-store
 :copy:
-:input: nano ~/proxydb.sql
+
+nano ~/proxydb.sql
 ```
 
 Copy the following into `~/proxydb.sql`, and save the file:
@@ -273,10 +290,10 @@ CREATE EXTENSION "btree_gist";
 :user: root
 :host: test-offline-store
 :copy:
-:input: cp ~/proxydb.sql /var/snap/postgresql/common/
 
-:input: snap run postgresql.psql -U postgres -f /var/snap/postgresql/common/proxydb.sql
-:input: enterprise-store config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db?sslmode=disable"
+cp ~/proxydb.sql /var/snap/postgresql/common/
+snap run postgresql.psql -U postgres -f /var/snap/postgresql/common/proxydb.sql
+enterprise-store config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db?sslmode=disable"
 ```
 
 When prompted, enter the password set in `~/proxydb.sql`, `snapproxy-password`.
@@ -287,7 +304,8 @@ Check the status of the store again:
 :user: root
 :host: test-offline-store
 :copy:
-:input: enterprise-store status
+
+enterprise-store status
 
 Store URL: http://test-offline-store
 Store DB: ok
@@ -307,7 +325,8 @@ On the **test-offline-store**, push the helix snap to the Enterprise Store:
 :user: root
 :host: test-offline-device
 :copy:
-:input: enterprise-store push-snap /root/helix-*.tar.gz
+
+enterprise-store push-snap /root/helix-*.tar.gz
 
 [snap helix] Uploaded snap blob and assertions for helix revision 120
 [snap helix] Uploaded snap blob and assertions for helix revision 121
@@ -320,7 +339,8 @@ Check that the snaps have been successfully pushed to the store:
 :user: root
 :host: test-offline-device
 :copy:
-:input: enterprise-store list-pushed-snaps
+
+enterprise-store list-pushed-snaps
 
 Name    Stores
 helix   ubuntu
@@ -338,7 +358,8 @@ Ensure **test-offline-device** cannot access any online services:
 :user: root
 :host: test-offline-device
 :copy:
-:input: curl api.snapcraft.io
+
+curl api.snapcraft.io
 
 curl: (7) Failed to connect to api.snapcraft.io ...
 ```
@@ -349,9 +370,10 @@ Configure **test-offline-device** to use the air-gapped Enterprise Store:
 :user: root
 :host: test-offline-device
 :copy:
-:input: curl -sL http://test-offline-store/v2/auth/store/assertions | snap ack /dev/stdin
 
-:input: snap known store
+curl -sL http://test-offline-store/v2/auth/store/assertions | snap ack /dev/stdin
+snap known store
+
 type: store
 authority-id: canonical
 store: ndOhjHBJfSf386KSGV0AH6oApdTuwGTy
@@ -359,9 +381,14 @@ operator-id: 2SZDATTNFeUoIOOrDiKgDpjMFv3YAR1M
 timestamp: 2025-09-05T01:52:05.689607Z
 url: http://test-offline-store
 
-...
+```
 
-:input: snap set core proxy.store=$(snap known store | awk '/store:/{print $2}')
+```{terminal}
+:user: root
+:host: test-offline-device
+:copy:
+
+snap set core proxy.store=$(snap known store | awk '/store:/{print $2}')
 ```
 
 Now our device is configured to use the air-gapped Enterprise Store.
@@ -376,7 +403,8 @@ Use **test-offline-device** to query the snaps, starting with `helix`:
 :user: root
 :host: test-offline-device
 :copy:
-:input: snap info helix
+
+snap info helix
 
 name:      helix
 summary:   Helix is a modal text editor inspired by Vim and Kakoune
@@ -399,7 +427,8 @@ Check if `htop` is available:
 :user: root
 :host: test-offline-device
 :copy:
-:input: snap info htop
+
+snap info htop
 
 error: no snap found for "htop"
 ```
@@ -414,7 +443,8 @@ Finally, install the `helix` snap to verify functionality:
 :user: root
 :host: test-offline-device
 :copy:
-:input: snap install helix --classic
+
+snap install helix --classic
 
 helix 25.07.1 from Lauren Brock installed
 ```
@@ -431,9 +461,9 @@ On your **host machine**, delete the firewall rules we created for offline testi
 :host: host
 :dir: enterprise-store-tutorial
 :copy:
-:input: sudo iptables -D FORWARD -i lxdbr0 -j REJECT
 
-:input: sudo iptables -D FORWARD -i lxdbr0 -o lxdbr0 -j ACCEPT
+sudo iptables -D FORWARD -i lxdbr0 -j REJECT
+sudo iptables -D FORWARD -i lxdbr0 -o lxdbr0 -j ACCEPT
 ```
 
 And then delete the containers we created for this tutorial:
@@ -442,9 +472,9 @@ And then delete the containers we created for this tutorial:
 :user: user
 :host: host
 :copy:
-:input: sudo lxc delete test-offline-device --force
 
-:input: sudo lxc delete test-offline-store --force
+sudo lxc delete test-offline-device --force
+sudo lxc delete test-offline-store --force
 ```
 
 This should return your system to the state it was in before this tutorial.

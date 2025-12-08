@@ -1,5 +1,6 @@
 ---
 title: Feature list
+description: A list of Enterprise Store features including network control, caching, overrides, and management options.
 ---
 
 # Feature list

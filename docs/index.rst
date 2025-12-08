@@ -1,3 +1,6 @@
+.. meta::
+    :description: Documentation for Canonical's Enterprise Store, which provides an on-premise edge proxy to the Snap Store or a feature limited fully offline Snap Store.
+
 Enterprise Store documentation
 ==============================
 
@@ -19,21 +22,36 @@ With the Enterprise Store, snaps are as easy-to-use as ever, and administrators
 have much greater control over exactly what revisions are installed on each
 connected system.
 
-.. grid:: 1
-   
-   .. grid-item-card:: :doc:`Getting started <tutorial/get-started>`
+In this documentation
+---------------------
 
-      A tutorial walking through setup and usage of the store.
+.. list-table::
+   :widths: 25 75
+   :header-rows: 0
 
-   .. grid-item-card:: :doc:`How-to guides <how-to>`
+   * - **Getting started**
+     - :doc:`tutorial/get-started` • :doc:`how-to/devices` • :doc:`how-to/overrides` • :doc:`reference/configuration`
+   * - **Air-gapped deployments**
+     - :doc:`tutorial/air-gapped-deployment` • :doc:`how-to/airgap`
+   * - **Charm support**
+     - :doc:`how-to/charmhub-proxy` • :doc:`how-to/airgap-charmhub`
+   * - **Dedicated Snap Store support**
+     - :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/publish-snaps` • :doc:`how-to/build-images`
+   * - **API documentation**
+     - :doc:`reference/api-authentication` • :doc:`reference/api-overrides`
+   * - **Security**
+     - :doc:`how-to/security` • :doc:`reference/cryptography`
 
-      Step-by-step guides covering key operations and common tasks.
+How this documentation is organised
+-----------------------------------
 
-   .. grid-item-card:: :doc:`Reference <reference>`
+This documentation uses the `Diátaxis documentation structure <https://diataxis.fr/>`_.
 
-      Technical information - specifications, APIs, architecture.
+* :doc:`tutorial` takes you step-by-step through the setup and operation of the store in both supported modes.
+* :doc:`how-to` guides assume you have basic familiarity with Product. They provide focused instructions for specific tasks.
+* :doc:`reference` provides detailed information on APIs, configuration, and cryptographic protocols.
 
-For **security** information, see how to :doc:`how-to/security`.
+.. * Explanation includes topic overviews, background and context and detailed discussion.
 
 Project and community
 ---------------------

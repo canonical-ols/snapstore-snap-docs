@@ -1,6 +1,7 @@
 ---
 title: Install
 table_of_contents: true
+description: Install and configure the Enterprise Store on an Ubuntu LTS system with PostgreSQL database support.
 ---
 
 # Installation

@@ -1,6 +1,7 @@
 ---
 title: Troubleshooting the Enterprise Store
 table_of_contents: true
+description: Diagnose and resolve common Enterprise Store issues by checking connections, reviewing logs, and verifying configuration.
 ---
 
 # Troubleshooting
@@ -56,7 +57,6 @@ This documentation is shipped with the snap, and available at:
 ## Bug reporting
 
 Please file bugs against [this project on Launchpad](https://bugs.launchpad.net/snapstore)
-
 
 ### Known issues
 

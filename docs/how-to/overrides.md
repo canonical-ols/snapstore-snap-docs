@@ -1,6 +1,7 @@
 ---
 title: Override snap revisions
 table_of_contents: true
+description: Control and pin specific snap revisions on channels to manage updates for devices connected to your Enterprise Store.
 ---
 
 # Snap revision overrides
@@ -74,7 +75,6 @@ core18 stable armhf is tracking upstream (revision 1706)
 ## Overrides API
 
 Alternatively, you can also manage overrides via a [REST API](../reference/api-overrides.md)
-
 
 ## Command line tool
 

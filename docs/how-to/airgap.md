@@ -1,6 +1,7 @@
 ---
 title: Operate offline
 table_of_contents: true
+description: Deploy and operate the Enterprise Store in air-gapped mode.
 ---
 
 # Offline store (air-gapped mode)
@@ -202,7 +203,6 @@ The above will export the following data:
   (`store-admin export snaps` can be used to export snaps in a more granular
   fashion).
 
-
 ### Brand store import
 
 The exported `store-export-*.tar.gz` file can be imported on the target on-prem host using the `enterprise-store push-store` command. Example:
@@ -283,28 +283,28 @@ limited to:
 - `core24`
 - `snapd`
 
-
 ## Status
+
+\
+List the imported stores and account keys:
 
 ```
 enterprise-store status
 ```
-lists the imported stores and account keys and
+
+List all imported snaps:
 
 ```
 enterprise-store list-pushed-snaps
 ```
-lists all imported snaps.
 
 Running `snap info <snap-name>` from a device connected to the on-prem store can
 be used to view more details about the snap, like its current channel map.
-
 
 ## Client Device Configuration
 
 [Configuring client devices](devices.md) follows the same process as with an
 online Enterprise Store.
-
 
 ## Offline Upgrades
 
@@ -326,7 +326,6 @@ sudo snap install enterprise-store_<revision>.snap
 ```
 
 And use analogous process to upgrade the base and `snapd` snaps.
-
 
 ## Configuration backup
 

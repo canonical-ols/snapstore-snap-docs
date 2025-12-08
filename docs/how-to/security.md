@@ -1,6 +1,13 @@
+---
+title: Enhance Enterprise Store's security
+table_of_contents: true
+description: Configure HTTPS/TLS termination and implement security enhancements for your Enterprise Store deployment.
+---
+
 # Enhance Enterprise Store's security
 
 ## Enable HTTPS
+
 TLS termination is not enabled by default. This means that the Enterprise Store
 listens only on port 80 for plain text HTTP traffic after installation. If the
 Enterprise Store was [registered](register.md) with an `--https` option, the
@@ -84,7 +91,6 @@ root is to configure the certificate in question using `snapd` itself:
 
 The above method works both on classic systems as well as Ubuntu Core.
 
-
 ### Next step
 
 Once you've confirmed that your Enterprise Store is running and accepting HTTPS
@@ -96,7 +102,6 @@ At any time, you can use:
     enterprise-store status
 
 to check the status of your Enterprise Store.
-
 
 ## Restrict network access
 
@@ -110,18 +115,20 @@ configured to use HTTPS and port 80 when not.
 
 To restrict access to the HTTPS port on the host machine itself on Ubuntu:
 
-```
-$ sudo ufw default deny incoming
-$ sudo ufw allow in https
-$ sudo ufw allow in ssh
-$ sudo ufw enable
+```{terminal}
+:copy:
+
+sudo ufw default deny incoming
+sudo ufw allow in https
+sudo ufw allow in ssh
+sudo ufw enable
 ```
 
 You might want to restrict ingress traffic to particular networks if needed.
 Example:
 
-```
-$ sudo ufw allow in from 10.126.46.0/24 to any port https
+```{terminal}
+sudo ufw allow in from 10.126.46.0/24 to any port https
 ```
 
 The above allows also incoming traffic to port 22 (ssh) for general host
@@ -133,24 +140,25 @@ setup of choice are sufficient for the Enterprise Store itself.
 The Enterprise Store requires network access to the PostgreSQL database. To find
 out the address of currently configured database:
 
-```
-$ enterprise-store config | grep db\.connection
+```{terminal}
+enterprise-store config | grep db\.connection
+
 proxy.db.connection: postgresql://snapproxy:<redacted>@10.126.46.135:5432/snapproxy
 ```
 
 The result should contain the location of the database. In the example above it's
 10.126.46.135. We can add a firewall rule to allow outgoing traffic to the database:
 
-```
-$ sudo ufw allow out from any to 10.126.46.135 port 5432
+```{terminal}
+sudo ufw allow out from any to 10.126.46.135 port 5432
 ```
 
 Note that by default, outgoing traffic is allowed by ``ufw``.
 
 We can deny any other outgoing traffic from this host:
 
-```
-$ sudo ufw default deny outgoing
+```{terminal}
+sudo ufw default deny outgoing
 ```
 
 But this will impact its ability to:
@@ -166,9 +174,9 @@ Note that it's possible to configure the Enterprise Store to use an HTTP
 forwarding proxy (like Squid) to proxy any outgoing HTTPS traffic.
 Example:
 
-```
-$ sudo enterprise-store config proxy.https.proxy=http://squid.internal:3128
-$ sudo ufw allow out from any to <squid IP address> 3128
+```{terminal}
+sudo enterprise-store config proxy.https.proxy=http://squid.internal:3128
+sudo ufw allow out from any to <squid IP address> 3128
 ```
 
 By configuring Squid to only allow traffic to the

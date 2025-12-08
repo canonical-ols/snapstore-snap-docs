@@ -1,5 +1,6 @@
 ---
-title: Enterprise Store Reference
+title: Reference documentation
+description: Technical reference for Enterprise Store configuration, APIs, features, and cryptographic implementations.
 ---
 
 # Enterprise Store Reference
