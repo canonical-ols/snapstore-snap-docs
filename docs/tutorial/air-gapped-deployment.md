@@ -218,6 +218,29 @@ sudo iptables -I FORWARD -i lxdbr0 -j REJECT
 sudo iptables -I FORWARD -i lxdbr0 -o lxdbr0 -j ACCEPT
 ```
 
+````{warning}
+`lxdbr0` is the default network bridge for LXD. It may not be the correct network bridge for you. Please check the network bridge used by the containers deployed for this tutorial:
+
+```{terminal}
+:user: user
+:host: host
+:copy:
+
+lxc config show test-offline-store --expanded
+
+...
+
+devices:
+  eth0:
+    name: eth0
+    network: lxdbr1
+    type: nic
+```
+
+In this case, `lxdbr1` should be used rather than `lxdbr0`.
+
+````
+
 ```{note}
 This adds these two settings to the top of the `FORWARD` chain of `iptables`, which means they are processed first.
 
