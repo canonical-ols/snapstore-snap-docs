@@ -75,3 +75,5 @@ postgres
 jq
 sideloaded
 iptable
+PGPy
+airgapped

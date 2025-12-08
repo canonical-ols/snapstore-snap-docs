@@ -276,7 +276,7 @@ From within the **test-device** container, connect to your Enterprise Store and 
 :host: test-device
 :copy:
 
-curl -sL http://test-store/v2/auth/store/assertions | sudo snap ack /dev/stdin
+curl -sL http://test-store/v2/auth/store/assertions | snap ack /dev/stdin
 ```
 
 Verify the assertion on your device:
@@ -456,7 +456,7 @@ Now, within the **test-device**, refresh the snap:
 :host: test-device
 :copy:
 
-sudo snap refresh jq
+snap refresh jq
 
 jq 1.5+dfsg-1 from Michael Vigt (mvo) refreshed
 ```
