@@ -164,7 +164,8 @@ Make a list of snaps we want to have in our store.
 :user: root
 :host: test-offline-store
 :copy:
-:input: nano ~/packages.yaml
+
+nano ~/packages.yaml
 ```
 
 Copy the following into `~/packages.yaml`, and save the file:
