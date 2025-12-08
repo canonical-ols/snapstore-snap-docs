@@ -1,10 +1,10 @@
 ---
-title: Getting started with the store
+title: Getting started with the Enterprise Store
 table_of_contents: true
 description: A step-by-step tutorial for setting up and testing the Enterprise Store in an online environment with revision control.
 ---
 
-# Getting started with the store
+# Getting started with the Enterprise Store
 
 In this tutorial, we will set up and test the Enterprise Store in an online
 environment. We will cover how to set the store up, how
