@@ -161,7 +161,7 @@ html_context = {
 # TODO: If your documentation is hosted on https://docs.ubuntu.com/,
 #       uncomment and update as needed.
 
-slug = "enterprise-store"
+slug = "internet-of-things/appstore/docs"
 
 
 # Template and asset locations
@@ -175,7 +175,7 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = 'https://documentation.ubuntu.com/enterprise-store/'
+html_baseurl = 'https://ubuntu.com/internet-of-things/appstore/docs'
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
