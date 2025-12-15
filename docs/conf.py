@@ -175,7 +175,7 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = f'https://ubuntu.com/internet-of-things/appstore/docs/{os.environ.get("READTHEDOCS_CANONICAL_URL", "page")}/'
+html_baseurl = f'https://ubuntu.com/internet-of-things/appstore/docs/{os.environ.get("READTHEDOCS_VERSION", "page")}/'
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
