@@ -70,7 +70,7 @@ copyright = "%s CC-BY-SA, %s" % (datetime.date.today().year, author)
 # NOTE: The Open Graph Protocol (OGP) enhances page display in a social graph
 #       and is used by social media platforms; see https://ogp.me/
 
-ogp_site_url = "https://enterprise-store.readthedocs-hosted.com/"
+ogp_site_url = "https://ubuntu.com/internet-of-things/appstore/docs/"
 
 
 # Preview name of the documentation website
@@ -106,7 +106,7 @@ html_context = {
     # TODO: If there's no such website,
     #       remove the {{ product_page }} link from the page header template
     #       (usually .sphinx/_templates/header.html; also, see README.rst).
-    "product_page": "documentation.ubuntu.com",
+    "product_page": "https://ubuntu.com/internet-of-things/",
     # Product tag image; the orange part of your logo, shown in the page header
     #
     # TODO: To add a tag image, uncomment and update as needed.
@@ -175,17 +175,13 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = 'https://ubuntu.com/internet-of-things/appstore/docs'
+html_baseurl = f'https://ubuntu.com/internet-of-things/appstore/docs/{os.environ.get("READTHEDOCS_CANONICAL_URL", "page")}/'
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
 # When configured with RTD variables, check for RTD environment so manual runs succeed:
 
-if 'READTHEDOCS_VERSION' in os.environ:
-    version = os.environ["READTHEDOCS_VERSION"]
-    sitemap_url_scheme = '{version}{link}'
-else:
-    sitemap_url_scheme = 'VERSION/{link}'
+sitemap_url_scheme = '{link}'
 
 sitemap_excludes = [
     "genindex/",
