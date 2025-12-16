@@ -1,6 +1,7 @@
 ---
 title: Charmhub Proxy
 table_of_contents: true
+description: Serve charms and charm bundles in air-gapped Juju deployments using the Enterprise Store's Charmhub Proxy functionality.
 ---
 
 # Charmhub Proxy
@@ -130,14 +131,16 @@ The image itself needs to be exported using a separate tool such as `skopeo`, wh
 
 For example, to save the above image to a local directory:
 
-```bash
-$ skopeo copy docker://registry.jujucharms.com/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --src-creds=docker-registry:MDAxOGxvY2F0aW9... dir:/home/ubuntu/<target-dir>
+```{terminal}
+
+skopeo copy docker://registry.jujucharms.com/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --src-creds=docker-registry:MDAxOGxvY2F0aW9... dir:/home/ubuntu/<target-dir>
 ```
 
 The directory can then be manually copied to the air-gapped registry host, then pushed to the registry like so:
 
-```bash
-$ skopeo copy dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --dest-creds=<local-registry-username>:<local-registry-password>
+```{terminal}
+
+skopeo copy dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --dest-creds=<local-registry-username>:<local-registry-password>
 ```
 
 By default, if no override is supplied via the `resources` key in the `.yaml` supplied for charm export, Charmhub Proxy will assume an identical local registry image path (excluding the domain but including `charm/` and including the sha256 tag). When a deployment is requested, CHP will supply a regenerated blob using the local domain URL and credentials configured.

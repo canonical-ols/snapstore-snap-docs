@@ -66,5 +66,14 @@ microk
 memcached
 sideload
 snapstorage
+nonces?
+pymemcache
+unscanned
+Canonical's
+ctrl
+postgres
+jq
+sideloaded
+iptable
 PGPy
 airgapped

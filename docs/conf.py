@@ -70,7 +70,7 @@ copyright = "%s CC-BY-SA, %s" % (datetime.date.today().year, author)
 # NOTE: The Open Graph Protocol (OGP) enhances page display in a social graph
 #       and is used by social media platforms; see https://ogp.me/
 
-ogp_site_url = "https://enterprise-store.readthedocs-hosted.com/"
+ogp_site_url = "https://documentation.ubuntu.com/enterprise-store/"
 
 
 # Preview name of the documentation website
@@ -175,17 +175,19 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = 'https://documentation.ubuntu.com/enterprise-store/'
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "/")
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
 # When configured with RTD variables, check for RTD environment so manual runs succeed:
 
-if 'READTHEDOCS_VERSION' in os.environ:
-    version = os.environ["READTHEDOCS_VERSION"]
-    sitemap_url_scheme = '{version}{link}'
-else:
-    sitemap_url_scheme = 'VERSION/{link}'
+sitemap_url_scheme = '{link}'
+
+# Include `lastmod` dates in the sitemap:
+
+sitemap_show_lastmod = True
+
+# Exclude generated pages from the sitemap:
 
 sitemap_excludes = [
     "genindex/",
@@ -206,7 +208,9 @@ sitemap_excludes = [
 # NOTE: If undefined, set to None, or empty,
 #       the sphinx_reredirects extension will be disabled.
 
-redirects = {}
+redirects = {
+    "reference/feature-list/": "/",
+}
 
 
 ###########################
@@ -265,8 +269,23 @@ myst_heading_anchors = 3
 
 extensions = [
     "canonical_sphinx",
+    "notfound.extension",
+    "sphinx_design",
+    "sphinx_reredirects",
+    "sphinx_tabs.tabs",
+    "sphinxcontrib.jquery",
+    "sphinxext.opengraph",
+    "sphinx_config_options",
+    "sphinx_contributor_listing",
+    "sphinx_filtered_toctree",
+    "sphinx_related_links",
+    "sphinx_roles",
+    "sphinx_terminal",
+    "sphinx_ubuntu_images",
+    "sphinx_youtube_links",
     "sphinxcontrib.cairosvgconverter",
     "sphinx_last_updated_by_git",
+    "sphinx.ext.intersphinx",
     "sphinx_sitemap",
 ]
 

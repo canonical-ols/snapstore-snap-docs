@@ -1,8 +1,9 @@
 ---
-title: Enterprise Store How-to guides
+title: How-to guides
+description: Step-by-step guides for installing, configuring, and operating the Enterprise Store in various deployment scenarios.
 ---
 
-# Enterprise Store How-to guides
+# How-to guides
 
 If you have a specific goal, but are already familiar with the Enterprise Store,
 our *How-to* guides have more in-depth detail than our tutorials and can be applied to

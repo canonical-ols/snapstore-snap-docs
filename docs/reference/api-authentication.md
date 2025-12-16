@@ -1,6 +1,7 @@
 ---
 title: API authentication
 table_of_contents: true
+description: A summary of the Enterprise Store API authentication mechanism using Ubuntu SSO and macaroons.
 ---
 
 # API authentication
@@ -154,6 +155,7 @@ SSO periodically.
 To do so, simply:
 
 Request:
+
 ```http
 POST /api/v2/tokens/refresh HTTP/1.1
 Host: login.ubuntu.com

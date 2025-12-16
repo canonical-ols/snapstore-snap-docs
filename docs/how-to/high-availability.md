@@ -1,4 +1,11 @@
+---
+title: Enable High-Availability (HA)
+table_of_contents: true
+description: Configure High-Availability for the Enterprise Store using multiple units with reverse proxy load balancing.
+---
+
 # Enable High-Availability (HA)
+
 By default, the Enterprise Store does not use a High Availability
 configuration; if the machine with the Enterprise Store snap goes down,
 then any requests made to it will fail.
@@ -9,6 +16,7 @@ to be used for serving client requests. In this scenario, if one unit
 goes down, then requests can be routed to another live unit.
 
 ## Overview
+
 Below is a diagram of an example HA network topology:
 
 ![image info](../media/ha-overview.png)
@@ -27,6 +35,7 @@ and files from the initial unit
 6. Repeat steps 3-5 for the amount of units desired
 
 ## Configure the initial unit
+
 Follow the documentation for [installation](install.md),
 [registration](register.md) and/or [setting up an offline
 store](airgap.md) depending on your use-case. These already assume the
@@ -38,6 +47,7 @@ with a single unit, refer to the [Existing Enterprise
 Store](#existing-enterprise-store) section.
 
 ### TLS Termination
+
 In HA setups, it is common to terminate the TLS connection at the
 reverse proxy, with traffic to the backend units using unencrypted
 HTTP, and devices/clients still communicating on a HTTPS connection. If
@@ -72,6 +82,7 @@ in the same HA cluster.
 ```
 
 ### Connect to PostgreSQL
+
 See the [installation](install.md) guide for setting up and connecting
 to a PostgreSQL server. To the connect to database, set the connecting
 string:
@@ -79,12 +90,14 @@ string:
     sudo enterprise-store config proxy.db.connection="postgresql://snapproxy-user@pghost.test:5432/snapproxy-db"
 
 ### Use a HA memcached or replace usage with PostgreSQL
+
 By default, a single-unit Enterprise Store makes use of a local
 memcached instance for storing time-bound data like nonces. For HA,
 we need to either use PostgreSQL as the data store for the time-bound
 data, or point the units to a separate, dedicated memcached cluster.
 
 #### Use PostgreSQL
+
 To use PostgreSQL instead of memcached, run:
 
     sudo enterprise-store config proxy.use-postgres-over-memcached="true"
@@ -95,6 +108,7 @@ The above option currently does not currently support the
 ```
 
 #### Use Memcached
+
 To use memcached instance(s), set the connection strings with:
 
     # For a single instance
@@ -108,6 +122,7 @@ documentation](https://pymemcache.readthedocs.io/en/latest/getting_started.html#
 for details on how the distribution works.
 
 ### Connect to S3 (offline store)
+
 For an offline Enterprise Store, the unit must be configured to use
 S3 as a blob storage backend.  The configuration options for S3 start
 with `proxy.storage.s3`.
@@ -164,6 +179,7 @@ There should be no failing services, especially
 have been automatically created in the S3 server.
 
 ### Make the unit reverse proxy aware
+
 Enterprise Store operators are expected to properly configure the
 reverse proxy(s) to set the `X-Forwarded-Proto` header (see the next
 section below for more info).
@@ -179,6 +195,7 @@ the reverse proxy(s), and the header should be set appropriately.
 ```
 
 ## Configure the reverse proxy(s)
+
 Reverse proxies like HAProxy or NGINX are situated between clients
 and the backend Enterprise Store units. They need to be configured
 correctly to interact with the backend units.
@@ -196,6 +213,7 @@ Reverse proxies should also specify the relevant backend units in
 the configuration.
 
 An example portion of a HAProxy configuration might look like:
+
 ```
 frontend my_frontend
   mode http
@@ -219,6 +237,7 @@ backend web_servers
 Don't forget to restart the reverse proxy to pick up the config.
 
 ## Point devices to the reverse proxy
+
 See [how to configure devices](devices.md).
 
 You may also have to trust the certificate served by the
@@ -232,7 +251,9 @@ At this point, verify that functionality is working as expected for
 client devices.
 
 ## Add another unit
+
 ### Install the snap
+
 To add another unit to our topology, we need to provision a new machine
 and install the `enterprise-store` snap, using the same revision
 as the other unit. This could mean running the same `install.sh`
@@ -254,6 +275,7 @@ After installing, remember to pin the snap:
     sudo snap refresh --hold enterprise-store
 
 ### Export and import the config
+
 Next, export the config from the existing enterprise-store unit:
 
     sudo enterprise-store config --export-yaml | cat > store-config.yaml
@@ -302,6 +324,7 @@ Don't forget to restart the reverse proxy to pick up the configuration
 changes.
 
 ## Existing Enterprise Store
+
 Migrating to HA from an existing, non-HA Enterprise Store is generally
 similar to the steps above, but with some key differences, like
 updating TLS termination to occur at the reverse proxy and migrating
@@ -327,6 +350,7 @@ to S3 storage, before switching the Enterprise Store unit to use S3
 as the storage backend.
 
 ### Backup
+
 Make a backup and store the file securely:
 
     sudo enterprise-store config --export-yaml | cat > store-config.yaml
@@ -337,12 +361,13 @@ configuration with:
     cat store-config.yaml | sudo enterprise-store config --import-yaml
 
 ### Reverse Proxy
+
 We want to set up a reverse proxy in front of the existing Enterprise
 Store snap unit, with devices directing traffic towards the reverse
 proxy instead of the Enterprise Store snap unit. This is relatively
 simple if using HTTP. However, if using HTTPS, it's a bit more
 involved. Please modify the steps as necessary for a HTTP Enterprise
-Store. This section assumes the goal of TLS termination occuring at
+Store. This section assumes the goal of TLS termination occurring at
 the reverse proxy.
 
 Copy the certificate and private key from the Enterprise Store unit
@@ -443,6 +468,7 @@ Restart the reverse proxy, and verify that traffic to the reverse
 proxy is working as expected.
 
 ### S3 (Offline Store)
+
 First, [set the relevant S3 options](#connect-to-s3-offline-store),
 but **do not switch over to using S3 as the storage backend** yet.
 
@@ -454,11 +480,14 @@ take the Enterprise Store down for maintenance, either by modifying
 the reverse proxy or disabling the snap on the Enterprise Store unit.
 
 #### Migrate scanned package blobs
+
 Scanned blobs can be found on the Enterprise Store unit using:
 
 ```{terminal}
-:input: ls -1 /var/snap/enterprise-store/common/snapstorage-local/scanned
 :copy:
+
+ls -1 /var/snap/enterprise-store/common/snapstorage-local/scanned
+
 LpV8761EjlAPqeXxfYhQvpSWgpxvEWpN_414.snap
 ```
 
@@ -524,13 +553,17 @@ local Enterprise Store unit. The blob count on the unit can be found with:
     ls -1 /var/snap/enterprise-store/common/snapstorage-local/scanned | wc -l
 
 #### Migrate unscanned blobs
+
 Unscanned blobs can be found on the Enterprise Store unit using:
 
 ```{terminal}
-:input: find /var/snap/enterprise-store/common/snapstorage-local/unscanned/ -type f
 :copy:
+
+find /var/snap/enterprise-store/common/snapstorage-local/unscanned/ -type f
+
 /var/snap/enterprise-store/common/snapstorage-local/unscanned/e33d585a-cdf3-420e-9b6e-125d069542a5/hello-world_29.snap
 ```
+
 In the example output above,
 `e33d585a-cdf3-420e-9b6e-125d069542a5/hello-world_29.snap` needs
 to be migrated to the appropriate S3 bucket. Note that the UUID is
@@ -572,6 +605,7 @@ local Enterprise Store unit. The blob count on the unit can be found with:
     ls -1 /var/snap/enterprise-store/common/snapstorage-local/unscanned | wc -l
 
 #### Switch to using S3
+
 Make a backup of the `snapstorage.package_store` table in the
 PostgreSQL database, to use in case the migration goes wrong. The
 next steps will cause some downtime.
@@ -619,6 +653,7 @@ At this point the initial unit has been configured for HA, so
 [additional units can be added](#add-another-unit).
 
 ## Keep backups
+
 It is advisable to maintain frequent backups of various components
 of the Enterprise Store. These backups include:
 
@@ -629,6 +664,7 @@ of the Enterprise Store. These backups include:
 of the network topology (such as reverse proxies, memcached, etc.)
 
 ## Keep unit configuration consistent
+
 It is important for the Enterprise Store configuration to be the same
 across units within the same cluster. Divergent configurations will likely
 lead to divergent behaviour when handling requests.

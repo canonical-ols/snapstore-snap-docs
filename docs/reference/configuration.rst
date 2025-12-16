@@ -1,3 +1,6 @@
+.. meta::
+    :description: A complete reference of Enterprise Store configuration keys and their default values.
+
 Store configuration
 *******************
 

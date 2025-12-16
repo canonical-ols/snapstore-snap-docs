@@ -1,3 +1,9 @@
+---
+title: Publish snaps directly to the Enterprise Store
+table_of_contents: true
+description: Publish snaps directly to an Enterprise Store configured with a Dedicated Snap Store Brand account and signing keys.
+---
+
 # Publish snaps directly to the Enterprise Store
 
 ```{warning}
@@ -31,7 +37,8 @@ sha3-384 fingerprints of the respective registered keys:
 :user: user
 :host: admin-host
 :copy:
-:input: store-admin export store --arch=amd64 --arch=arm64 --channel=stable --channel=edge --key=keyId1 --key=keyId2 --key=keyId3 myDeviceViewStoreID
+
+store-admin export store --arch=amd64 --arch=arm64 --channel=stable --channel=edge --key=keyId1 --key=keyId2 --key=keyId3 myDeviceViewStoreID
 
 Logging in as store admin...
 Opening an authorization web page in your browser.
@@ -74,7 +81,8 @@ Move the exported store bundle to the Enterprise Store machine and run the impor
 :user: user
 :host: enterprise-store-host
 :copy:
-:input: sudo snap-proxy push-store --revision-authority-key-id keyid1 --revision-authority-key /var/snap/enterprise-store/common/snaps-to-push/keyid1.private.key /var/snap/enterprise-store/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
+
+sudo snap-proxy push-store --revision-authority-key-id keyid1 --revision-authority-key /var/snap/enterprise-store/common/snaps-to-push/keyid1.private.key /var/snap/enterprise-store/common/snaps-to-push/store-export-myDeviceViewStoreID.tar.gz
 
 
 Uploaded snap and assertions for core revision 13250
@@ -96,7 +104,8 @@ The key file specified with `--revision-authority-key` contains the **private ke
 :user: user
 :host: admin-host
 :copy:
-:input: gpg --homedir ~/.snap/gnupg --export-secret-keys --armor <key-name>`
+
+gpg --homedir ~/.snap/gnupg --export-secret-keys --armor <key-name>`
 ```
 
 Where `<key-name>` is the name as shown in the `snapcraft list-keys` output. A matching `--revision-authority-key-id` has to be specified as well (also available in the `snapcraft list-keys` output).
@@ -112,19 +121,21 @@ Configure the snap revision provenance for this Enterprise Store (the value for 
 :user: user
 :host: enterprise-store-host
 :copy:
-:input: sudo enterprise-store config internal.airgap.store.provenance-allowlist=acme-site-7
+
+sudo enterprise-store config internal.airgap.store.provenance-allowlist=acme-site-7
 ```
 
 ## Build and publish with Snapcraft
 
-Snapcraft is used to build revision authority delegated snaps, and to publish them to the Enteprise Store.
+Snapcraft is used to build revision authority delegated snaps, and to publish them to the Enterprise Store.
 
 
 ```{terminal}
 :user: user
 :host: admin-host
 :copy:
-:input: sudo snap install snapcraft --classic
+
+sudo snap install snapcraft --classic
 ```
 
 Configure Snapcraft for your Enterprise Store using the data exported from the data provided with `store-admin export store`:
@@ -132,20 +143,21 @@ Configure Snapcraft for your Enterprise Store using the data exported from the d
 ```{terminal}
 :user: user
 :host: admin-host
-:input: export SNAPCRAFT_ADMIN_MACAROON=$(cat /home/<user>/snap/store-admin/common/export/storeID.macaroon)
 
-:input: export SNAPCRAFT_STORE_AUTH=onprem
-:input: export STORE_DASHBOARD_URL="https://example.store/publishergw"
-:input: export STORE_UPLOAD_URL="https://example.store"
+export SNAPCRAFT_ADMIN_MACAROON=$(cat /home/<user>/snap/store-admin/common/export/storeID.macaroon)
+export SNAPCRAFT_STORE_AUTH=onprem
+export STORE_DASHBOARD_URL="https://example.store/publishergw"
+export STORE_UPLOAD_URL="https://example.store"
 ```
 
-Next, login to the Enteprise Store store as the publisher and export the credentials to a file:
+Next, login to the Enterprise Store store as the publisher and export the credentials to a file:
 
 
 ```{terminal}
 :user: user
 :host: admin-host
-:input: snapcraft export-login <publisher_account>
+
+snapcraft export-login <publisher_account>
 ```
 
 Set the credential produced by `export-login` as `SNAPCRAFT_STORE_CREDENTIALS` environment variable:
@@ -153,13 +165,14 @@ Set the credential produced by `export-login` as `SNAPCRAFT_STORE_CREDENTIALS` e
 ```{terminal}
 :user: user
 :host: admin-host
-:input: export SNAPCRAFT_STORE_CREDENTIALS="$(cat <publisher_account>)"
+
+export SNAPCRAFT_STORE_CREDENTIALS="$(cat <publisher_account>)"
 ```
 
-You can now `snapcraft upload` and `snapcraft release` to the Enteprise Store.
+You can now `snapcraft upload` and `snapcraft release` to the Enterprise Store.
 
 ```{note}
-Commands supported by Enteprise Stores set up in this way are:
+Commands supported by Enterprise Stores set up in this way are:
 
 * `snapcraft status <snap-name>`
 * `snapcraft list-revisions <snap-name>`
