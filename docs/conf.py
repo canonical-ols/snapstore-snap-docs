@@ -70,7 +70,7 @@ copyright = "%s CC-BY-SA, %s" % (datetime.date.today().year, author)
 # NOTE: The Open Graph Protocol (OGP) enhances page display in a social graph
 #       and is used by social media platforms; see https://ogp.me/
 
-ogp_site_url = "https://enterprise-store.readthedocs-hosted.com/"
+ogp_site_url = "https://documentation.ubuntu.com/enterprise-store/"
 
 
 # Preview name of the documentation website
@@ -206,7 +206,9 @@ sitemap_excludes = [
 # NOTE: If undefined, set to None, or empty,
 #       the sphinx_reredirects extension will be disabled.
 
-redirects = {}
+redirects = {
+    "reference/feature-list/": "/",
+}
 
 
 ###########################

@@ -1,10 +1,10 @@
 ---
-title: Enterprise Store Explanation guides
+title: Explanation guides
 orphan: true
 description: Conceptual guides explaining how the Enterprise Store works and how it can be configured and used.
 ---
 
-# Enterprise Store Explanation guides
+# Explanation guides
 
 Our explanatory and conceptual guides are written to provide a better understanding of
 how the Enterprise Store works and how it can be used and configured. They enable you

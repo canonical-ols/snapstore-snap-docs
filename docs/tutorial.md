@@ -3,7 +3,7 @@ title: Tutorials
 description: Hands-on tutorials for setting up and using the Enterprise Store in online and air-gapped environments.
 ---
 
-# Enterprise Store Tutorials
+# Tutorials
 
 The Enterprise Store tutorials are your first port of call for learning how to
 set up and use an Enterprise Store. They're designed to help you learn the

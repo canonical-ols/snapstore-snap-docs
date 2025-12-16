@@ -1,7 +1,7 @@
 ---
 title: Getting started with an air-gapped store
 table_of_contents: true
-description: Step-by-step tutorial for setting up and testing the Enterprise Store in an offline, air-gapped environment.
+description: A step-by-step tutorial for setting up and testing the Enterprise Store in an offline, air-gapped environment.
 ---
 
 # Getting started with an air-gapped store
