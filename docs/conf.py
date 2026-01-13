@@ -161,7 +161,7 @@ html_context = {
 # TODO: If your documentation is hosted on https://docs.ubuntu.com/,
 #       uncomment and update as needed.
 
-slug = "enterprise-store"
+slug = "internet-of-things/appstore"
 
 
 # Template and asset locations
@@ -307,7 +307,8 @@ html_css_files = [
 # Adds custom JavaScript files, located under 'html_static_path'
 
 html_js_files = [
-    "js/bundle.js"
+    "js/bundle.js",
+    "js/url_overwrite.js"
 ]
 
 # By default, the documentation includes a feedback button at the top.
