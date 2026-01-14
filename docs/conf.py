@@ -175,13 +175,19 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = f'https://ubuntu.com/internet-of-things/appstore/docs/{os.environ.get("READTHEDOCS_VERSION", "page")}/'
+html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "/")
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
 # When configured with RTD variables, check for RTD environment so manual runs succeed:
 
 sitemap_url_scheme = '{link}'
+
+# Include `lastmod` dates in the sitemap:
+
+sitemap_show_lastmod = True
+
+# Exclude generated pages from the sitemap:
 
 sitemap_excludes = [
     "genindex/",
@@ -202,7 +208,9 @@ sitemap_excludes = [
 # NOTE: If undefined, set to None, or empty,
 #       the sphinx_reredirects extension will be disabled.
 
-redirects = {}
+redirects = {
+    "reference/feature-list/": "/",
+}
 
 
 ###########################
@@ -261,8 +269,23 @@ myst_heading_anchors = 3
 
 extensions = [
     "canonical_sphinx",
+    "notfound.extension",
+    "sphinx_design",
+    "sphinx_reredirects",
+    "sphinx_tabs.tabs",
+    "sphinxcontrib.jquery",
+    "sphinxext.opengraph",
+    "sphinx_config_options",
+    "sphinx_contributor_listing",
+    "sphinx_filtered_toctree",
+    "sphinx_related_links",
+    "sphinx_roles",
+    "sphinx_terminal",
+    "sphinx_ubuntu_images",
+    "sphinx_youtube_links",
     "sphinxcontrib.cairosvgconverter",
     "sphinx_last_updated_by_git",
+    "sphinx.ext.intersphinx",
     "sphinx_sitemap",
 ]
 
@@ -284,7 +307,8 @@ html_css_files = [
 # Adds custom JavaScript files, located under 'html_static_path'
 
 html_js_files = [
-    "js/bundle.js"
+    "js/bundle.js",
+    "js/url_overwrite.js"
 ]
 
 # By default, the documentation includes a feedback button at the top.

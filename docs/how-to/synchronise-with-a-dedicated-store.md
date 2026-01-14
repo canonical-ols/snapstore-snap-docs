@@ -1,3 +1,9 @@
+---
+title: Synchronise with a Dedicated Snap Store
+table_of_contents: true
+description: Export and import Dedicated Snap Store credentials and snaps to your Enterprise Store using the store-admin snap.
+---
+
 # Synchronise with a Dedicated Snap Store
 
 ```{warning}
@@ -9,7 +15,8 @@ Dedicated Snap Store credentials and snaps can be exported using the `store-admi
 ```{terminal}
 :user: user
 :host: admin-box
-:input: store-admin export store --help
+
+store-admin export store --help
 
 Usage: store-admin export store [OPTIONS] STORE_ID
 
@@ -41,7 +48,8 @@ store:
 ```{terminal}
 :user: user
 :host: admin-box
-:input: store-admin export store --arch=amd64 --arch=arm64 --channel=stable --channel=edge StoreID
+
+store-admin export store --arch=amd64 --arch=arm64 --channel=stable --channel=edge StoreID
 ```
 
 This will export any snaps available in the store, with their channel maps, metadata,
@@ -52,7 +60,8 @@ Once you move the exported store bundle to your store, you can run the import co
 ```{terminal}
 :user: user
 :host: enterprise-store-host
-:input: sudo enterprise-store push-store /var/snap/enterprise-store/common/snaps-to-push/store-export-StoreID.tar.gz
+
+sudo enterprise-store push-store /var/snap/enterprise-store/common/snaps-to-push/store-export-StoreID.tar.gz
 
 Uploaded snap and assertions for core revision 13250
 Uploaded snap and assertions for core revision 13253

@@ -1,6 +1,7 @@
 ---
 title: Enterprise Store Model Service
 table_of_contents: true
+description: Configure the Model Service for device serial provisioning in air-gapped Enterprise Store deployments with HSM support.
 ---
 
 # Air-gapped Model Service

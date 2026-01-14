@@ -1,3 +1,9 @@
+---
+title: Migrate from Snap Store Proxy to Enterprise Store
+table_of_contents: true
+description: Upgrade from the legacy Snap Store Proxy snap to the Enterprise Store snap while preserving your configuration.
+---
+
 # Migrate from Snap Store Proxy to Enterprise Store
 
 [Snap Store Proxy](https://snapcraft.io/snap-store-proxy) has been renamed to [Enterprise Store](https://snapcraft.io/enterprise-store). The Snap Store Proxy snap will be maintained for the time being, but it is recommended to upgrade to the Enterprise Store snap.
@@ -14,6 +20,7 @@ snap install enterprise-store
 
 In an offline context, first download the snap and its assertions on
 a machine with internet access, e.g.:
+
 ```bash
 snap download enterprise-store --channel=latest/stable
 ```
@@ -67,8 +74,9 @@ Store service ports conflict with the existing Snap Store Proxy service ports.
 This is expected. An example output of this is:
 
 ```{terminal}
-:input: cat store-config.yaml | sudo enterprise-store config --import-yaml
 :copy:
+
+cat store-config.yaml | sudo enterprise-store config --import-yaml
 
 Configured database for packagereview role.
 Configured database for packagereview-celery role.
@@ -101,8 +109,9 @@ sudo enterprise-store config internal.snapstorage.local-origin-secret="$(sudo sn
 **This command will fail** with an expected output similar to:
 
 ```{terminal}
-:input: sudo enterprise-store config internal.snapstorage.local-origin-secret="$(sudo snap get snap-store-proxy internal.snapstorage.local-origin-secret)"
 :copy:
+
+sudo enterprise-store config internal.snapstorage.local-origin-secret="$(sudo snap get snap-store-proxy internal.snapstorage.local-origin-secret)"
 
 error: Command '['snapctl', 'restart', '--reload', 'enterprise-store.nginx', 'enterprise-store.snapmodels', 'enterprise-store.memcached', 'enterprise-store.storeadmingw', 'enterprise-store.packagereview', 'enterprise-store.snapassert', 'enterprise-store.snapauth', 'enterprise-store.snapproxy', 'enterprise-store.snapstorage', 'enterprise-store.packagereview-worker', 'enterprise-store.snapident', 'enterprise-store.snaprevs', 'enterprise-store.snapdevicegw', 'enterprise-store.publishergw']' returned non-zero exit status 1.
 ```
@@ -127,8 +136,9 @@ sudo enterprise-store config internal.airgap.gateway-hash="$(sudo snap get snap-
 **This command will fail** with an expected output similar to:
 
 ```{terminal}
-:input: sudo enterprise-store config internal.airgap.gateway-hash="$(sudo snap get snap-store-proxy internal.airgap.gateway-hash)"
 :copy:
+
+sudo enterprise-store config internal.airgap.gateway-hash="$(sudo snap get snap-store-proxy internal.airgap.gateway-hash)"
 
 error: Command '['snapctl', 'restart', '--reload', 'enterprise-store.nginx', 'enterprise-store.snapmodels', 'enterprise-store.memcached', 'enterprise-store.storeadmingw', 'enterprise-store.packagereview', 'enterprise-store.snapassert', 'enterprise-store.snapauth', 'enterprise-store.snapproxy', 'enterprise-store.snapstorage', 'enterprise-store.packagereview-worker', 'enterprise-store.snapident', 'enterprise-store.snaprevs', 'enterprise-store.snapdevicegw', 'enterprise-store.publishergw']' returned non-zero exit status 1.
 ```

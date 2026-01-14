@@ -1,6 +1,7 @@
 ---
 title: Register
 table_of_contents: true
+description: Register your Enterprise Store with Ubuntu SSO and configure it for online or offline operation.
 ---
 
 # Registration
@@ -29,6 +30,7 @@ This will show the registration status of your proxy, as well as local
 status information of this store's host.
 
 Example:
+
 ```zsh
 $ enterprise-store status
 
@@ -63,7 +65,6 @@ generated during the process. This key is your proxy's identity. The key
 pair can be viewed using:
 
     sudo enterprise-store config proxy.key.public proxy.key.private
-
 
 ## Next step
 

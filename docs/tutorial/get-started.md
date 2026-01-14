@@ -1,4 +1,10 @@
-# Getting started with the store
+---
+title: Getting started with the Enterprise Store
+table_of_contents: true
+description: A step-by-step tutorial for setting up and testing the Enterprise Store in an online environment with revision control.
+---
+
+# Getting started with the Enterprise Store
 
 In this tutorial, we will set up and test the Enterprise Store in an online
 environment. We will cover how to set the store up, how
@@ -38,7 +44,8 @@ Ensure LXD is installed on your **host machine**:
 :user: user
 :host: host
 :copy:
-:input: sudo snap install lxd
+
+sudo snap install lxd
 ```
 
 Ensure LXD is set up properly:
@@ -47,7 +54,8 @@ Ensure LXD is set up properly:
 :user: user
 :host: host
 :copy:
-:input: sudo lxd init --minimal
+
+sudo lxd init --minimal
 ```
 
 Launch two containers, **test-store**, and **test-device**:
@@ -56,9 +64,9 @@ Launch two containers, **test-store**, and **test-device**:
 :user: user
 :host: host
 :copy:
-:input: sudo lxc launch ubuntu:22.04 test-store
 
-:input: sudo lxc launch ubuntu:22.04 test-device
+sudo lxc launch ubuntu:22.04 test-store
+sudo lxc launch ubuntu:22.04 test-device
 ```
 
 
@@ -74,17 +82,11 @@ We can open a container by running bash. For example, to open the CLI of the **t
 :user: user
 :host: host
 :copy:
-:input: sudo lxc exec test-store -- bash
+
+sudo lxc exec test-store -- bash
 ```
 
-This will simulate SSH access to the container, and show you as root within the container:
-
-```{terminal}
-:user: root
-:host: test-store
-:copy:
-:input:
-```
+This will simulate SSH access to the container, and show you as root within the container.
 ````
 
 ## Enterprise Store installation
@@ -95,9 +97,9 @@ Within the **test-store** container, install the Enterprise Store snap and verif
 :user: root
 :host: test-store
 :copy:
-:input: snap install enterprise-store
 
-:input: snap list enterprise-store
+snap install enterprise-store
+snap list enterprise-store
 ```
 
 Next, configure the domain for Enterprise Store:
@@ -106,11 +108,20 @@ Next, configure the domain for Enterprise Store:
 :user: root
 :host: test-store
 :copy:
-:input: hostname
+
+hostname
 
 test-store
+```
 
-:input: enterprise-store config proxy.domain="test-store" 
+
+```{terminal}
+:user: root
+:host: test-store
+:copy:
+
+enterprise-store config proxy.domain="test-store"
+
 proxy.domain: test-store
 ```
 
@@ -126,7 +137,8 @@ Install PostgreSQL:
 :user: root
 :host: test-store
 :copy:
-:input: snap install postgresql
+
+snap install postgresql
 ```
 
 Configure database for use with the Enterprise Store:
@@ -135,7 +147,8 @@ Configure database for use with the Enterprise Store:
 :user: root
 :host: test-store
 :copy:
-:input: nano proxydb.sql
+
+nano proxydb.sql
 ```
 
 Paste the contents of the following into proxydb.sql.
@@ -156,9 +169,9 @@ Run configure and start the postgres instance:
 :host: test-store
 :copy:
 :scroll:
-:input: cp ~/proxydb.sql /var/snap/postgresql/common/
 
-:input: snap run postgresql.psql -U postgres -f /var/snap/postgresql/common/proxydb.sql
+cp ~/proxydb.sql /var/snap/postgresql/common/
+snap run postgresql.psql -U postgres -f /var/snap/postgresql/common/proxydb.sql
 ```
 
 Configure the Enterprise Store to use the database.
@@ -168,7 +181,8 @@ Configure the Enterprise Store to use the database.
 :host: test-store
 :copy:
 :scroll:
-:input: enterprise-store config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db?sslmode=disable"
+
+enterprise-store config proxy.db.connection="postgresql://snapproxy-user@localhost:5432/snapproxy-db?sslmode=disable"
 
 Authentication error with user snapproxy-user.
 
@@ -184,18 +198,20 @@ Enter `snapproxy-password`, then check that the postgres instance has started su
 :host: test-store
 :copy:
 :scroll:
-:input: snap services postgresql
 
-:input: snap run postgresql.psql -U postgres -d snapproxy-db
+snap services postgresql
+snap run postgresql.psql -U postgres -d snapproxy-db
 ```
 
 This will open the postgres database. Return to the store CLI with `quit`:
+
 ```{terminal}
 :user: snapproxy-db
 :host: 
 :copy:
 :scroll:
-:input: quit
+
+quit
 ```
 
 Finally, check the store's connections:
@@ -204,7 +220,8 @@ Finally, check the store's connections:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store check-connections
+
+enterprise-store check-connections
 
 http: https://dashboard.snapcraft.io: OK 
 http: https://login.ubuntu.com: OK 
@@ -223,7 +240,8 @@ Within the **test-store** container, register your Enterprise Store:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store register
+
+sudo enterprise-store register
 ```
 
 ```{note}
@@ -236,7 +254,8 @@ Use the `status` command to retrieve the ID of your store:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store status
+
+enterprise-store status
 
 Store URL: http://test-store
 Store DB: ok
@@ -256,7 +275,8 @@ From within the **test-device** container, connect to your Enterprise Store and 
 :user: root
 :host: test-device
 :copy:
-:input: curl -sL http://test-store/v2/auth/store/assertions | snap ack /dev/stdin
+
+curl -sL http://test-store/v2/auth/store/assertions | snap ack /dev/stdin
 ```
 
 Verify the assertion on your device:
@@ -265,7 +285,8 @@ Verify the assertion on your device:
 :user: root
 :host: test-device
 :copy:
-:input: snap known store
+
+snap known store
 
 type: store
 authority-id: canonical
@@ -284,7 +305,8 @@ Configure **test-device** to use the store:
 :user: root
 :host: test-device
 :copy:
-:input: snap set core proxy.store=$(snap known store | awk '/store:/{print $2}')
+
+snap set core proxy.store=$(snap known store | awk '/store:/{print $2}')
 ```
 
 Check the store is configured:
@@ -293,7 +315,8 @@ Check the store is configured:
 :user: root
 :host: test-device
 :copy:
-:input: snap get core proxy.store
+
+snap get core proxy.store
 
 <STORE_ID>
 ```
@@ -312,7 +335,8 @@ Within the **test-device**, query the available jq version:
 :user: root
 :host: test-device
 :copy:
-:input: snap info jq
+
+snap info jq
 
 ... 
 
@@ -332,7 +356,8 @@ Next, within the **test-store**, add an override for the `jq` snap:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store override jq stable=11
+
+enterprise-store override jq stable=11
 
 jq stable amd64 11
 ```
@@ -343,7 +368,8 @@ Ensure the override is set properly:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store list-overrides jq
+
+enterprise-store list-overrides jq
 
 jq stable amd64 11 (upstream 6)
 ```
@@ -354,7 +380,8 @@ From the **test-device**, query the `jq` snap:
 :user: root
 :host: test-device
 :copy:
-:input: snap info jq
+
+snap info jq
 
 ... 
 
@@ -378,7 +405,8 @@ Using **test-device**, try downloading the `jq` snap:
 :user: root
 :host: test-device
 :copy:
-:input: snap install jq
+
+snap install jq
 
 jq 1.6 from Michael Vigt (mvo) installed
 ```
@@ -398,7 +426,8 @@ First, from within the **test-store**, delete the override:
 :user: root
 :host: test-store
 :copy:
-:input: enterprise-store delete-override jq stable
+
+enterprise-store delete-override jq stable
 ```
 
 From the test-device, query the jq snap info again:
@@ -407,7 +436,8 @@ From the test-device, query the jq snap info again:
 :user: root
 :host: test-device
 :copy:
-:input: snap info jq
+
+snap info jq
 
 ... 
 
@@ -425,7 +455,8 @@ Now, within the **test-device**, refresh the snap:
 :user: root
 :host: test-device
 :copy:
-:input: snap refresh jq
+
+snap refresh jq
 
 jq 1.5+dfsg-1 from Michael Vigt (mvo) refreshed
 ```
@@ -436,7 +467,8 @@ Finally, from within the **test-device**, we can disconnect the device from the 
 :user: root
 :host: test-device
 :copy:
-:input: snap set core proxy.store=''
+
+snap set core proxy.store=''
 ```
 
 (cleanup)=
@@ -450,9 +482,9 @@ Make sure you remove them:
 :host: host
 :dir: 
 :copy:
-:input: sudo lxc delete test-device --force
 
-:input: sudo lxc delete test-store --force
+sudo lxc delete test-device --force
+sudo lxc delete test-store --force
 ```
 
 This should return your system to the state it was in before this tutorial.

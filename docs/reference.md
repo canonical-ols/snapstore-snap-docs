@@ -1,8 +1,9 @@
 ---
-title: Enterprise Store Reference
+title: Reference documentation
+description: Technical reference for Enterprise Store configuration, APIs, features, and cryptographic implementations.
 ---
 
-# Enterprise Store Reference
+# Reference documentation
 
 Our *Reference* section contains technical details (such as the Overrides API and
 authentication mechanism), and other supplementary reference materials.
@@ -12,7 +13,6 @@ authentication mechanism), and other supplementary reference materials.
 | [Store Configuration](reference/configuration.rst)    | A list of the store's configuration keys and default values              |
 | [Overrides API](reference/api-overrides.md)           | API specs for the Overrides API                                          |
 | [API authentication](reference/api-authentication.md) | API authentication for store admins when using the Overrides API         |
-| [Feature list](reference/feature-list.md)             | A summarised list of features of the Enterprise Store                    |
 | [Cryptography](reference/cryptography.md)             | An outline of the usage of cryptographic technology                      |
 
 
@@ -30,6 +30,5 @@ you to understand and adapt the steps to fit your specific requirements.
     reference/configuration
     reference/api-overrides
     reference/api-authentication
-    reference/feature-list
     reference/cryptography
 ```

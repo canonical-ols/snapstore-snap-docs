@@ -1,13 +1,13 @@
 ---
-title: Configuring snap devices
+title: Configure a device to use the Enterprise Store
 table_of_contents: true
+description: Configure snap devices to connect to your Enterprise Store instead of the public Snap Store.
 ---
 
-# Snap devices
+# Configure a device to use the Enterprise Store
 
-## Configuring devices
+Ensure you have:
 
-**Prerequisites**
 * `snapd` ≥ 2.30 on the client device
 * Access to a [registered Enterprise Store](register.md)
 
@@ -82,7 +82,6 @@ the list of allowed device services (Serial Vaults), e.g.:
 
     sudo enterprise-store config \
         proxy.device-auth.allowed-device-service-urls='["https://sv1.internal", "https://sv2.internal"]'
-
 
 ## Next step
 
