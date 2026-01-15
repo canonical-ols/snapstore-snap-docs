@@ -36,7 +36,7 @@ In this documentation
    * - **Charm support**
      - :doc:`how-to/charmhub-proxy` • :doc:`how-to/airgap-charmhub`
    * - **Dedicated Snap Store support**
-     - :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/publish-snaps` • :doc:`how-to/build-images`
+     - :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/publish-snaps` • :doc:`how-to/build-images`
    * - **API documentation**
      - :doc:`reference/api-authentication` • :doc:`reference/api-overrides`
    * - **Security**
