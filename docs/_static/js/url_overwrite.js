@@ -2,7 +2,7 @@
 
 // Replace oldDomain with newDomain
 const oldDomain = 'canonical-enterprise-store.readthedocs-hosted.com';
-const newDomain = 'ubuntu.com/internet-of-things/appstore/docs';
+const newDomain = 'ubuntu.com/enterprise-store/docs';
 
 // // Logging for debugging purposes
 // console.stdlog = console.log.bind(console);
