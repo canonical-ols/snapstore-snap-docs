@@ -175,7 +175,7 @@ templates_path = ["_templates"]
 
 # Base URL of RTD hosted project
 
-html_baseurl = os.environ.get("READTHEDOCS_CANONICAL_URL", "/")
+html_baseurl = "https://ubuntu.com/enterprise-store/docs/"
 
 # URL scheme. Add language and version scheme elements manually e.g. '{0}/{1}/{{link}}'.format(os.environ['READTHEDOCS_LANGUAGE'], os.environ['READTHEDOCS_VERSION'])
 
@@ -194,6 +194,8 @@ sitemap_excludes = [
     "404/",
     "search/",
 ]
+
+sitemap_filename = "doc-sitemap.xml"
 
 #############
 # Redirects #
