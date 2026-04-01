@@ -1,6 +1,9 @@
 Enterprise Store documentation
 ==============================
 
+Product page: https://ubuntu.com/enterprise-store
+Documentation: https://ubuntu.com/enterprise-store/docs/
+
 This repository contains documentation for Canonical's Enterprise Store.
 
 The Enterprise Store provides an on-premise edge proxy to the public Snap
