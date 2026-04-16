@@ -37,6 +37,20 @@ The default limit is 2GB, this can be changed with:
 
     sudo enterprise-store config proxy.cache.size=4096  # in mb
 
+The Enterprise Store can be scrubbed from a system using
+
+    sudo snap remove enterprise-store --purge
+
+Confirm that data is removed:
+
+    sudo snap saved enterprise-store
+
+If there are any snapshots for enterprise-store, remove them manually:
+
+    sudo snap forget <Set-number>
+
+**Note:** Without the `--purge` flag snapshots will be kept for 31 days.
+
 ## Moving to a new hostname
 
 If you need to move the enterprise-store to a new hostname, you can do:
@@ -54,9 +68,9 @@ This documentation is shipped with the snap, and available at:
 
     http://MY-PROXY/docs/
 
-## Bug reporting
+## Bug / vulnerability reporting
 
-Please file bugs against [this project on Launchpad](https://bugs.launchpad.net/snapstore)
+Please file bugs against [this project on Launchpad](https://bugs.launchpad.net/snapstore). Details on reporting vulnerabilities and security issues are detailed in the [Ubuntu Disclosure Policy](https://ubuntu.com/security/disclosure-policy).
 
 ### Known issues
 
