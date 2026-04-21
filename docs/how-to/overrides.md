@@ -7,7 +7,7 @@ description: Control and pin specific snap revisions on channels to manage updat
 # Snap revision overrides
 
 You can override the revisions for specific snaps, on a specific
-[channel](https://docs.snapcraft.io/reference/channels). This means
+[channel](https://snapcraft.io/docs/explanation/how-snaps-work/channels-and-tracks/). This means
 you can control the specific revision of a snap in a channel, rather
 than what the upstream publisher has released. You can use this to
 effectively pin revisions, and control when you are ready to upgrade
@@ -34,7 +34,7 @@ To remove all current overrides on a channel:
 ### Revisions and Architectures
 
 A Snap Store channel can publish only one
-[revision](https://snapcraft.io/docs/getting-started) of a specific snap at any
+[revision](https://snapcraft.io/docs/tutorials/get-started/) of a specific snap at any
 time.
 
 A snap revision can support one or multiple architectures. Specifying a revision
