@@ -49,7 +49,8 @@ If there are any snapshots for enterprise-store, remove them manually:
 
     sudo snap forget <Set-number>
 
-**Note:** Without the `--purge` flag snapshots will be kept for 31 days.
+.. note::
+   Without the `--purge` flag snapshots will be kept for 31 days.
 
 ## Moving to a new hostname
 
