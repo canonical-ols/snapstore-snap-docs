@@ -46,7 +46,7 @@ If you already have an existing, non-HA Enterprise Store
 with a single unit, refer to the [Existing Enterprise
 Store](#existing-enterprise-store) section.
 
-### TLS Termination
+### TLS termination
 
 In HA setups, it is common to terminate the TLS connection at the
 reverse proxy, with traffic to the backend units using unencrypted
@@ -360,7 +360,7 @@ configuration with:
 
     cat store-config.yaml | sudo enterprise-store config --import-yaml
 
-### Reverse Proxy
+### Reverse proxy
 
 We want to set up a reverse proxy in front of the existing Enterprise
 Store snap unit, with devices directing traffic towards the reverse
@@ -467,7 +467,7 @@ backend web_servers
 Restart the reverse proxy, and verify that traffic to the reverse
 proxy is working as expected.
 
-### S3 (Offline Store)
+### S3 (offline store)
 
 First, [set the relevant S3 options](#connect-to-s3-offline-store),
 but **do not switch over to using S3 as the storage backend** yet.

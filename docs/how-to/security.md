@@ -18,7 +18,7 @@ HTTPS to connect to the Enterprise Store.
 This section explains how to enable and configure TLS termination in the
 Enterprise Store.
 
-### Certificate and Key
+### Certificate and key
 
 Obtain an x509 key and certificate pair for your Enterprise Store domain (as
 well as any relevant intermediate certificates if applicable). You can determine
@@ -31,7 +31,7 @@ certificate as well.
 
 How to obtain the certificate/key pair is out of scope of this document.
 
-### Importing the Key/Certificate pair
+### Importing the key/certificate pair
 
 Running the below command will import the key/certificate pair (and any
 intermediate certificates as needed) and re-configure your Enterprise Store:

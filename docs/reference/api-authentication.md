@@ -27,7 +27,7 @@ paper](https://research.google.com/pubs/pub41892.html).
 To login, you must first get a root macaroon from the Enterprise Store,
 then discharge (verify) that macaroon with [Ubuntu SSO](https://login.ubuntu.com/).
 
-## Root Macaroon
+## Root macaroon
 
 To get a root macaroon:
 

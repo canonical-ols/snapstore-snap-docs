@@ -31,7 +31,7 @@ To remove all current overrides on a channel:
 
     sudo enterprise-store delete-override <snap> <channel>
 
-### Revisions and Architectures
+### Revisions and architectures
 
 A Snap Store channel can publish only one
 [revision](https://snapcraft.io/docs/getting-started) of a specific snap at any
@@ -47,27 +47,41 @@ running this command. Snap Store's Devices API
 [snaps_info](https://api.snapcraft.io/docs/info.html) endpoint can also be used
 to obtain available revisions for selected architectures.
 
-In the example below, we have the `core18` snap and two revisions, each
+In the following example, we have the `core18` snap and two revisions, each
 supporting one architecture.
 
-```
-# 1722 is one of the amd64 revisions of the core18 snap.
-$ sudo enterprise-store override core18 stable=1722
+1722 is one of the amd64 revisions of the core18 snap:
+
+```{terminal}
+sudo enterprise-store override core18 stable=1722
+
 core18 stable amd64 1722
+```
 
-# 1725 is one of the armhf revisions of the core18 snap.
-$ sudo enterprise-store override core18 stable=1725
+1725 is one of the armhf revisions of the core18 snap:
+
+```{terminal}
+sudo enterprise-store override core18 stable=1725
+
 core18 stable armhf 1725
+```
 
-# We can see that we've overriden the stable channel revisions for both
-# amd64 and armhf and that both upstream counterparts ar at lower revisions.
-$ sudo enterprise-store list-overrides core18
+We can see that we've overriden the stable channel revisions for both
+amd64 and armhf and that both upstream counterparts are at lower revisions:
+
+```{terminal}
+sudo enterprise-store list-overrides core18
+
 core18 stable amd64 1722 (upstream 1705)
 core18 stable armhf 1725 (upstream 1706)
+```
 
-# Deleting a channel-specific override deletes overrides for all revisions
-# and architectures.
-$ sudo enterprise-store delete-override core18 stable
+Deleting a channel-specific override deletes overrides for all revisions
+and architectures:
+
+```{terminal}
+sudo enterprise-store delete-override core18 stable
+
 core18 stable amd64 is tracking upstream (revision 1705)
 core18 stable armhf is tracking upstream (revision 1706)
 ```
@@ -94,7 +108,7 @@ On the client side, you authenticate by:
     snap-store-proxy-client login
 
 Overrides are managed in the same way as with the `enterprise-store` command
-above, e.g.:
+above, for example:
 
     snap-store-proxy-client list-overrides
     snap-store-proxy-client override foo stable=10

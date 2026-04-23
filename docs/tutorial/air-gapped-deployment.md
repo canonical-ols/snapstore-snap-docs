@@ -31,7 +31,7 @@ so there's no need to take your host machine offline.
 
 For this tutorial, you will need:
 
-* An x64 system running Ubuntu 22.04 or Ubuntu 24.04  
+* An x64 system running Ubuntu 22.04 LTS or Ubuntu 24.04 LTS  
 * A local user with super user privileges  
 * 30GB of free storage  
 * A stable internet connection  

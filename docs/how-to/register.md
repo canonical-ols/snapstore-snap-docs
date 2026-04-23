@@ -31,8 +31,8 @@ status information of this store's host.
 
 Example:
 
-```zsh
-$ enterprise-store status
+```{terminal}
+enterprise-store status
 
 Store URL: http://proxy.example.com
 Store DB: ok

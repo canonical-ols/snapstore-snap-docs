@@ -19,7 +19,7 @@ snap install enterprise-store
 ```
 
 In an offline context, first download the snap and its assertions on
-a machine with internet access, e.g.:
+a machine with internet access, for example:
 
 ```bash
 snap download enterprise-store --channel=latest/stable

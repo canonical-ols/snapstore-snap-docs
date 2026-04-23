@@ -78,7 +78,7 @@ through it.
 
 Since version 2.19 of the enterprise-store, the
 `proxy.device-auth.allowed-device-service-urls` setting can be used to control
-the list of allowed device services (Serial Vaults), e.g.:
+the list of allowed device services (Serial Vaults), for example:
 
     sudo enterprise-store config \
         proxy.device-auth.allowed-device-service-urls='["https://sv1.internal", "https://sv2.internal"]'

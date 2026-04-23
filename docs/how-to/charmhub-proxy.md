@@ -20,8 +20,9 @@ On an internet-connected machine, export the required charms and resources as il
 
 If the offline deployment target is a [Charmhub bundle](https://charmhub.io/?type=bundle), then the bundle and its component charms can be exported like so:
 
-```bash
-$ store-admin export bundle cos-lite --channel=latest/stable --series=kubernetes --arch=amd64
+```{terminal}
+store-admin export bundle cos-lite --channel=latest/stable --series=kubernetes --arch=amd64
+
 Downloading cos-lite revision 11 (stable)
   [####################################]  100%
 Downloading traefik-k8s revision 176 (stable)
@@ -54,8 +55,9 @@ The `charm` key is required, while the other fields will use default values if o
 
 Pass the `charms.yaml` to the `export charms` command like so:
 
-```bash
-$ store-admin export charms ./charms.yaml
+```{terminal}
+store-admin export charms ./charms.yaml
+
 Overriding postgresql-image with local registry subpath.
 Downloading postgresql-k8s revision 20 (latest/stable)
   [####################################]  100%
@@ -100,12 +102,13 @@ packages:
     push_channel: 8.0/edge
 ```
 
-The Snap Store implementation of snap installs by revision requires that the revision exists in the snap's channel map history, i.e. the revision must have been released to any channel before it can be requested directly. Thus, `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the Proxy on push.
+The Snap Store implementation of snap installs by revision requires the revision to exist in the snap's channel map history (the revision must have been released to any channel before it can be requested directly). This means `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the Proxy on push.
 
 The export `.yaml` can be supplied to the `export snaps` command like so:
 
-```bash
-$ store-admin export snaps --from-yaml snaps.yaml
+```{termial}
+store-admin export snaps --from-yaml snaps.yaml
+
 Downloading charmed-postgresql revision 96 (chp_14/edge amd64)
   [####################################]  100%
 Downloading charmed-mysql revision 97 (8.0/edge amd64)
@@ -117,7 +120,7 @@ charmed-mysql: /home/ubuntu/snap/store-admin/common/export/charmed-mysql-2024042
 
 ### Export OCI images
 
-A local OCI registry needs to be set up to enable charms with OCI image resources. On charm export, the OCI image metadata blob is written to the `resources` directory, e.g. for `postgresql-k8s`:
+A local OCI registry needs to be set up to enable charms with OCI image resources. On charm export, the OCI image metadata blob is written to the `resources` directory, using `postgresql-k8s` for example:
 
 ```json
 {

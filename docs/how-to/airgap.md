@@ -25,19 +25,19 @@ Proxy operators side-load all necessary snaps and other metadata into their
 local store by exporting them from the SaaS store first and then importing into
 their offline store.
 
-### Brand Store support
+### Dedicated Snap Store support
 
-[Brand Store](https://ubuntu.com/core/docs/store-overview)
-(also known as [IoT App Store](https://ubuntu.com/internet-of-things/appstore))
+[Dedicated Snap Store](https://ubuntu.com/core/docs/store-overview)
+(also known as [Brand Store or IoT App Store](https://ubuntu.com/internet-of-things/appstore))
 customers can use the Enterprise Store in offline mode to securely serve updates
 to their fleet of devices.
 
-Operators can import their brand store snaps (including any essential and other
-snaps included from the global store in their brand store) to their on-prem
+Operators can import their Dedicated Snap Store snaps (including any essential and other
+snaps included from the global store in their Dedicated Snap Store) to their on-prem
 store.
 
 Devices with valid serial assertions for models belonging to a specific brand
-can authenticate to their on-prem store and get access to imported brand store
+can authenticate to their on-prem store and get access to imported Dedicated Snap Store
 snaps. These snaps may not be accessible to any other devices connecting to that
 on-prem store.
 
@@ -159,8 +159,8 @@ To export brand store metadata needed for import to the on-prem store, the
 access. Authentication using an account with *Admin* role for the brand store in
 question is required. Example:
 
-```
-$ store-admin export store \
+```{terminal}
+store-admin export store \
     --arch=amd64 --arch=arm64 \
     --channel=stable --channel=edge \
     --key=keyId1 --key=keyId2 \
@@ -224,8 +224,9 @@ available for installation from the on-prem store.
 Example of exporting `jq` and `htop` snaps on a **machine with internet access**
 using the `store-admin` snap:
 
-```
-$ store-admin export snaps jq htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
+```{terminal}
+store-admin export snaps jq htop --channel=stable --arch=amd64 --arch=arm64 --export-dir .
+
 Downloading jq revision 6 (latest/stable amd64)
   [####################################]  100%
 Downloading jq revision 8 (latest/stable arm64)
@@ -301,15 +302,15 @@ enterprise-store list-pushed-snaps
 Running `snap info <snap-name>` from a device connected to the on-prem store can
 be used to view more details about the snap, like its current channel map.
 
-## Client Device Configuration
+## Client device configuration
 
 [Configuring client devices](devices.md) follows the same process as with an
 online Enterprise Store.
 
-## Offline Upgrades
+## Offline upgrades
 
 To upgrade enterprise-store on an offline machine, first download the snap and
-its assertions on a machine with internet access, e.g.:
+its assertions on a machine with internet access, for example:
 
 
 ```bash

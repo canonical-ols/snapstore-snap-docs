@@ -19,7 +19,7 @@ using OpenPGP V4 signatures (message hashed with SHA512).
 using SHA3-384, SHA256 and SHA512 to ensure the uniqueness and integrity of the artefact.
 
 - **OCI charm resources credentials**: an OCI runtime
-(e.g. [microk8s](https://microk8s.io/docs)) must authenticate against the Enterprise Store
+(for example, [MicroK8s](https://microk8s.io/docs)) must authenticate against the Enterprise Store
 in order to download the OCI [charm resources](https://juju.is/docs/juju/charm-resource).
 The credentials are encoded as JWT that are signed with RSA.
 

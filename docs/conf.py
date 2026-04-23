@@ -50,7 +50,7 @@ html_title = project + " documentation"
 # NOTE: For static works, it is common to provide the first publication year.
 #       Another option is to provide both the first year of publication
 #       and the current year, especially for docs that frequently change,
-#       e.g. 2022–2023 (note the en-dash).
+#       for example 2022–2023 (note the en-dash).
 #
 #       A way to check a repo's creation date is to get a classic GitHub token
 #       with 'repo' permissions; see https://github.com/settings/tokens

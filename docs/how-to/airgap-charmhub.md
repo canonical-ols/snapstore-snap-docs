@@ -14,7 +14,7 @@ The scope of this configuration is strictly limited to Charmhub-related activiti
 
 The Charmhub proxy does not incorporate an OCI registry. Users who work with Kubernetes charms must establish their own local OCI registry to manage container images.
 
-## Offline Charmhub Configuration
+## Offline Charmhub configuration
 
 Once the user has completed the [airgap installation](airgap.md#installation), the only remaining step is to configure the path to their local OCI registry. 
 
@@ -128,7 +128,7 @@ packages:
     push_channel: 8.0/edge
 ```
 
-When installing a snap by revision, the Snap Store requires that the revision exists in the snap's channel map history, i.e. the revision must have been released to any channel before it can be requested directly. Thus, `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the proxy on push.
+When installing a snap by revision, the Snap Store requires that the revision exists in the snap's channel map history (the revision must have been released to any channel before it can be requested directly). Thus, `push_channel` needs to be specified to tell Enterprise Store the target channel for the revision. This can be a channel that exists for the snap, thereby effectively overriding the channel when the snap is pushed, or it can be an arbitrary track, which would be created in the proxy on push.
 
 The export `.yaml` can be supplied to the `export snaps` command like so:
 
@@ -147,7 +147,7 @@ charmed-mysql: /home/ubuntu/snap/store-admin/common/export/charmed-mysql-2024042
 
 ### Export OCI images
 
-A local OCI registry needs to be set up to enable charms with OCI image resources. On charm export, the OCI image metadata blob is written to the `resources` directory, e.g. for `postgresql-k8s`:
+A local OCI registry needs to be set up to enable charms with OCI image resources. On charm export, the OCI image metadata blob is written to the `resources` directory, using `postgresql-k8s` as an exmaple:
 
 ```json
 {
@@ -177,7 +177,7 @@ By default, if no override is supplied via the `resources` key in the `.yaml` su
 
 The `skopeo` commands above pushes the image to the same path in the local registry and saves the effort of manually remapping resources. If required, the image can be pushed to a custom path, but a mapping must be defined for the resource as in the example `charms.yaml` in [Export charms](#export-charms).
 
-## Import Packages
+## Import packages
 
 Once the exported charm tar file is on the on-prem store host, they should be moved to the
 `/var/snap/enterprise-store/common/charms-to-push/` directory, from where they
@@ -198,7 +198,7 @@ sudo enterprise-store push-charm-bundle /var/snap/enterprise-store/common/charms
 When re-importing charms or importing other revisions, make sure to provide the `--push-channel-map`.
 
 
-After importing, the charms/bundles are then available to be managed with Juju commands.  
+After importing, the charms/bundles are then available to be managed with Juju commands.
 
 - When importing machine charms that depend on a snap for functionality, you must first manually [import the required snap](airgap.md#side-loading-snaps).
 - When importing Kubernetes charms, ensure that the corresponding OCI image is copied to the local registry, maintaining its original path.
@@ -256,9 +256,9 @@ charmhub-url: https://local-charmhub.internal
 snap-store-proxy-url: https://local-charmhub.internal
 ```
 
-Store this file in a Juju accessible path e.g. `/var/snap/juju/common/juju-config.yaml`.
+Store this file in a Juju accessible path, for example: `/var/snap/juju/common/juju-config.yaml`.
 
-### Controller and Model setup
+### Controller and model setup
 
 After configuring the certificate, the next steps depend on your deployment target. If you plan to deploy to a Kubernetes (k8s) cloud, you'll need to add the substrate to this controller to facilitate the deployment. However, if you're deploying machine charms, this additional step is not necessary.
 

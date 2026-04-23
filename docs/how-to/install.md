@@ -38,7 +38,7 @@ services, and the `enterprise-store` CLI tool to control the proxy.
 ## Domain configuration
 
 The Enterprise Store will require a domain or IP address to be set
-for the configuration and access by other devices, e.g.:
+for the configuration and access by other devices, for example:
 
     sudo enterprise-store config proxy.domain="proxy.example.com"
 

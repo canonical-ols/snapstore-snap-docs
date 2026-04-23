@@ -77,3 +77,13 @@ sideloaded
 iptable
 PGPy
 airgapped
+Enterprise Store
+Serial Vault
+Charmhub Proxy
+CA
+Dedicated Snap Store
+API
+Model Service
+p11-kit
+High-Availability
+Memcached
