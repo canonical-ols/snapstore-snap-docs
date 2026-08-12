@@ -1,15 +1,35 @@
-Enterprise Store documentation
-==============================
+Enterprise Store
+================
+
+Canonical's Enterprise Store provides an on-premise edge proxy to, and offline cache of, the public Snap Store and Charmhub for your devices.
 
 Product page: https://ubuntu.com/enterprise-store
 Documentation: https://ubuntu.com/enterprise-store/docs/
 
 This repository contains documentation for Canonical's Enterprise Store.
 
-The Enterprise Store provides an on-premise edge proxy to the public Snap
-Store and Charmhub for your devices.
+This set of documentation is based on the `Canonical Sphinx Stack <https://github.com/canonical/sphinx-stack>`_.
 
-This set of documentation uses Canonical's [Sphinx starter pack](https://github.com/canonical/sphinx-docs-starter-pack) as a base.
+
+Installation
+------------
+
+The Enterprise Store is distributed as a snap:
+
+.. code-block:: bash
+
+    sudo snap install enterprise-store
+
+Usage
+-----
+
+After installation, run ``enterprise-store`` followed by ``help`` to see the available commands:
+
+.. code-block:: bash
+
+    enterprise-store help
+
+See the `documentation <https://ubuntu.com/enterprise-store/docs/>`_ for details on configuring and managing your Enterprise Store.
 
 Project and community
 ---------------------
@@ -21,8 +41,14 @@ The Enterprise Store is a member of the Snap Store family. It's a project that w
 * `File a bug <https://bugs.launchpad.net/snapstore-server>`_
 * `Get support <https://ubuntu.com/support/community-support>`_
 
-Learn more about how the Enterprise Store overcomes challenges presented by
-restricted networks and management policies from this
-`whitepaper on Enterprise Snap Management <https://ubuntu.com/engage/enterprise-snap-management>`_.
+Contribute to Enterprise Store documentation
+--------------------------------------------
 
-Thinking about deploying the Enterprise Store in your enterprise? `Get in touch! <https://ubuntu.com/core/services/contact-us>`_
+The Enterprise Store documentation is proudly open source, and we welcome and encourage contributions. Any issues should be reported here in the GitHub repository.
+
+License and copyright
+---------------------
+
+© 2015-2026 Canonical Ltd.
+Ubuntu and Canonical are registered trademarks of Canonical Ltd.
+

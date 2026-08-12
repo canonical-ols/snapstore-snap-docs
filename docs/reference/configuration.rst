@@ -133,7 +133,7 @@ Values
       - :code:`False`
         
     * - proxy.oci-registry.domain
-      - :code:`registry.jujucharms.com`
+      - ``registry.jujucharms.com``
         
     * - proxy.oci-registry.username
       - None
