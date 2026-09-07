@@ -5,6 +5,15 @@ description: Configure High-Availability for the Enterprise Store using multiple
 
 # Enable High-Availability (HA)
 
+```{warning}
+It is highly recommended to use a Juju-managed deployment for
+high-availability (HA), as it natively supports HA. See
+{doc}`Deploy a highly available charmed store <deploy-charmed-ha>`
+for more information.
+
+This guide will eventually be deprecated.
+```
+
 By default, the Enterprise Store does not use a High Availability
 configuration; if the machine with the Enterprise Store snap goes down,
 then any requests made to it will fail.
@@ -14,12 +23,6 @@ allows for multiple machines ("units") with the Enterprise Store snap
 to be used for serving client requests. In this scenario, if one unit
 goes down, then requests can be routed to another live unit.
 
-```{note}
-For a Juju-managed deployment, use multiple Enterprise Store charm units behind
-the HAProxy charm through the `haproxy-route` integration. The charm coordinates
-rolling operations. See {doc}`Deploy a highly available charmed store
-<deploy-charmed-ha>`.
-```
 
 ## Overview
 
