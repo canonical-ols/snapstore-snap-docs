@@ -15,6 +15,7 @@ you to understand and adapt the steps to fit your specific requirements.
 | **How-to guides**                                                             | Get stuff done                                                              |
 |-------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | [Installation](how-to/install.md)                                             | Install and set up the Enterprise Store                                     |
+| [Deploy as a charm](how-to/deploy-charmed-store.md)                           | Deploy and manage the Enterprise Store with Juju                            |
 | [Proxy registration](how-to/register.md)                                      | Register the store with the SaaS Store                                      |
 | [Configuring snap devices](how-to/devices.md)                                 | Point your devices to the Enterprise Store instead of the SaaS Store        |
 | [Overriding snap revisions](how-to/overrides.md)                              | Control the specific revisions of snaps in the channels of your store       |
@@ -36,6 +37,7 @@ specs and authentication mechanism), and other supplementary reference materials
     :maxdepth: 1
 
     Install an Enterprise Store <how-to/install>
+    Deploy the Enterprise Store as a charm <how-to/deploy-charmed-store>
     Register an Enterprise Store <how-to/register>
     Configure devices <how-to/devices> 
     Override snap revisions <how-to/overrides>

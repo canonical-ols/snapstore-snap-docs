@@ -20,6 +20,10 @@ Guidance for an initial setup of the Enterprise Store.
 
 Guidance for an air-gapped deployment of the Enterprise Store.
 :::
+:::{grid-item-card} {doc}`Get started with a charmed Enterprise Store <tutorial/charmed-deployment>`
+
+Guidance for deploying and testing the Enterprise Store with Juju.
+:::
 ::::
 
 If you have a specific goal, but are already familiar with the Enterprise Store,
@@ -37,4 +41,5 @@ supplementary reference materials.
 
     tutorial/get-started
     tutorial/air-gapped-deployment
+    tutorial/charmed-deployment
 ```

@@ -33,8 +33,10 @@ In this documentation
      - :doc:`tutorial/get-started` • :doc:`how-to/devices` • :doc:`how-to/overrides` • :doc:`reference/configuration`
    * - **Air-gapped deployments**
      - :doc:`tutorial/air-gapped-deployment` • :doc:`how-to/airgap`
-   * - **Charm support**
+   * - **Serving charms (Charmhub Proxy)**
      - :doc:`how-to/charmhub-proxy` • :doc:`how-to/airgap-charmhub`
+   * - **Charmed deployment**
+     - :doc:`tutorial/charmed-deployment` • :doc:`how-to/deploy-charmed-store`
    * - **Dedicated Snap Store support**
      - :doc:`how-to/integrate-a-dedicated-snap-store` • :doc:`how-to/publish-snaps` • :doc:`how-to/build-images`
    * - **API documentation**
@@ -76,4 +78,3 @@ Thinking about deploying the Enterprise Store in your enterprise? `Get in touch!
    Tutorial <tutorial>
    How-to <how-to>
    Reference <reference>
-

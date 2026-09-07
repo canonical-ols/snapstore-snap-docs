@@ -170,7 +170,7 @@ The directory can then be manually copied to the air-gapped registry host, then 
 
 ```{terminal}
 
-skopeo copy dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --dest-creds=<local-registry-username>:<local-registry-password>
+skopeo copy --all dir:/home/ubuntu/<copied-dir> docker://<local-registry-domain>/charm/kotcfrohea62xreenq1q75n1lyspke0qkurhk/postgresql-image@sha256:8a72e1152d4a0... --dest-creds=<local-registry-username>:<local-registry-password>
 ```
 
 By default, if no override is supplied via the `resources` key in the `.yaml` supplied for charm export, Charmhub Proxy will assume an identical local registry image path (excluding the domain but including `charm/` and including the sha256 tag). When a deployment is requested, CHP will supply a regenerated blob using the local domain URL and credentials configured.

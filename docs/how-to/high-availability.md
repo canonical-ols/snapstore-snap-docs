@@ -1,10 +1,18 @@
 ---
 title: Enable High-Availability (HA)
-table_of_contents: true
 description: Configure High-Availability for the Enterprise Store using multiple units with reverse proxy load balancing.
 ---
 
 # Enable High-Availability (HA)
+
+```{warning}
+It is highly recommended to use a Juju-managed deployment for
+high-availability (HA), as it natively supports HA. See
+{doc}`Deploy a highly available charmed store <deploy-charmed-ha>`
+for more information.
+
+This guide will eventually be deprecated.
+```
 
 By default, the Enterprise Store does not use a High Availability
 configuration; if the machine with the Enterprise Store snap goes down,
@@ -14,6 +22,7 @@ Enterprise Store operators can opt to use a HA configuration, which
 allows for multiple machines ("units") with the Enterprise Store snap
 to be used for serving client requests. In this scenario, if one unit
 goes down, then requests can be routed to another live unit.
+
 
 ## Overview
 

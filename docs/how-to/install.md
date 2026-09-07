@@ -17,6 +17,13 @@ To run the Enterprise Store, you will need:
 
 ## Getting started
 
+```{note}
+The Enterprise Store can also be deployed and managed with Juju by using the
+`enterprise-store` charm. See {doc}`Deploy the Enterprise Store as a charm
+</how-to/deploy-charmed-store>`, or follow the {doc}`charmed deployment tutorial
+</tutorial/charmed-deployment>` for a guided setup.
+```
+
 First, if your network requires an HTTPS proxy to get to the above
 domains, you must first configure `snapd` on the installation server to
 use that HTTPS proxy in order to be able to install the enterprise-store snap

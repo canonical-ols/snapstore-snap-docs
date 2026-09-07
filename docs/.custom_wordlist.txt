@@ -87,3 +87,11 @@ Model Service
 p11-kit
 High-Availability
 Memcached
+boolean
+Sideloading
+APIs
+armhf
+Charmhub
+HAProxy
+Nginx
+Snapcraft
