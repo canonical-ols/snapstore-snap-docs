@@ -1,6 +1,5 @@
 ---
 title: Configure a device to use the Enterprise Store
-table_of_contents: true
 description: Configure snap devices to connect to your Enterprise Store instead of the public Snap Store.
 ---
 
@@ -12,6 +11,12 @@ Ensure you have:
 * Access to a [registered Enterprise Store](register.md)
 
 First, get the *Store URL* and *Store ID* from your Enterprise Store:
+
+```{note}
+For a charmed deployment, run
+`juju run enterprise-store/leader status` to get this information.
+The device-side steps below are unchanged.
+```
     
     sudo enterprise-store status
 

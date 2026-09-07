@@ -1,6 +1,5 @@
 ---
 title: Enable High-Availability (HA)
-table_of_contents: true
 description: Configure High-Availability for the Enterprise Store using multiple units with reverse proxy load balancing.
 ---
 
@@ -14,6 +13,13 @@ Enterprise Store operators can opt to use a HA configuration, which
 allows for multiple machines ("units") with the Enterprise Store snap
 to be used for serving client requests. In this scenario, if one unit
 goes down, then requests can be routed to another live unit.
+
+```{note}
+For a Juju-managed deployment, use multiple Enterprise Store charm units behind
+the HAProxy charm through the `haproxy-route` integration. The charm coordinates
+rolling operations. See {doc}`Deploy a highly available charmed store
+<deploy-charmed-ha>`.
+```
 
 ## Overview
 

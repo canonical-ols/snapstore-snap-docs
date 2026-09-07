@@ -62,6 +62,12 @@ before the mode switch as well as for the enterprise-store instance itself.
 
 ### Offline installation
 
+```{note}
+An offline store can alternatively be deployed with Juju by attaching the
+offline bundle as the charm's `store-bundle` resource. See {doc}`Deploy an
+offline charmed store <deploy-charmed-offline>`.
+```
+
 To deploy an offline store (Enterprise Store in air-gapped mode) to a machine
 without internet access it's possible to register it using a separate machine
 first and install the resulting package on the target machine.

@@ -14,6 +14,7 @@ authentication mechanism), and other supplementary reference materials.
 | [Overrides API](reference/api-overrides.md)           | API specs for the Overrides API                                          |
 | [API authentication](reference/api-authentication.md) | API authentication for store admins when using the Overrides API         |
 | [Cryptography](reference/cryptography.md)             | An outline of the usage of cryptographic technology                      |
+| [Enterprise Store charm](reference/charm.md)           | Configuration options, integrations, actions and resource of the enterprise-store charm |
 
 
 If you have a specific goal, but are already familiar with the Enterprise Store,
@@ -31,4 +32,5 @@ you to understand and adapt the steps to fit your specific requirements.
     reference/api-overrides
     reference/api-authentication
     reference/cryptography
+    reference/charm
 ```

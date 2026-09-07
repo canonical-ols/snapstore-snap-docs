@@ -63,6 +63,12 @@ At this point, your proxy will be assigned a Store ID, which can be retrieved
 with the status command. This will be used in later commands and to
 identify your proxy for support purposes.
 
+```{note}
+For a charmed deployment, use `store-admin` to generate a registration bundle,
+then supply it through the charm's `registration_bundle` configuration option.
+See {doc}`Deploy in proxy mode with the charm <deploy-charmed-proxy>`.
+```
+
 After successful registration it's advised to securely store the private key
 generated during the process. This key is your proxy's identity. The key
 pair can be viewed using:
